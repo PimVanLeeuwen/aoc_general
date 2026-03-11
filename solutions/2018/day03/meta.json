@@ -1,0 +1,7 @@
+{
+  "title": "No Matter How You Slice It",
+  "description": "Determine how many square inches of fabric are within two or more claims, and find the only claim that doesn't overlap any other.",
+  "writeup": "## Approach\n\nThe input is a list of rectangle claims, each specifying an ID, position, and size. The goal is to analyze overlaps and find the unique claim that doesn't overlap.\n\n## Part 1\n\nMark each claim's area on a grid. For every square inch, track which claims cover it. Count the number of squares covered by two or more claims.\n\n- Parse each claim using regex: `#(\\d+) @ (\\d+),(\\d+): (\\d+)x(\\d+)`\n- Mark all claimed squares in a dictionary mapping coordinates to claim IDs.\n- Count the number of squares with more than one claim.\n\n## Part 2\n\nIdentify the claim that does not overlap with any other.\n\n- Track all claim IDs and those that overlap.\n- The non-overlapping claim is the one not present in the overlap set.\n- Return its ID.\n\n## Code Highlights\n\n- Uses regex for robust parsing.\n- Dictionary for efficient grid marking.\n- Early exit for part 2 when the answer is found.\n- Visualizer animates claim placement and overlap detection.\n\n## Tags\n\n- `grid`\n- `rectangle`\n- `overlap`\n- `set`\n\n## Stars\n\n2\n",
+  "tags": ["grid", "rectangle", "overlap", "set"],
+  "stars": 2
+}

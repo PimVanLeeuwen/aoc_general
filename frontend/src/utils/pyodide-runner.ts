@@ -53,26 +53,65 @@ except Exception:
 json.dumps(_frames)
 `
 
+/**
+ * Cleanup code to remove temporary globals and run garbage collection
+ */
+const CLEANUP_CODE = `
+import gc
+# Clear the temporary namespace variables
+for _var in ['_solution_code', '_puzzle_input', '_ns', '_capture', '_r', '_f', '_frames', '_part1', '_part2', '_error']:
+    if _var in dir():
+        try:
+            del globals()[_var]
+        except:
+            pass
+gc.collect()
+None
+`
+
+/**
+ * Clean up Pyodide globals to free memory after running solutions
+ */
+function cleanupPyodide(py: any): void {
+  try {
+    // Delete globals from JavaScript side
+    py.globals.delete('_solution_code')
+    py.globals.delete('_puzzle_input')
+    // Run Python-side cleanup
+    py.runPython(CLEANUP_CODE)
+  } catch {
+    // Ignore cleanup errors
+  }
+}
+
 export async function runSolution(code: string, puzzleInput: string): Promise<RunResult> {
-  const py = getPyodide()
+  const py = getPyodide() as any
   if (!py) throw new Error('Pyodide not initialized — click Run to load it first')
 
   const start = Date.now()
   py.globals.set('_solution_code', code)
   py.globals.set('_puzzle_input', puzzleInput)
 
-  const resultJson: string = await py.runPythonAsync(RUNNER_CODE)
-  const result = JSON.parse(resultJson)
-  return { ...result, timeMs: Date.now() - start }
+  try {
+    const resultJson: string = await py.runPythonAsync(RUNNER_CODE)
+    const result = JSON.parse(resultJson)
+    return { ...result, timeMs: Date.now() - start }
+  } finally {
+    cleanupPyodide(py)
+  }
 }
 
 export async function runVisualization(code: string, puzzleInput: string): Promise<VisFrame[]> {
-  const py = getPyodide()
+  const py = getPyodide() as any
   if (!py) throw new Error('Pyodide not initialized')
 
   py.globals.set('_solution_code', code)
   py.globals.set('_puzzle_input', puzzleInput)
 
-  const framesJson: string = await py.runPythonAsync(VIZ_CODE)
-  return JSON.parse(framesJson) as VisFrame[]
+  try {
+    const framesJson: string = await py.runPythonAsync(VIZ_CODE)
+    return JSON.parse(framesJson) as VisFrame[]
+  } finally {
+    cleanupPyodide(py)
+  }
 }

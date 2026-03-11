@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Play, Loader, AlertCircle, CheckCircle } from 'lucide-react'
 import { usePyodide } from '../context/PyodideContext'
 import { runSolution, runVisualization } from '../utils/pyodide-runner'
@@ -18,6 +18,13 @@ export default function RunnerPanel({
   const [result, setResult] = useState<RunResult | null>(null)
   const [frames, setFrames] = useState<VisFrame[] | null>(null)
   const [runError, setRunError] = useState<string | null>(null)
+
+  // Clear state when switching between solutions
+  useEffect(() => {
+    setResult(null)
+    setFrames(null)
+    setRunError(null)
+  }, [code])
 
   const handleRun = async () => {
     if (!isReady) {

@@ -57,6 +57,14 @@ export default function Visualizer({ frames }: { frames: VisFrame[] }) {
 
   const frame = frames[current]
 
+  // Cleanup timer helper
+  const clearTimer = useCallback(() => {
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current)
+      timerRef.current = null
+    }
+  }, [])
+
   const next = useCallback(() => {
     setCurrent((c) => {
       if (c < frames.length - 1) return c + 1
@@ -68,19 +76,28 @@ export default function Visualizer({ frames }: { frames: VisFrame[] }) {
   const prev = () => setCurrent((c) => Math.max(c - 1, 0))
 
   useEffect(() => {
-    if (!playing) return
+    if (!playing) {
+      clearTimer()
+      return
+    }
     const delay = (frame as { delay?: number })?.delay ?? 150
     timerRef.current = window.setTimeout(next, delay)
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current)
-    }
-  }, [playing, current, frame, next])
+    return clearTimer
+  }, [playing, current, frame, next, clearTimer])
 
   // Reset when frames change
   useEffect(() => {
+    clearTimer()
     setCurrent(0)
     setPlaying(false)
-  }, [frames])
+  }, [frames, clearTimer])
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      clearTimer()
+    }
+  }, [clearTimer])
 
   if (!frame) return null
 

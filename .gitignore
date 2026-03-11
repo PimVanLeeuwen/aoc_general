@@ -1,3 +1,11 @@
+# ── Puzzle inputs (personal, not redistributable per AoC rules) ───────────────
+inputs/
+
+# ── Node / Frontend ───────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+
+# ── Python solutions ───────────────────────────────────────────────────────────
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

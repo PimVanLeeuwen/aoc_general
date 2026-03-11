@@ -1,0 +1,7 @@
+{
+  "title": "Chronal Calibration",
+  "description": "Sum a list of frequency deltas, then find the first frequency seen twice when cycling through the list repeatedly.",
+  "writeup": "## Approach\n\nThe input is a list of signed integers representing frequency changes. Part 1 is a straightforward sum. Part 2 requires finding the first repeated cumulative sum, which may not occur until the list has been cycled through many times.\n\n## Part 1\n\nSimply sum all the deltas in one pass — Python's built-in `sum` with a generator handles this in a single line.\n\n## Part 2\n\nKeep a running frequency and a `set` of every value seen so far (starting with `0`). Cycle through the delta list repeatedly until the current frequency is already in the set — that's the first repeat. Using a set gives O(1) lookups, so the bottleneck is purely how many cycles are needed, which varies per input.",
+  "tags": ["set", "cycle", "prefix-sum"],
+  "stars": 2
+}

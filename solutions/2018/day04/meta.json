@@ -1,0 +1,7 @@
+{
+  "title": "Repose Record",
+  "description": "Analyze guard sleep patterns from timestamped logs to find the optimal moment for sneaking past.",
+  "writeup": "## Approach\n\nThe input is a list of timestamped log entries recording guard shifts and sleep/wake events. The key insight is that logs may be out of order, so sorting them first is essential.\n\n- Parse each log entry to extract timestamps and events\n- Track which guard is currently on duty\n- Build a sleep frequency array for each guard (60 minutes)\n\n## Part 1\n\nFind the guard with the most total minutes asleep, then find the minute they slept most frequently.\n\n- Sum each guard's sleep array to find total sleep time\n- For the sleepiest guard, find the index with the highest count\n- Answer: `guard_id × minute`\n\n## Part 2\n\nFind the guard-minute combination with the highest frequency — which guard sleeps on the same minute most often?\n\n- For each guard, find their maximum sleep frequency on any minute\n- Track the global maximum across all guards\n- Answer: `guard_id × minute`\n\n## Code Highlights\n\n- Uses `defaultdict` with a lambda for clean initialization of 60-minute arrays\n- Sorting the input handles out-of-order logs automatically\n- Regex parsing extracts guard IDs, minutes, and dates efficiently",
+  "tags": ["parsing", "regex", "simulation", "frequency-count"],
+  "stars": 2
+}

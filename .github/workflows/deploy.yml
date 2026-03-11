@@ -32,8 +32,10 @@ jobs:
         run: npm run build
         working-directory: frontend
         env:
-          # Sets the Vite base URL to /repo-name/ so asset paths resolve correctly
-          VITE_BASE_URL: /${{ github.event.repository.name }}/
+          # If you use a custom domain, set VITE_BASE_URL to / in:
+          # Settings → Secrets and variables → Actions → Variables → New repository variable
+          # Leave unset to use the default /repo-name/ path (standard github.io hosting).
+          VITE_BASE_URL: ${{ vars.VITE_BASE_URL || format('/{0}/', github.event.repository.name) }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

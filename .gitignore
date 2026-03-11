@@ -5,6 +5,7 @@ inputs/
 node_modules/
 frontend/dist/
 
+
 # ── Python solutions ───────────────────────────────────────────────────────────
 # Byte-compiled / optimized / DLL files
 __pycache__/

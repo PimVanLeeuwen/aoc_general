@@ -5,7 +5,7 @@ import { useSolutions } from '../context/SolutionsContext'
 import CodeViewer from '../components/CodeViewer'
 import WriteupView from '../components/WriteupView'
 import RunnerPanel from '../components/RunnerPanel'
-import { assetUrl } from '../lib/assetUrl'
+import { assetUrl } from '../utils/assetUrl'
 import type { SolutionDetail } from '../types'
 
 type Tab = 'writeup' | 'code' | 'run'

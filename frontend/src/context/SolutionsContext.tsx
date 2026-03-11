@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { SolutionsManifest } from '../types'
-import { assetUrl } from '../lib/assetUrl'
+import { assetUrl } from '../utils/assetUrl'
 
 interface SolutionsContextValue {
   manifest: SolutionsManifest

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Play, Loader, AlertCircle, CheckCircle } from 'lucide-react'
 import { usePyodide } from '../context/PyodideContext'
-import { runSolution, runVisualization } from '../lib/pyodide-runner'
+import { runSolution, runVisualization } from '../utils/pyodide-runner'
 import Visualizer from './Visualizer'
 import type { RunResult, VisFrame } from '../types'
 

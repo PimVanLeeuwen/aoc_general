@@ -1,0 +1,7 @@
+{
+  "title": "Alchemical Reduction",
+  "description": "Fully react a polymer by destroying adjacent units of the same type but opposite polarity, then find which unit type to remove to minimize the result.",
+  "writeup": "## Approach\n\nThe input is a single long polymer string. Adjacent units of the same letter but different case react and annihilate each other (`aA`, `Bb`, etc.). The process repeats until no more reactions are possible.\n\n## Part 1\n\nSimulate the reaction with a stack:\n\n- Iterate through each unit in the polymer.\n- If the top of the stack is the same letter but opposite case, pop it (reaction).\n- Otherwise, push the unit onto the stack.\n- The remaining stack is the fully reacted polymer.\n\nThis runs in O(n) — one pass through the string.\n\n## Part 2\n\nFind the unit type whose removal leads to the shortest fully reacted polymer:\n\n- There are only 26 possible unit types.\n- For each letter, strip all instances (both cases) from the original polymer, then run the O(n) reaction.\n- Return the minimum length across all 26 candidates.\n\nTotal complexity: O(26n).\n\n## Code Highlights\n\n- The stack approach allows one pass, no repeated scanning.\n- `stack[-1].lower() == unit.lower()` checks same type; `stack[-1] != unit` checks opposite polarity.\n- Part 2 reuses the same `react()`.\n- Visualizer animates the stack building in real time, then shows a bar chart of all 26 candidates for part 2.",
+  "tags": ["stack", "string", "simulation"],
+  "stars": 2
+}

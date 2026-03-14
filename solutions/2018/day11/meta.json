@@ -1,0 +1,7 @@
+{
+  "title": "Chronal Charge",
+  "description": "Find the 3×3 square with the highest total power in a 300×300 fuel-cell grid, then find the optimal square of any size.",
+  "writeup": "## Approach\n\nThe naive approach — summing every cell inside every candidate square — is O(n⁴) for Part 2. The key data structure is the **summed-area table** (SAT), which reduces any rectangle sum to a single O(1) lookup.\n\n## Power Cell Formula\n\nFor a cell at `(x, y)` with grid serial number `s`:\n\n```\nrack_id = x + 10\npower   = (rack_id * y + s) * rack_id // 100 % 10 - 5\n```\n\n## Summed-Area Table\n\nBuild a 2D prefix-sum array `sat` where `sat[y][x]` is the sum of all cells from `(1,1)` to `(x,y)`. Then any rectangle sum is:\n\n```\nsat[y2][x2] - sat[y1-1][x2] - sat[y2][x1-1] + sat[y1-1][x1-1]\n```\n\nBuilding the SAT is O(n²); each query is O(1).\n\n## Part 1\n\nIterate all valid top-left positions for a 3×3 square and return the best.\n\n## Part 2\n\nIterate sizes 1–30 (empirically, all AoC inputs peak well within this range), calling `best_square` for each. Total cost is O(30 × n²) — fast enough for browser-based Python.\n\n## Code Highlights\n\n- SAT is built once and shared between Part 1 and Part 2.\n- `rect_sum` is a four-term O(1) formula — no loops inside the hot path.\n- Visualizer renders a 60×60 heatmap of the power grid (each pixel = a 5×5 block) using block characters, updating with a highlighted `◆` marker as the best square is found.",
+  "tags": ["prefix-sum", "grid", "summed-area-table"],
+  "stars": 2
+}

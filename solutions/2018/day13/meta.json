@@ -1,0 +1,7 @@
+{
+  "title": "Mine Cart Madness",
+  "description": "Simulate mine carts on a track grid; find the first collision and the last cart standing.",
+  "writeup": "## Approach\n\nThis is a straightforward simulation, but the details matter: carts must move in **reading order** (top-to-bottom, left-to-right), and collisions must be detected mid-tick.\n\n## Parsing\n\nCarts (`^v<>`) are stripped from the grid and replaced with their underlying track (`|` or `-`). Each cart stores `(dy, dx, turn_state)` where `turn_state` cycles through 0=left, 1=straight, 2=right at intersections.\n\n## Stepping\n\nEach tick, carts are processed in sorted `(y, x)` order. After moving:\n- **Curve (`/ \\`)**: redirect using a lookup table.\n- **Intersection (`+`)**: apply left/straight/right based on `turn_state`, then advance it.\n- **Collision**: if the destination is already occupied, record the crash and remove both carts immediately (important for Part 2 so later carts in the same tick don't interact with the wreck).\n\n## Part 1\n\nRecord the first collision position and report it as `x,y`.\n\n## Part 2\n\nContinue until only one cart remains; report its position.",
+  "tags": ["simulation", "grid"],
+  "stars": 2
+}

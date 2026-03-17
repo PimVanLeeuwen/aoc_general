@@ -1,0 +1,7 @@
+{
+  "title": "Subterranean Sustainability",
+  "description": "Simulate cellular-automaton plant growth in a row of pots; sum pot indices after 20 and 50 billion generations.",
+  "writeup": "## Approach\n\nThe plants evolve like a 1-D cellular automaton: each pot's next state depends on a 5-cell window centered on it. We represent the state as a **set of occupied pot indices**, which handles the unbounded row efficiently.\n\n## Part 1\n\nRun 20 steps of the simulation, then sum all indices in the set.\n\n## Part 2\n\n50 billion steps is obviously too many to simulate directly. The key insight: most AoC inputs eventually reach a state where the **shape** of the plant pattern stabilizes and simply **slides** a fixed number of positions each generation.\n\nAt each step we normalize the state (subtract the minimum index) and compare with the previous normalized state. Once they match, we know:\n- The shift per generation (`new_min - old_min`).\n- The remaining generations (`50,000,000,000 - current_gen`).\n\nWe can then extrapolate: `sum(p + shift * remaining for p in current_state)`.\n\n## Code Highlights\n\n- `step` considers only positions `min-2` to `max+2`, keeping the hot loop tight.\n- Cycle detection uses `frozenset` comparison of normalized indices — no hashing tricks needed.\n- Visualization shows the first 20 generations as a scrolling 1-D grid row, then reveals the cycle detection result.",
+  "tags": ["cellular-automaton", "cycle-detection", "set"],
+  "stars": 2
+}

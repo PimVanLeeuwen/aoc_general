@@ -1,0 +1,7 @@
+{
+  "title": "Chocolate Charts",
+  "description": "Simulate an ever-growing recipe scoreboard to find the ten scores after N recipes, then find where the digit sequence of N first appears.",
+  "writeup": "## Approach\n\nTwo Elves maintain a scoreboard starting with `[3, 7]`. Each step they sum their current scores, append the decimal digits of the sum, then each Elf advances by `1 + their_score` positions (wrapping around).\n\n## Part 1\n\nRun the simulation until the scoreboard has at least `N + 10` entries, then read off `scores[N:N+10]`.\n\n## Part 2\n\nSearch for the first occurrence of the digit sequence of `N` in the scoreboard. Each step appends 1 or 2 digits, so after each append we check both the last `n` and second-to-last `n` digits for a match.\n\nBoth parts share a single simulation loop that stops as soon as both answers are known.\n\n## Code Highlights\n\n- State is two integers (elf positions) plus a flat list of digits — no complex data structures needed.\n- The dual-offset check (`scores[-n:]` and `scores[-n-1:-1]`) handles the 1-or-2-digit-append edge case cleanly.",
+  "tags": ["simulation", "sequence-search"],
+  "stars": 2
+}

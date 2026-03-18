@@ -4,6 +4,10 @@ A visual Advent of Code portfolio — browse solutions by year and day, read wri
 
 Deployable to GitHub Pages with zero configuration.
 
+## Motivation 
+
+I have been a long-time AOC enthusiast, and this project will be the one to combine them all. Where I initially solve the puzzles myself, AI is used to provide feedback, improve them, and generate the visualization. Overall, creating a pleasing and interesting portfolio of problems. 
+
 ## Structure
 
 ```

@@ -8,6 +8,12 @@ Deployable to GitHub Pages with zero configuration.
 
 I have been a long-time AOC enthusiast, and this project will be the one to combine them all. Where I initially solve the puzzles myself, AI is used to provide feedback, improve them, and generate the visualization. Overall, creating a pleasing and interesting portfolio of problems. 
 
+## Example Visualizations
+
+### 2018 - Day 15
+
+![](https://github.com/PimVanLeeuwen/aoc_general/blob/main/visualization_examples/2018_15.gif)
+
 ## Structure
 
 ```

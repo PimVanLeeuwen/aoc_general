@@ -1,0 +1,7 @@
+{
+  "title": "Go With The Flow",
+  "description": "Execute an assembly program where the instruction pointer is bound to a register; analytically shortcut the Part 2 sum-of-divisors loop.",
+  "writeup": "## Approach\n\nThe device has 6 registers and 16 opcodes (same as Day 16). One register is designated as the instruction pointer (`#ip N`): before each instruction the IP is written into that register, and after execution the register's value is written back — enabling jumps via arithmetic.\n\n## Part 1\n\nSimulate the program from `r[0]=0` until the IP goes out of bounds. Return `r[0]`.\n\n## Part 2\n\nStarting with `r[0]=1` causes the initialization code to produce a much larger target number N (~10 million for most inputs). The main loop then iterates over all pairs `(i, j)` checking `i*j == N` — an O(N²) brute-force sum-of-divisors that would take hours to simulate.\n\n**Shortcut:** run the program only until any register first exceeds 1000. At that point initialization is complete and N is sitting in the largest register. Then compute the sum of divisors directly in O(√N):\n\n```python\ni = 1\nwhile i * i <= N:\n    if N % i == 0:\n        total += i + (N // i if i != N // i else 0)\n    i += 1\n```\n\n## Visualization\n\nShows the disassembly, then traces the first 50 instruction steps of Part 1 (register values before/after each instruction), and finally reveals N and its divisors for Part 2.",
+  "tags": ["assembly", "simulation", "number-theory"],
+  "stars": 2
+}

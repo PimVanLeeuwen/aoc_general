@@ -1,0 +1,7 @@
+{
+  "title": "Settlers of The North Pole",
+  "description": "Cellular automaton on a lumber grid — open, trees, and lumberyards evolve each minute by neighbour counts.",
+  "writeup": "## Approach\n\nThis is a classic cellular automaton (similar to Conway's Game of Life). Each cell updates simultaneously based on its 8 neighbours.\n\n## Rules\n\n| Current | Condition | Next |\n|---------|-----------|------|\n| `.` open | ≥ 3 adjacent `\\|` | `\\|` trees |\n| `\\|` trees | ≥ 3 adjacent `#` | `#` lumberyard |\n| `#` lumberyard | < 1 adjacent `#` **or** < 1 adjacent `\\|` | `.` open |\n| any | otherwise | unchanged |\n\n## Part 1\n\nSimulate 10 steps, multiply count of `|` by count of `#`.\n\n## Part 2\n\n1,000,000,000 steps is far too many to simulate directly. The state space is finite (each cell has 3 possible values), so the sequence must eventually cycle.\n\nStore each grid state as a tuple in a `seen` dict. When a repeat is found:\n\n```\nremaining = (target - i) % cycle_length\n```\n\nThen simulate just `remaining` more steps to get the final answer.\n\n## Visualization\n\nWatches the grid evolve step by step — the first 20 minutes at full speed, then faster until the cycle is detected.",
+  "tags": ["cellular-automaton", "cycle-detection", "simulation"],
+  "stars": 2
+}

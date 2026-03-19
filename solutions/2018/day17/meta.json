@@ -1,0 +1,7 @@
+{
+  "title": "Reservoir Research",
+  "description": "Simulate water flowing from a spring through clay-walled underground caverns; count reachable and retained tiles.",
+  "writeup": "## Approach\n\nThis is a recursive water-flow simulation. Water falls from `(500, 0)`, spreading and settling according to gravity and clay walls.\n\n## Core Algorithm\n\nThree mutually recursive functions:\n\n- **`down(x, y)`** — water falls vertically from `(x, y)`. Marks the cell as flowing, recurses downward. If the cell below is solid (clay or settled), calls `spread`. Returns `True` if the column eventually settles, `False` if it flows off the bottom.\n- **`spread(x, y)`** — scans left and right from `(x, y)`. Returns `True` (settles the row) only if both sides hit a clay wall.\n- **`scan(x, y, dx)`** — walks in direction `dx` until hitting a clay wall (bounded) or finding an open floor (unbounded). When the floor opens, recursively calls `down` at that point — this handles nested basins and overflow.\n\n## Cycle Prevention\n\n`if (x, y) in flowing: return False` — if a cell is already being processed as flowing water, any new path reaching it also leads to infinity.\n\n## Counting\n\n- **Part 1**: all tiles in `flowing ∪ settled` where `min_y ≤ y ≤ max_y` (spring row and below-scan rows are excluded).\n- **Part 2**: only `settled` tiles in the same y range.\n\n## Visualization\n\nShows clay (`#` brown), flowing water (`|` light blue), and settled water (`~` blue) on the full 2D grid.",
+  "tags": ["simulation", "recursion", "flood-fill"],
+  "stars": 2
+}

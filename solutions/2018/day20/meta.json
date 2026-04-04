@@ -1,0 +1,7 @@
+{
+  "title": "A Regular Map",
+  "description": "Parse a regex to build a map of rooms and doors, then BFS to find furthest room.",
+  "writeup": "## Approach\n\nThe regex describes all possible paths through the facility. We parse it by tracking a *set* of current positions — branches `(` save the set, pipes `|` collect alternatives, and `)` merges them.\n\n## Part 1\n\nBFS from the start room `(0,0)` through all doors. The answer is the maximum shortest-path distance to any room.\n\n## Part 2\n\nCount rooms whose shortest path from the start requires passing through at least 1000 doors.",
+  "tags": ["bfs", "parsing", "graph"],
+  "stars": 2
+}

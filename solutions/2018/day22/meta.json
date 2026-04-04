@@ -1,0 +1,7 @@
+{
+  "title": "Mode Maze",
+  "description": "Navigate a cave with terrain-dependent equipment using Dijkstra.",
+  "writeup": "## Approach\n\nCompute terrain types from erosion levels (geologic index + depth mod 20183, then mod 3). Each terrain restricts which equipment you can carry.\n\n## Part 1\n\nSum terrain types (risk levels) in the rectangle from (0,0) to the target.\n\n## Part 2\n\nDijkstra on state (x, y, equipment). Moving costs 1 minute, switching equipment costs 7. Each terrain type forbids one of the three equipment options, so at each cell only one switch is possible. The grid is extended with a margin beyond the target since optimal paths may detour.",
+  "tags": ["dijkstra", "shortest-path", "grid"],
+  "stars": 2
+}

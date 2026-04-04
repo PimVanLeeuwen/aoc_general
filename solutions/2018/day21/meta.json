@@ -1,0 +1,7 @@
+{
+  "title": "Chronal Conversion",
+  "description": "Find register 0 values that halt a self-checking program fastest and latest.",
+  "writeup": "## Approach\n\nThe program uses the Day 19 VM and has one `eqrr` instruction comparing a computed register to r[0]. If they match, the program halts. We simulate the program, intercepting at that comparison to collect the sequence of candidate values.\n\n## Part 1\n\nThe first value compared against r[0] — setting r[0] to this halts the program in the fewest instructions.\n\n## Part 2\n\nThe sequence of compared values eventually cycles. The last unique value before repeating causes the program to execute the most instructions before halting.",
+  "tags": ["reverse-engineering", "simulation", "cycle-detection"],
+  "stars": 2
+}

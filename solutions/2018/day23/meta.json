@@ -1,0 +1,7 @@
+{
+  "title": "Experimental Emergency Teleportation",
+  "description": "Find the point in range of the most nanobots via 3D spatial subdivision.",
+  "writeup": "## Approach\n\nParse nanobot positions and signal radii (Manhattan distance).\n\n## Part 1\n\nFind the strongest nanobot, count how many others are within its radius.\n\n## Part 2\n\nUse octree-style spatial subdivision: start with a bounding box, split into 8 sub-boxes, and use a priority queue ordered by (-bots_in_range, box_size, distance_to_origin). When we pop a size-1 box, its distance to the origin is the answer.",
+  "tags": ["spatial-subdivision", "priority-queue", "manhattan-distance"],
+  "stars": 2
+}

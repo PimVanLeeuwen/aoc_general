@@ -1,0 +1,14 @@
+{
+  "title": "Four-Dimensional Adventure",
+  "description": "Count how many constellations form among 4D points connected by Manhattan distance ≤ 3.",
+  "writeup": "## Approach\n\nThe puzzle can be modeled as a graph problem. Each 4‑dimensional point is a node, and an edge exists between two points if their Manhattan distance is at most 3. A constellation is simply a connected component in this graph. Because the number of points is manageable, a straightforward DFS or BFS from each unvisited point efficiently identifies all components.\n\n## Part 1\n\nFor each point, we check which other points lie within distance 3. Starting from any unvisited point, we perform a depth‑first search to mark all points reachable through chains of close neighbors. Each DFS corresponds to one constellation. Counting how many times we initiate a DFS gives the total number of constellations.\n\n## Part 2\n\nThis puzzle has no second part. The answer to Part 2 is intentionally left empty.",
+  "tags": [
+    "graph",
+    "connected-components",
+    "manhattan-distance",
+    "simulation",
+    "dfs",
+    "bfs"
+  ],
+  "stars": 2
+}

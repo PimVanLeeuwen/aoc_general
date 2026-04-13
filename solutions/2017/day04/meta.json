@@ -1,0 +1,13 @@
+{
+  "title": "High-Entropy Passphrases",
+  "description": "Validate passphrases by detecting duplicates and anagram-based duplicates.",
+  "writeup": "## Approach\n\nEach line of the input represents a passphrase: a sequence of space-separated words. A passphrase is considered valid under different rules in Part 1 and Part 2. Both parts reduce to checking whether any two words violate the given uniqueness constraints.\n\n## Part 1\n\nA passphrase is valid if it contains no duplicate words. This can be checked efficiently by comparing the number of words to the size of a set of those words. If the lengths match, all words are unique. This makes validation a simple set-membership problem.\n\n## Part 2\n\nThe second part strengthens the rule: no two words may be anagrams of each other. Two words are anagrams if they contain the same characters in the same quantities. To detect this, each word is converted into a character-frequency map using `collections.Counter`. If any two Counters are equal, the passphrase is invalid. This ensures that even rearranged duplicates are caught.\n\nBoth parts can be evaluated cleanly by applying the appropriate validation function to each line and summing the number of valid passphrases.",
+  "tags": [
+    "parsing",
+    "validation",
+    "anagrams",
+    "sets",
+    "counter"
+  ],
+  "stars": 2
+}

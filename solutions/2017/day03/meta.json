@@ -1,0 +1,13 @@
+{
+  "title": "Spiral Memory",
+  "description": "Determine distances and stress-test values in a growing square spiral.",
+  "writeup": "## Approach\n\nThe puzzle is based on an outward-growing square spiral of integers. Each ring of the spiral forms a square with odd side length (1×1, 3×3, 5×5, ...). The center contains 1, and numbers increase as the spiral expands. Both parts require understanding how positions relate to the spiral structure, but they differ in how values are assigned.\n\n## Part 1\n\nTo compute the Manhattan distance from a given number to the center, we identify which spiral layer the number lies in. Each layer ends at an odd square (1, 9, 25, 49, ...). Once the layer is known, the number's position can be compared to the midpoints of the four sides of that layer. The distance is the layer number plus the offset from the nearest midpoint. This avoids constructing the spiral explicitly and relies only on arithmetic.\n\n## Part 2\n\nThe second part replaces the sequential numbering with a stress-test system: each cell stores the sum of all values in its adjacent squares, including diagonals. Starting with 1 at the center, the spiral is generated step by step in the same pattern as Part 1. For each new coordinate, the value is computed by summing the eight neighboring cells that have already been filled. The process continues until a value exceeds the puzzle input. A dictionary keyed by coordinates efficiently tracks filled cells and their values.",
+  "tags": [
+    "math",
+    "manhattan-distance",
+    "grid",
+    "simulation",
+    "coordinates"
+  ],
+  "stars": 2
+}

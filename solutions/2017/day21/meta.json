@@ -1,0 +1,7 @@
+{
+  "title": "Fractal Art",
+  "description": "Repeatedly enhance a pixel grid using transformation rules with rotation and flipping.",
+  "writeup": "## Approach\n\nThe puzzle begins with a 3×3 pixel grid and repeatedly enhances it using a set of transformation rules. Each rule maps a small pattern (2×2 or 3×3) to a larger pattern (3×3 or 4×4). At each iteration, the current grid is split into blocks of equal size, each block is transformed using the matching rule, and the enhanced blocks are reassembled into a larger grid.\n\nA key challenge is that input patterns may match a rule only after being rotated or flipped. Therefore, each rule is expanded into all eight symmetries (four rotations × flipped/unflipped). This allows fast lookup during enhancement.\n\n## Part 1\n\nWe start with the initial 3×3 pattern and apply the enhancement process for 5 iterations. After each iteration, the grid grows in size. At the end, we count how many pixels are on (`#`).\n\n## Part 2\n\nPart 2 extends the process to 18 iterations. The grid becomes extremely large, so efficiency is crucial. By precomputing all rotated/flipped rule variants and using block‑based enhancement, the solution runs comfortably within time limits.\n\nThe final answer is the number of pixels on after 18 iterations.",
+  "tags": ["grid", "fractal", "pattern-matching", "rotation", "flipping"],
+  "stars": 2
+}

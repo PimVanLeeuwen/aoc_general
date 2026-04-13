@@ -1,0 +1,12 @@
+{
+  "title": "Hex Ed",
+  "description": "Navigate a hex grid using cube coordinates to compute final and maximum distances.",
+  "writeup": "## Approach\n\nThe input describes a sequence of steps taken on a hexagonal grid. Each step moves to one of six adjacent hexes: n, ne, se, s, sw, or nw. The goal is to determine the fewest number of steps required to reach the final position (Part 1) and the maximum distance from the starting point at any time during the walk (Part 2).\n\nRepresenting hex grids can be tricky, but cube coordinates provide a clean and elegant solution. In cube coordinates, each position is represented by three values (x, y, z) that always satisfy x + y + z = 0. Each direction corresponds to a simple vector addition, and the distance from the origin is computed using the formula:\n\n```\ndistance = (|x| + |y| + |z|) / 2\n```\n\nAs we process each step, we update the cube coordinates and track the maximum distance reached at any point. After processing all steps, the final distance gives the answer to Part 1, and the recorded maximum gives the answer to Part 2.\n\nThis approach avoids the complexity of axial or offset coordinates and makes both parts of the puzzle straightforward to compute.",
+  "tags": [
+    "hex-grid",
+    "cube-coordinates",
+    "distance",
+    "path-tracking"
+  ],
+  "stars": 2
+}

@@ -1,0 +1,12 @@
+{
+  "title": "I Heard You Like Registers",
+  "description": "Simulate conditional register modifications and track maximum values.",
+  "writeup": "## Approach\n\nEach line of the input describes an instruction that modifies a register only if a condition on another register is satisfied. All registers begin at zero. The instruction format includes a target register, an operation (increase or decrease), an amount, and a conditional expression.\n\nTo solve the puzzle, we maintain a dictionary of registers and evaluate each instruction in order. If the condition evaluates to true, we apply the modification. Otherwise, the instruction is skipped.\n\n## Part 1\n\nAfter processing all instructions, we examine the register dictionary and return the largest value present. Registers that were never written default to zero.\n\n## Part 2\n\nIn addition to the final values, we also track the highest value ever held in any register at any point during execution. This requires updating a running maximum each time a register is modified.\n\nThe solution is a straightforward simulation involving parsing, conditional evaluation, and dictionary updates.",
+  "tags": [
+    "simulation",
+    "parsing",
+    "register-machine",
+    "conditional-logic"
+  ],
+  "stars": 2
+}

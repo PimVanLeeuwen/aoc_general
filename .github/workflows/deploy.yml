@@ -37,7 +37,7 @@ jobs:
           # Leave unset to use the default /repo-name/ path (standard github.io hosting).
           VITE_BASE_URL: ${{ vars.VITE_BASE_URL || format('/{0}/', github.event.repository.name) }}
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: frontend/dist
 

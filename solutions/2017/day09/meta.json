@@ -1,0 +1,11 @@
+{
+  "title": "Stream Processing",
+  "description": "Parse a character stream containing nested groups and garbage, computing group scores and garbage character counts.",
+  "writeup": "## Approach\n\nThe input is a single stream of characters representing nested groups and garbage sections. Groups are enclosed in braces `{}` and contribute to the total score based on their nesting depth. Garbage sections begin with `<` and end with `>`, and inside garbage almost any character is allowed. The `!` character cancels the next character, even inside garbage.\n\nTo process the stream, we iterate through it character by character while maintaining three pieces of state: whether we are inside garbage, whether the next character should be skipped due to `!`, and the current group nesting depth. When encountering a `{` outside garbage, we increase the depth and add it to the score. When encountering `}`, we decrease the depth. Inside garbage, characters are counted for Part 2 unless they are canceled.\n\n## Part 1\n\nThe total score is the sum of the depths of all groups. The outermost group has score 1, its children score 2, and so on. By tracking depth as we enter and exit groups, we accumulate the total score.\n\n## Part 2\n\nWhile inside garbage, every non-canceled character counts toward the garbage total. This includes characters like `{`, `}`, `<`, and `>`, unless they are canceled by `!`. The final count represents how much raw garbage the stream contains.\n\nThe solution is a single-pass parser that carefully manages state transitions between normal parsing, garbage, and cancellation.",
+  "tags": [
+    "parsing",
+    "state-machine",
+    "stream-processing"
+  ],
+  "stars": 2
+}

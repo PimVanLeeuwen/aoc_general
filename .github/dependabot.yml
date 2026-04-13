@@ -1,0 +1,27 @@
+version: 2
+updates:
+  # ───────────────────────────────────────────────
+  # 1. Frontend (Vite) – npm dependencies
+  # ───────────────────────────────────────────────
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+
+  # ───────────────────────────────────────────────
+  # 2. Backend – Python (pip)
+  # ───────────────────────────────────────────────
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+
+  # ───────────────────────────────────────────────
+  # 3. GitHub Actions
+  # ───────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

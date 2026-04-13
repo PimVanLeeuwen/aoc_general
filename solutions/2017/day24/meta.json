@@ -1,0 +1,7 @@
+{
+  "title": "Electromagnetic Moat",
+  "description": "Build the strongest and longest magnetic bridge using components with matching ports.",
+  "writeup": "## Approach\n\nThe puzzle provides a set of magnetic components, each with two ports. A valid bridge begins with port type 0 and continues by matching the open port of the current bridge to an unused component. Each component may be used at most once, and its orientation does not matter.\n\nThis naturally forms a search tree: from a given open port, we can choose any unused component that matches it, attach it, and recurse. The strength of a bridge is the sum of all port values in its components.\n\nBecause the number of components is small, a depth-first search with backtracking is sufficient to explore all possible bridges.\n\n## Part 1\n\nWe explore all valid bridges and track the maximum total strength. This is simply the strongest bridge reachable from port 0.\n\n## Part 2\n\nWe must find the **longest** possible bridge (the one with the most components). If multiple bridges share the same maximum length, we choose the one with the greatest strength.\n\nDuring the same DFS, we track both:\n- the maximum length seen so far\n- the maximum strength among bridges of that length\n\nThis yields the correct result without needing a separate search.",
+  "tags": ["search", "backtracking", "graph", "combinatorics"],
+  "stars": 2
+}

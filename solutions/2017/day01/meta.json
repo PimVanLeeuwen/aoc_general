@@ -1,0 +1,12 @@
+{
+  "title": "Inverse Captcha",
+  "description": "Sum digits that match the next digit in a circular sequence.",
+  "writeup": "## Approach\n\nThe puzzle gives a circular sequence of digits and asks you to sum all digits that match the next digit in the list. Because the sequence wraps around, the last digit must be compared to the first. The logic is simple: iterate through the digits, compare each to the next one, and accumulate the matches.\n\n## Part 1\n\nFor each position in the string, check whether the digit equals the next digit (with wrap‑around). If they match, add its numeric value to the running total. The final sum is the captcha solution.\n\n## Part 2\n\nPart 2 changes the comparison: instead of comparing to the next digit, each digit must be compared to the digit halfway around the circular list. If they match, add the digit to the sum. The list length is always even, so the halfway index is well‑defined.",
+  "tags": [
+    "string-processing",
+    "circular-list",
+    "digit-sum",
+    "iteration"
+  ],
+  "stars": 2
+}

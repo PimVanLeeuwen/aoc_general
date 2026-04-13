@@ -1,0 +1,12 @@
+{
+  "title": "Memory Reallocation",
+  "description": "Simulate redistributing blocks across memory banks until a configuration repeats, then measure the cycle length.",
+  "writeup": "## Approach\n\nThe input describes a row of memory banks, each holding some number of blocks. A reallocation cycle repeatedly finds the bank with the most blocks (breaking ties by choosing the lowest index), empties it, and then redistributes its blocks one by one across subsequent banks, wrapping around as needed.\n\nTo solve the puzzle, we simulate this process while tracking every configuration of banks we have seen. A configuration can be represented as a tuple of integers, making it hashable and easy to store in a dictionary or set.\n\n## Part 1\n\nWe repeatedly perform redistribution cycles and record each configuration in a map from configuration to the cycle number at which it was first seen. As soon as we encounter a configuration that has already appeared, we stop. The number of cycles performed up to that point is the answer for Part 1.\n\n## Part 2\n\nFor Part 2, we want the size of the loop formed by the repeating configurations. When we detect a repeated configuration, we know both the current cycle count and the cycle at which this configuration was first seen. The difference between these two counts is the length of the loop. This value is returned as the answer for Part 2.\n\nThe overall solution is a straightforward simulation with state tracking, relying on a hashable representation of the memory banks to detect repeats and compute the loop size.",
+  "tags": [
+    "simulation",
+    "state-tracking",
+    "hashing",
+    "loops"
+  ],
+  "stars": 2
+}

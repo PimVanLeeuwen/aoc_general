@@ -1,0 +1,12 @@
+{
+  "title": "Dueling Generators",
+  "description": "Simulate two pseudo-random generators and compare their lowest 16 bits.",
+  "writeup": "## Approach\n\nTwo generators repeatedly produce values using a linear congruential formula. After each pair of values is produced, the judge compares their lowest 16 bits. The task is to count how many times these bits match.\n\n## Part 1\n\nEach generator uses its own multiplication factor and modulus. Starting from the given initial values, we generate 40 million pairs. For each pair, we compare the lowest 16 bits using a bitmask (`value & 0xFFFF`). The number of matches is the answer.\n\n## Part 2\n\nThe generators now apply additional rules: Generator A only keeps values divisible by 4, and Generator B only keeps values divisible by 8. We generate 5 million such filtered pairs and again compare their lowest 16 bits. Using Python generators avoids storing large sequences and keeps the solution efficient.\n\nThe puzzle is a mix of modular arithmetic, bitwise operations, and efficient iteration.",
+  "tags": [
+    "modular-arithmetic",
+    "bitwise",
+    "generators",
+    "performance"
+  ],
+  "stars": 2
+}

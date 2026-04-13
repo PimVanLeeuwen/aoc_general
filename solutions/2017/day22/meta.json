@@ -1,0 +1,8 @@
+{
+  "title": "Sporifica Virus",
+  "description": "Simulate a virus carrier moving on an infinite grid with evolving infection rules.",
+  "writeup": "## Approach\n\nThe puzzle describes an infinite grid of nodes, each of which can be in different states depending on the part of the puzzle. A virus carrier moves through the grid, turning based on the state of the current node, updating that node's state, and then moving forward.\n\nThe grid is sparse, so the most efficient representation is a dictionary keyed by `(row, col)` coordinates. Any node not in the dictionary is implicitly clean.\n\nMovement is tracked using `(dr, dc)` direction vectors, and turning is implemented by rotating these vectors left or right.\n\n## Part 1\n\nNodes have only two states: clean and infected. The carrier:\n- Turns left on clean nodes, right on infected nodes.\n- Flips the node's state (clean → infected, infected → clean).\n- Moves forward.\n\nWe simulate 10,000 bursts and count how many times a clean node becomes infected.\n\n## Part 2\n\nThe virus evolves and nodes now have four states:\n- Clean (.)\n- Weakened (W)\n- Infected (#)\n- Flagged (F)\n\nThe carrier's behavior changes:\n- Clean → turn left\n- Weakened → do not turn\n- Infected → turn right\n- Flagged → reverse direction\n\nState transitions follow:\nClean → Weakened → Infected → Flagged → Clean\n\nWe simulate 10 million bursts. The answer is how many times a node becomes infected.\n\nThis requires efficient dictionary operations and careful direction handling, but runs comfortably within time limits.",
+  "tags": ["grid", "simulation", "infinite-grid", "state-machine"],
+  "stars": 2
+}
+

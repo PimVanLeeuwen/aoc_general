@@ -1,0 +1,12 @@
+{
+  "title": "Corruption Checksum",
+  "description": "Compute two checksums from a spreadsheet of numbers using row-based rules.",
+  "writeup": "## Approach\n\nThe puzzle provides a spreadsheet where each row contains several integers. Both parts require processing each row independently and combining the results. The operations are simple but rely on careful iteration: Part 1 looks for the difference between the largest and smallest values, while Part 2 requires identifying the only divisible pair in each row. \n\n## Part 1\n\nFor each row, find the maximum and minimum values and compute their difference. Summing these differences across all rows yields the checksum. This is a direct application of basic list operations and requires no special handling.\n\n## Part 2\n\nEach row contains exactly one pair of numbers where one evenly divides the other. To find this pair cleanly, iterate over all unordered pairs. For each pair, check both division directions and add the resulting quotient when a divisible pair is found. This avoids nested index loops and makes the logic easy to read.",
+  "tags": [
+    "parsing",
+    "iteration",
+    "combinations",
+    "checksum"
+  ],
+  "stars": 2
+}

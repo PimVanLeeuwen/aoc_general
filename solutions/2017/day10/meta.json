@@ -1,0 +1,12 @@
+{
+  "title": "Knot Hash",
+  "description": "Simulate a circular list reversal algorithm and compute both the simple checksum and the full Knot Hash.",
+  "writeup": "## Approach\n\nThe Knot Hash algorithm operates on a circular list of numbers. A current position and skip size track progress as segments of the list are repeatedly reversed. After each reversal, the current position moves forward by the segment length plus the skip size, and the skip size increases by one.\n\n## Part 1\n\nUsing the input as a comma-separated list of lengths, we perform a single round of the knot-tying procedure on a list of values from 0 to 255. Once complete, the answer is the product of the first two numbers in the resulting list.\n\n## Part 2\n\nThe full Knot Hash requires several additional steps:\n\n1. Convert the input into a list of ASCII codes and append the standard suffix `[17, 31, 73, 47, 23]`.\n2. Perform **64 rounds** of the knot-tying algorithm.\n3. Convert the resulting 256-number sparse hash into a 16-number dense hash by XOR-ing each consecutive block of 16 values.\n4. Convert each dense value to a two-digit hexadecimal string and concatenate them to form the final Knot Hash.\n\nThis produces the 32-character hexadecimal hash used throughout later Advent of Code puzzles.",
+  "tags": [
+    "hashing",
+    "circular-list",
+    "xor",
+    "parsing"
+  ],
+  "stars": 2
+}

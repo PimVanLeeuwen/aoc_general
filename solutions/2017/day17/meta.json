@@ -1,0 +1,7 @@
+{
+  "title": "Spinlock",
+  "description": "Simulate a circular buffer insertion algorithm to determine values after specific positions.",
+  "writeup": "## Approach\n\nThe spinlock is a circular buffer that repeatedly advances a fixed number of steps and inserts increasing values. The challenge is to track the value that appears immediately after a specific inserted number.\n\nThe buffer begins with a single value (0). For each new value, the algorithm moves forward a number of steps equal to the puzzle input, wraps around the circular buffer, and inserts the new value immediately after the current position.\n\n## Part 1\n\nWe simulate the spinlock for 2017 insertions using a Python list as a circular buffer. After inserting the value 2017, we simply look up the value that appears immediately after it in the buffer.\n\n## Part 2\n\nSimulating 50 million insertions with a full list would be far too slow and memory‑intensive. However, we only need the value that appears immediately after 0 — not the full buffer.\n\nWe track only:\n- the current position\n- the length of the virtual buffer\n- the most recent value inserted immediately after 0\n\nWhenever the insertion position is 1 (i.e., right after 0), we record the inserted value. This allows the solution to run in linear time with constant memory.",
+  "tags": ["simulation", "circular-buffer", "optimization"],
+  "stars": 2
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Permutation Promenade",
+  "description": "Simulate a sequence of dance moves on a line of programs and determine their final order.",
+  "writeup": "## Overview\nDay 16 introduces a whimsical but algorithmically rich problem: sixteen programs, labeled a through p, perform a dance consisting of three types of moves. Each move transforms the ordering of the programs. The challenge is to apply the full sequence once (Part 1) and then one billion times (Part 2).\n\n## Dance Moves\nThe dance consists of three operations:\n- **Spin (sX)**: Rotate the last X programs to the front.\n- **Exchange (xA/B)**: Swap the programs at positions A and B.\n- **Partner (pA/B)**: Swap the programs named A and B, regardless of position.\n\nThese moves form a permutation of the 16-character string.\n\n## Part 1\nStart with the sequence `abcdefghijklmnop` and apply all moves exactly once. Straightforward string manipulation is sufficient.\n\n## Part 2\nRepeating the dance one billion times is computationally infeasible if done naively. However, the dance is a permutation, and repeated application of a permutation always forms a **cycle**. Once a previously seen arrangement appears again, the cycle length is known. The final state can then be computed using modular arithmetic rather than simulating all iterations.\n\nThis reduces the runtime from billions of operations to a few thousand at most.\n\n## Key Concepts\n- Efficient string manipulation\n- Permutations and cycle detection\n- Modular arithmetic for fast-forwarding through repeated transformations\n\n## Result\nPart 1 yields the arrangement after a single dance. Part 2 uses cycle detection to compute the arrangement after one billion dances efficiently.",
+  "tags": [
+    "permutations",
+    "cycle-detection",
+    "string-manipulation",
+    "simulation"
+  ],
+  "stars": 2
+}

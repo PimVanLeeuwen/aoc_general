@@ -1,0 +1,12 @@
+{
+  "title": "Recursive Circus",
+  "description": "Identify the bottom program in a tower of recursively stacked programs and determine the corrected weight needed to balance the structure.",
+  "writeup": "## Approach\n\nEach line of the input describes a program: its name, its weight, and optionally the names of the programs it supports. Together, these form a tree structure where exactly one program is the root. The puzzle requires identifying this root (Part 1) and then determining which program has an incorrect weight that causes an imbalance in the tower (Part 2).\n\n## Part 1\n\nTo find the bottom program, we collect all program names and all names that appear as children. The root is the only program that never appears as a child. This can be determined using simple set operations without constructing the full tree.\n\n## Part 2\n\nTo detect the imbalance, we recursively compute the total weight of each subtree. For each program, we compare the total weights of its children. If all children have equal subtree weights, the node is balanced. If not, exactly one child differs. By identifying the outlier weight and comparing it to the correct weight shared by the other children, we compute the adjustment needed to fix the imbalance.\n\nThe recursion returns either the total subtree weight or, once the incorrect node is found, the corrected weight, which is propagated upward to terminate the search. This ensures that the imbalance is detected at the deepest point where it occurs.",
+  "tags": [
+    "tree",
+    "recursion",
+    "parsing",
+    "weight-balancing"
+  ],
+  "stars": 2
+}

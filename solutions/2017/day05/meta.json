@@ -1,0 +1,11 @@
+{
+  "title": "A Maze of Twisty Trampolines, All Alike",
+  "description": "Simulate a program counter moving through a list of jump offsets, modifying the offsets as it goes.",
+  "writeup": "## Approach\n\nThe puzzle describes a list of integers representing jump offsets. A pointer starts at position 0, and each step reads the offset at the current position, jumps that many positions forward or backward, and then modifies the offset according to the rules of the part.\n\n## Part 1\n\nEach time the pointer lands on an instruction, the offset at that position is incremented by 1. The process continues until the pointer jumps outside the list. The answer is the number of steps taken. This is a direct simulation: repeatedly read, jump, modify, and count.\n\n## Part 2\n\nThe rules change slightly: if the current offset is 3 or greater, it is decremented by 1; otherwise, it is incremented by 1. This creates a different dynamic where large jumps shrink over time instead of growing. The simulation logic is the same as Part 1, but with a conditional update rule.\n\nBoth parts rely on straightforward iteration and mutation of the list. Since the maze must be run twice with different rules, a copy of the original list is used to avoid interference between the two simulations.",
+  "tags": [
+    "simulation",
+    "iteration",
+    "state-machine"
+  ],
+  "stars": 0
+}

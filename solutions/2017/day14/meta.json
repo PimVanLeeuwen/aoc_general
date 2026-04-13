@@ -1,0 +1,13 @@
+{
+  "title": "Disk Defragmentation",
+  "description": "Generate a 128×128 grid using Knot Hashes and analyze used squares and connected regions.",
+  "writeup": "## Approach\n\nThe disk is represented as a 128×128 grid, where each row is derived from the Knot Hash of the key string combined with a row index. Each Knot Hash produces 32 hexadecimal characters, which expand to 128 bits. A bit value of 1 indicates a used square.\n\n## Part 1\n\nTo compute the number of used squares, we generate all 128 Knot Hashes, convert each to binary, and count the total number of 1 bits across the entire grid.\n\n## Part 2\n\nUsed squares form regions through four-directional adjacency (up, down, left, right). To count the number of distinct regions, we perform a depth-first search (DFS) from each unvisited used square, marking all connected squares as part of the same region. Each DFS corresponds to one region.\n\nThis combines hashing, binary manipulation, and classic flood-fill graph traversal to analyze the structure of the disk.",
+  "tags": [
+    "hashing",
+    "grid",
+    "binary",
+    "dfs",
+    "flood-fill"
+  ],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "A Series of Tubes",
+  "description": "Traverse a routing diagram, collecting letters and counting steps.",
+  "writeup": "## Approach\n\nThe puzzle provides a large ASCII maze made of vertical pipes (`|`), horizontal pipes (`-`), intersections (`+`), and letters. A packet starts at the only pipe touching the top row and moves through the diagram, following the path until it exits the map.\n\nMovement rules:\n- Continue straight whenever possible.\n- At a `+`, turn left or right depending on which direction is valid.\n- When encountering a letter, record it.\n- Stop when moving off the diagram or onto a space.\n\nThe maze is sparse, so the simplest representation is a list of strings. Movement is tracked using `(row, col)` coordinates and a direction vector.\n\n## Part 1\n\nWe simulate the packet's movement through the diagram. Whenever we step on a letter, we append it to the output string. The simulation ends when the packet steps outside the valid grid or onto a space. The collected letters form the answer.\n\n## Part 2\n\nWe count every step taken, including the final step that exits the diagram. This is simply a counter incremented during the same traversal used for Part 1. The final count is the answer for Part 2.",
+  "tags": ["grid", "simulation", "pathfinding", "ascii-maze"],
+  "stars": 2
+}

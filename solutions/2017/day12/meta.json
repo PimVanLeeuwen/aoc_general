@@ -1,0 +1,12 @@
+{
+  "title": "Digital Plumber",
+  "description": "Determine connectivity in a bidirectional graph of programs and pipes.",
+  "writeup": "## Approach\n\nThe input describes a set of programs connected by bidirectional communication pipes. Each line lists a program ID and the IDs it can directly communicate with. This forms an undirected graph.\n\n## Part 1\n\nTo find how many programs are in the group containing program 0, we perform a graph traversal (DFS or BFS) starting from node 0. Every node reachable from 0 belongs to the same connected component. The size of this component is the answer to Part 1.\n\n## Part 2\n\nTo determine how many groups exist in total, we iterate through all program IDs. For each unvisited node, we perform a traversal to mark all nodes in its connected component. Each traversal corresponds to one distinct group. Counting these traversals yields the total number of groups.\n\nThis puzzle is a straightforward application of graph connectivity and connected component detection.",
+  "tags": [
+    "graph",
+    "connected-components",
+    "dfs",
+    "bfs"
+  ],
+  "stars": 2
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Packet Scanners",
+  "description": "Determine the severity of passing through a firewall with periodic scanners, and compute the delay needed to avoid detection.",
+  "writeup": "## Approach\n\nThe firewall consists of layers, each containing a scanner that moves back and forth through its range. A packet moves forward one layer per picosecond. A scanner catches the packet only if it is at the top of its range at the moment the packet enters the layer.\n\nThe key observation is that each scanner moves in a predictable repeating cycle. For a scanner with range R, its position repeats every `2 * (R - 1)` picoseconds. Therefore, a packet entering depth D at time T is caught if `(T % period) == 0`.\n\n## Part 1\n\nThe packet begins immediately, so it reaches depth D at time T = D. For each layer, we check whether the scanner is at position 0 at that time. If so, the severity for that layer is `depth * range`. Summing these values yields the total severity.\n\n## Part 2\n\nTo avoid detection entirely, we introduce a delay before starting. With a delay of `d`, the packet reaches depth D at time `T = D + d`. We search for the smallest delay such that no layer satisfies `(D + d) % period == 0`. This brute-force search is efficient because the periodicity check is constant time.\n\nThis approach avoids simulating scanner movement and relies solely on modular arithmetic, making it both elegant and fast.",
+  "tags": [
+    "modular-arithmetic",
+    "simulation",
+    "periodicity"
+  ],
+  "stars": 2
+}

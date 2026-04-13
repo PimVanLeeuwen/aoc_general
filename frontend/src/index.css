@@ -1,6 +1,21 @@
+@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@theme {
+  --color-aoc-bg: #0f0f23;
+  --color-aoc-surface: #1a1a2e;
+  --color-aoc-elevated: #222244;
+  --color-aoc-border: #2a2a4a;
+  --color-aoc-text: #cccccc;
+  --color-aoc-muted: #666699;
+  --color-aoc-gold: #ffff66;
+  --color-aoc-green: #00cc44;
+  --color-aoc-blue: #00aaff;
+  --color-aoc-red: #ff5555;
+}
 
 @layer base {
   body {

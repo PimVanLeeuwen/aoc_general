@@ -1,0 +1,7 @@
+{
+  "title": "Internet Protocol Version 7",
+  "description": "Determine which IPv7 addresses support TLS by detecting ABBA patterns inside and outside brackets.",
+  "writeup": "## Approach\n\nEach IPv7 address consists of alternating supernet sequences (outside brackets) and hypernet sequences (inside brackets). The goal is to detect ABBA patterns — four-character sequences of the form `xyyx` where `x != y`.\n\nAn address supports TLS if:\n- At least one ABBA appears in a supernet sequence, **and**\n- No ABBA appears in any hypernet sequence.\n\nThe puzzle is therefore about parsing bracketed vs non‑bracketed segments and scanning each for ABBA patterns.\n\n## Part 1\n\nWe split each IP into two lists: supernet sequences and hypernet sequences. We scan each sequence for ABBA patterns. If any hypernet contains an ABBA, the IP is invalid. If at least one supernet contains an ABBA and none of the hypernets do, the IP supports TLS.\n\nThe final answer is the count of all such valid IPs.\n\n## Part 2\n\nPart 2 introduces SSL support, which relies on ABA/BAB patterns instead of ABBA. An ABA is a three‑character pattern `xyx` with `x != y`. A corresponding BAB is `yxy`. An IP supports SSL if any ABA in a supernet has a matching BAB in a hypernet.\n\nWe extract all ABAs from supernets, convert them to their BAB equivalents, and check whether any appear in hypernets. If so, the IP supports SSL.\n\nThe final answer is the count of all SSL‑supporting IPs.",
+  "tags": ["pattern-matching", "strings", "networking", "regex-free"],
+  "stars": 2
+}

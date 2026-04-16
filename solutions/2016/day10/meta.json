@@ -1,0 +1,7 @@
+{
+  "title": "Balance Bots",
+  "description": "Simulate bots passing microchips and determine comparisons and output values.",
+  "writeup": "## Approach\n\nThe input describes a network of bots. Each bot can hold up to two microchips. When a bot has two chips, it gives the lower-value chip to one destination and the higher-value chip to another. Destinations may be other bots or output bins.\n\nThe puzzle requires simulating this system until all chip movements are resolved.\n\n## Part 1\n\nWe parse two types of instructions:\n- Value assignments: `value X goes to bot Y`\n- Bot rules: `bot A gives low to ... and high to ...`\n\nWe maintain a dictionary mapping each bot to the chips it currently holds. Whenever a bot reaches two chips, we immediately process its rule: distribute the low and high chips to their destinations.\n\nDuring this process, we check whether any bot compares the two target chip values (e.g., 17 and 61). The bot performing that comparison is the answer to Part 1.\n\n## Part 2\n\nWe continue the same simulation until all chip movements are complete. Output bins receive chips as bots distribute them.\n\nThe final answer is the product of the values in outputs 0, 1, and 2.\n\nThe simulation naturally produces these outputs as part of the same process used in Part 1.",
+  "tags": ["simulation", "parsing", "state-machine", "bots"],
+  "stars": 2
+}

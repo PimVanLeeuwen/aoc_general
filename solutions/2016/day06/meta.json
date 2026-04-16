@@ -1,0 +1,7 @@
+{
+  "title": "Signals and Noise",
+  "description": "Recover a corrupted message by analyzing per‑column character frequencies.",
+  "writeup": "## Approach\n\nThe input consists of many equal‑length strings, each representing a noisy transmission of the same message. The goal is to reconstruct the original message by analyzing the frequency of characters in each column.\n\nFor Part 1, we take the most common character in each column. For Part 2, we instead take the least common character. Both parts rely on the same column‑wise frequency analysis.\n\n## Part 1\n\nWe iterate over each column index and count how often each character appears in that column across all rows. The character with the highest frequency is appended to the reconstructed message.\n\nThis produces the error‑corrected message according to the repetition‑code protocol.\n\n## Part 2\n\nThe logic is identical, except we select the *least* frequent character in each column. This represents a different error‑correction strategy where the noise dominates and the true signal is the rarest character.\n\nThe result is a second corrected message derived from the same data but using inverted frequency selection.",
+  "tags": ["frequency-analysis", "strings", "error-correction"],
+  "stars": 2
+}

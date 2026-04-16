@@ -1,0 +1,7 @@
+{
+  "title": "Explosives in Cyberspace",
+  "description": "Compute decompressed lengths of a custom marker-based compression format.",
+  "writeup": "## Approach\n\nThe input is a compressed string using markers of the form (AxB), meaning: take the next A characters and repeat them B times. Whitespace is ignored. The challenge is that Part 1 and Part 2 interpret markers differently.\n\nPart 1 treats markers non-recursively: the repeated block is copied as-is, without looking for markers inside it. Part 2 requires recursively computing the decompressed length of the repeated block, meaning nested markers must be expanded conceptually.\n\nBecause the fully decompressed string can be astronomically large, Part 2 must compute lengths mathematically rather than building the actual string.\n\n## Part 1\n\nWe scan the string left to right. When we encounter a marker (AxB), we read the next A characters and append them B times to the output. Markers inside that block are treated as literal text. The final answer is simply the length of the decompressed output.\n\n## Part 2\n\nWe compute the decompressed length using recursion. When encountering a marker (AxB), we recursively compute the decompressed length of the next A characters, then multiply that length by B. This allows nested markers to expand correctly without ever constructing the full string.\n\nThe final answer is the total decompressed length under recursive rules.",
+  "tags": ["compression", "parsing", "recursion", "string-processing"],
+  "stars": 2
+}

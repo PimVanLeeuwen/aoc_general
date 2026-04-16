@@ -1,0 +1,7 @@
+{
+  "title": "Two-Factor Authentication",
+  "description": "Simulate a pixel display responding to rect and rotation instructions.",
+  "writeup": "## Approach\n\nThe puzzle simulates a tiny monochrome display that starts with all pixels off. The input consists of three types of instructions: drawing a filled rectangle, rotating a row, and rotating a column. The task is to apply all instructions and determine how many pixels are lit (Part 1) and what message appears on the screen (Part 2).\n\nThe display is represented as a 2D grid of booleans or characters. Each instruction mutates the grid. The operations are simple but must be applied carefully, especially the wraparound behavior of rotations.\n\n## Part 1\n\nWe initialize a 50×6 grid of off pixels. For each instruction:\n- `rect AxB` turns on all pixels in the rectangle from (0,0) to (A-1,B-1).\n- `rotate row y=A by B` shifts row A to the right by B, wrapping around.\n- `rotate column x=A by B` shifts column A downward by B, wrapping around.\n\nAfter processing all instructions, we count the number of lit pixels.\n\n## Part 2\n\nThe final screen forms a blocky ASCII-style message. We simply render the grid row by row. The puzzle expects you to visually read the letters.\n\nThe logic is identical to Part 1; only the output changes.",
+  "tags": ["grid", "simulation", "2d-array", "string-parsing"],
+  "stars": 2
+}

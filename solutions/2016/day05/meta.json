@@ -1,0 +1,7 @@
+{
+  "title": "How About a Nice Game of Chess?",
+  "description": "Brute‑force MD5 hashing to discover an 8‑character door password.",
+  "writeup": "## Approach\n\nThis puzzle is a pure brute‑force MD5 search. For both parts, we repeatedly compute MD5 hashes of the Door ID concatenated with an increasing integer index. A hash is considered \"interesting\" when it begins with five zeroes in hexadecimal. Part 1 extracts characters sequentially; Part 2 uses the hash to determine both position and character.\n\nThe challenge is computational rather than algorithmic: millions of hashes must be computed. The logic is simple, but performance matters.\n\n## Part 1\n\nWe iterate index values starting from 0. For each MD5 hash of `door_id + index`, if the hash starts with `00000`, the sixth character (`hash[5]`) is appended to the password. We stop once we have 8 characters.\n\nThis produces the password in strict discovery order.\n\n## Part 2\n\nPart 2 changes the rule: the sixth character of the hash (`hash[5]`) is interpreted as a *position* (0–7), and the seventh character (`hash[6]`) is the value to place there. We only fill a position once.\n\nWe continue hashing until all 8 positions are filled. Invalid positions (non‑digits or out of range) are ignored.\n\nThe result is an order‑independent password built by positional placement rather than sequential discovery.",
+  "tags": ["md5", "bruteforce", "hashing", "security-door"],
+  "stars": 2
+}

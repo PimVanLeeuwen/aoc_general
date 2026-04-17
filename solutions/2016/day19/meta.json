@@ -1,0 +1,7 @@
+{
+  "title": "An Elephant Named Joseph",
+  "description": "Two variants of the Josephus problem: find the winning elf when elves steal from the left, then from directly across the circle.",
+  "writeup": "## Approach\n\nBoth parts are instances of the **Josephus problem** — a classic combinatorics puzzle about survivors in an elimination circle — but each variant has its own closed-form solution derivable from the pattern of winners.\n\n## Part 1 — steal from the left (k=2 Josephus)\n\nWith every second person eliminated, the winner follows a binary pattern. Write `n = 2^m + L` where `2^m` is the largest power of two ≤ n. The winner is always `2L + 1`.\n\nIntuition: a circle of exactly `2^m` elves would cycle perfectly, eliminating everyone once and leaving elf 1. Each extra elf (`L` of them) gets an early turn before the power-of-two round begins, advancing the winner by 2 per extra elf.\n\n## Part 2 — steal from across\n\nWhen each elf eliminates the one directly opposite, the pattern is base-3. Find the largest power of three `p = 3^m` ≤ n:\n\n- `n == p` → winner is `n` (the last elf in a perfect triple is always the last standing)\n- `n ≤ 2p` → winner is `n - p`\n- `n > 2p` → winner is `2n - 3p`\n\nFor efficient simulation (used in the visualization), the circle is maintained as two deques representing the left and right halves, kept balanced. Removing from the front of the right half and rotating in O(1) per step avoids the O(n) cost of a list-based approach.",
+  "tags": ["josephus", "math", "combinatorics", "deque"],
+  "stars": 2
+}

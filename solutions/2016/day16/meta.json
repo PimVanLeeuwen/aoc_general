@@ -1,0 +1,7 @@
+{
+  "title": "Dragon Checksum",
+  "description": "Generate disk data via a modified dragon curve, then repeatedly reduce it to an odd-length checksum.",
+  "writeup": "## Approach\n\nThe puzzle has two independent operations: **data generation** and **checksum reduction**.\n\n**Dragon curve step**: given string `a`, produce `a + '0' + reverse(flip(a))` where flip swaps every `0` and `1`. Python's `str.translate` with a translation table makes the flip a single fast operation on any length string.\n\n**Checksum**: walk the string in non-overlapping pairs — matching pair → `'1'`, mismatching pair → `'0'`. Repeat until the result has odd length. The result length halves each round, so this terminates quickly.\n\n## Part 1\n\nFill a 272-bit disk: repeatedly apply the dragon step until the string is long enough, truncate to exactly 272 characters, then reduce to an odd-length checksum.\n\n## Part 2\n\nSame process for a 35,651,584-bit disk. The dragon expansion is fast (each round doubles the length, so only ~21 rounds are needed to exceed the target). The checksum reduction is also fast since the length halves each round. The bottleneck is Python string manipulation at ~35 MB — it runs in a few seconds but is straightforward.\n\nNo algorithmic tricks are needed: the naive implementation is efficient enough for both part sizes.",
+  "tags": ["string-manipulation", "dragon-curve", "checksum", "bit-operations"],
+  "stars": 2
+}

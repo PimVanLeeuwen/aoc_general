@@ -1,0 +1,7 @@
+{
+  "title": "Scrambled Letters and Hash",
+  "description": "Implement a string scrambler with six operation types, then reverse it to recover the original password.",
+  "writeup": "## Approach\n\nThis is a straightforward interpreter problem: implement each of the six scrambling operations, then apply them in sequence.\n\nThe trickiest operation is **rotate based on position**: find the current index of a letter, then rotate right by `1 + index + (1 if index ≥ 4 else 0)`. The extra rotation when the index is ≥ 4 is easy to miss.\n\n## Part 1\n\nApply all operations to `\"abcdefgh\"` in order and return the result.\n\n## Part 2\n\nFind the input to `\"fbgdceah\"`. Rather than inverting each operation (the rotate-based rule is particularly awkward to reverse), the simpler approach is to try all permutations of the 8 characters. `8! = 40,320` — each permutation is scrambled and checked against the target. Python's `itertools.permutations` makes this concise and fast enough to run in well under a second.",
+  "tags": ["simulation", "string-manipulation", "permutations", "brute-force"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "A Maze of Twisty Little Cubicles",
+  "description": "Navigate a procedurally generated maze using BFS to find the shortest path and count reachable locations.",
+  "writeup": "## Approach\n\nThe maze is not stored in memory — each cell is computed on the fly from the puzzle input (the designer's \"favorite number\"). For coordinates `(x, y)`, compute `x²+3x+2xy+y+y²+fav`, count the 1-bits in its binary representation, and the parity determines wall vs. open space.\n\nWith an infinite, algorithmically defined maze, **BFS** is the natural tool: it explores outward in order of increasing distance, guaranteeing the first time a cell is reached is the shortest path to it.\n\n## Part 1\n\nStandard BFS from `(1,1)` to `(31,39)`. The search terminates as soon as the target is dequeued, returning the step count at that point.\n\n## Part 2\n\nInstead of stopping at a target, we cap the BFS at 50 steps and collect every position ever added to the visited set. The size of that set is the answer — every position reachable within 50 steps, regardless of direction.\n\nReusing the same BFS function for both parts keeps the logic tight: pass `target` for part 1, pass `max_steps` for part 2.",
+  "tags": ["bfs", "maze", "procedural-generation", "bit-counting"],
+  "stars": 2
+}

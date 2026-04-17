@@ -1,0 +1,7 @@
+{
+  "title": "One-Time Pad",
+  "description": "Find the 64th one-time pad key by scanning MD5 hashes for triplets confirmed by a matching quintuplet within the next 1000 hashes.",
+  "writeup": "## Approach\n\nThis is a hash-stream search problem. For each index we compute `MD5(salt + index)` and look for a *triplet* (three consecutive identical characters). A triplet is only confirmed as a key if one of the next 1000 hashes contains a *quintuplet* of that same character.\n\nThe critical implementation detail is **caching**: confirming a triplet at index `i` requires hashes `i+1` through `i+1000`, many of which will also be needed as candidates themselves. Without caching every hash is computed multiple times. A simple dict keyed on index keeps each hash computed exactly once.\n\nRegex makes triplet detection clean: `r\"(.)\\1\\1\"` matches any character repeated three times, and `.group(1)` gives the character to watch for.\n\n## Part 1\n\nScan indices from 0 upward, caching MD5 hashes. For each triplet found, check the next 1000 hashes for the matching quintuplet. Collect until the 64th confirmed key; its index is the answer.\n\n## Part 2\n\n*Key stretching*: instead of one MD5, each hash is re-hashed 2016 additional times (2017 total). The logic is identical — only the hash function changes. This is intentionally expensive, slowing brute-force attacks; in Python it takes a few seconds even with caching.",
+  "tags": ["md5", "hashing", "key-stretching", "caching"],
+  "stars": 2
+}

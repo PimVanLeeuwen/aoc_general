@@ -83,41 +83,36 @@ def visualize(puzzle_input: str):
     }
 
     # ── Part 2 simulation ─────────────────────────────────────────────────────
-    # Use two deques: left half and right half of the circle.
-    # The elf at the front of `left` takes from the front of `right`.
-    # After each turn, rotate: move front of right to back of right,
-    # move front of left to back of right, rebalance halves.
-    left = deque(range(1, demo_n + 1))
-    right = deque()
-    # split: left gets ceil(n/2), right gets floor(n/2)
-    for _ in range(demo_n // 2):
-        right.appendleft(left.pop())
-
+    # Simple list simulation: current elf is at index i, steals from index
+    # (i + len//2) % len, then advance i to the next elf.
+    elves2 = list(range(1, demo_n + 1))
+    idx = 0
     step = 0
-    while left and right:
+    while len(elves2) > 1:
         step += 1
-        thief = left[0]
-        victim = right[0]
-        all_elves = list(left) + list(reversed(right))
+        thief = elves2[idx]
+        across = (idx + len(elves2) // 2) % len(elves2)
+        victim = elves2[across]
 
         yield {
             "type": "text",
             "lines": [
                 f"  Part 2 — steal from across  (n={demo_n})",
                 "",
-                f"  Circle: {' '.join(str(e) for e in all_elves)}",
+                f"  Circle: {' '.join(str(e) for e in elves2)}",
                 f"  Step {step}: Elf {thief} takes from Elf {victim}",
                 f"  Elf {victim} is removed.",
             ],
             "delay": 300,
         }
 
-        right.popleft()                 # remove victim
-        right.appendleft(left.popleft()) # thief moves to back (now front of right side)
-        if len(left) < len(right):      # rebalance
-            left.append(right.pop())
+        elves2.pop(across)
+        if across > idx:
+            idx = (idx + 1) % len(elves2)
+        else:
+            idx = idx % len(elves2)
 
-    winner2 = left[0] if left else right[0]
+    winner2 = elves2[0]
     yield {
         "type": "text",
         "lines": [

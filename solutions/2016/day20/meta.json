@@ -1,0 +1,7 @@
+{
+  "title": "Firewall Rules",
+  "description": "Merge overlapping blocked IP ranges to find the lowest allowed address and count all allowed IPs in the 32-bit space.",
+  "writeup": "## Approach\n\nThis is an **interval merging** problem. Sort the blocked ranges by their start address, then sweep through: if the next range overlaps or is adjacent to the current merged block (start ≤ current end + 1), extend the block; otherwise, start a new one. A single pass produces a sorted list of non-overlapping, non-adjacent merged blocks.\n\nThe `+ 1` in the adjacency check is important: ranges `0-5` and `6-9` are adjacent (no gap), so they must merge into `0-9`.\n\n## Part 1\n\nAfter merging, the lowest allowed IP is simply one past the end of the first merged block — the first gap in the number line.\n\n## Part 2\n\nSum the sizes of all gaps between consecutive merged blocks, plus any gap between the last block and `4,294,967,295`. Each gap `[prev_end+1, next_start-1]` contributes `next_start - prev_end - 1` allowed IPs.",
+  "tags": ["intervals", "sorting", "merging", "sweep"],
+  "stars": 2
+}

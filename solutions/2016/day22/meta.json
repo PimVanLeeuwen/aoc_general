@@ -1,0 +1,7 @@
+{
+  "title": "Grid Computing",
+  "description": "Count viable storage node pairs, then find the minimum moves to slide target data from the top-right corner to node (0,0).",
+  "writeup": "## Approach\n\nThe puzzle has two very different parts.\n\n## Part 1\n\nA **viable pair** (A, B) requires A's used data to fit in B's available space, with A non-empty and A ≠ B. An O(n²) scan over all ordered pairs is fast enough given the ~1000-node inputs.\n\n## Part 2\n\nInspecting the actual grid reveals its structure:\n- One **empty node** (used = 0) — the only node whose data can be moved anywhere.\n- A horizontal band of **wall nodes** (huge used values, far exceeding any node's available space) — immovable obstacles.\n- All other nodes have similar small sizes and can exchange data freely.\n\nThis turns the problem into a **sliding puzzle**: the empty slot is the hole, and we need to slide the goal data (initially at the top-right corner) left to `(0,0)`, with the wall acting as a barrier the empty node must navigate around.\n\nThe minimum step count is:\n1. **BFS** to move the empty node from its starting position to `(max_x − 1, 0)` — just left of the goal — avoiding walls.\n2. **1 step** to move the goal data into the empty slot.\n3. **5 steps per remaining leftward move** of the goal data: the empty node must loop around the goal each time (down, left×2, up = 4 steps), then 1 step to move the goal left again.\n\nTotal = `BFS_steps + 1 + (max_x − 1) × 5`",
+  "tags": ["bfs", "sliding-puzzle", "grid", "pattern-recognition"],
+  "stars": 2
+}

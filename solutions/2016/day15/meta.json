@@ -1,0 +1,7 @@
+{
+  "title": "Timing is Everything",
+  "description": "Find the earliest time to press the button so a falling capsule passes through every spinning disc's slot.",
+  "writeup": "## Approach\n\nEach disc `i` (1-indexed) has `n` positions and starts at position `p` at time 0. When you press the button at time `t`, the capsule reaches disc `i` at time `t + i`, at which point the disc is at position `(p + t + i) % n`. For the capsule to pass through, this must equal 0 for every disc simultaneously.\n\nThis is a system of modular congruences — exactly the shape of the **Chinese Remainder Theorem**. Rather than a full CRT implementation, a simpler iterative sieve works cleanly:\n\n1. Start with `t = 0`, step size `1`.\n2. For each disc in order, advance `t` in steps until that disc's condition is satisfied.\n3. Once a disc is satisfied, multiply the step size by that disc's period — this preserves all previously satisfied conditions while stepping forward.\n\nThis works because the disc sizes in AoC inputs are mutually coprime, so `lcm = product`.\n\n## Part 1\n\nParse the discs and run the sieve. The answer is typically found within a few hundred thousand iterations at most.\n\n## Part 2\n\nAppend one extra disc: 11 positions starting at 0, placed one level below the existing discs. The sieve runs identically — only the input changes.",
+  "tags": ["modular-arithmetic", "chinese-remainder-theorem", "simulation"],
+  "stars": 2
+}

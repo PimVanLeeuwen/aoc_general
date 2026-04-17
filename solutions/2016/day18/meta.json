@@ -1,0 +1,7 @@
+{
+  "title": "Like a Rogue",
+  "description": "Count safe tiles in a cellular automaton where traps spread based on the left and right neighbours of the previous row.",
+  "writeup": "## Approach\n\nThe four trap rules from the puzzle all share a common structure: a new tile is a trap if and only if its **left and right neighbours in the previous row differ** (one trap, one safe). The centre tile is irrelevant. This simplifies the rule to a single XOR:\n\n```\nnew[i] = '^'  if  prev[i-1] ≠ prev[i+1]  else  '.'\n```\n\nWith the row encoded as an integer bitmask (bit `i` = 1 means trap), the entire next row can be computed in two shifts and an XOR:\n\n```python\nrow = ((row << 1) ^ (row >> 1)) & mask\n```\n\nThis is O(1) per row regardless of width, and Python's arbitrary-precision integers handle any row length without extra work.\n\n## Part 1\n\nSimulate 40 rows, summing `width - popcount(row)` (safe count) each step.\n\n## Part 2\n\nSame loop for 400,000 rows. The bitmask approach makes this fast enough to run in a couple of seconds even in Python — no numpy or other libraries needed.",
+  "tags": ["cellular-automaton", "bitmask", "simulation", "xor"],
+  "stars": 2
+}

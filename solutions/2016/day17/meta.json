@@ -1,0 +1,7 @@
+{
+  "title": "Two Steps Forward",
+  "description": "Navigate a 4×4 vault where doors open based on the MD5 hash of your passcode and path so far — find both the shortest and longest routes to the exit.",
+  "writeup": "## Approach\n\nThis is a path-finding problem with a twist: the maze is not static. Which doors are open in any given room depends on the *MD5 hash of the passcode concatenated with the path you took to get there*. The first four hex characters of that hash tell you whether each of the four doors (U, D, L, R) is open — characters `b`–`f` mean open, anything else means closed.\n\nBecause the door state changes with every distinct path, standard visited-set pruning cannot be applied — the same room can be reached by many different paths and each enables different doors. The full search tree must be explored.\n\n**BFS** naturally finds the shortest path first. But since we can't prune by position alone, we continue BFS until the queue is empty, collecting every path that reaches `(3,3)`. The first collected is the shortest; the last (or the one with maximum length) is the longest.\n\n## Part 1\n\nRun BFS, yield paths that reach the bottom-right corner `(3,3)`, stop after the first — that is the shortest.\n\n## Part 2\n\nContinue until the queue is exhausted, tracking the longest path seen. Return its length (not the path itself).",
+  "tags": ["bfs", "md5", "maze", "path-finding"],
+  "stars": 2
+}

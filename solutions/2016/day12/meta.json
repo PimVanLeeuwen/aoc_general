@@ -1,0 +1,7 @@
+{
+  "title": "Leonardo's Monorail",
+  "description": "Implement an assembunny interpreter with four registers and four instructions, then run the boot sequence to find the password.",
+  "writeup": "## Approach\n\nThis puzzle introduces *assembunny*, a simple assembly-like language that recurs in later 2016 puzzles. The interpreter needs four operations on four integer registers (`a`, `b`, `c`, `d`):\n\n- `cpy x y` — copy value or register into a register\n- `inc x` / `dec x` — increment or decrement a register\n- `jnz x y` — conditional relative jump (skip if zero)\n\nThe key detail is that `cpy` and `jnz` accept either a register name or a literal integer as their first argument, so a small helper (`val`) resolves either case.\n\n## Part 1\n\nStart all registers at 0, run the program until the instruction pointer falls outside the program, and return register `a`.\n\n## Part 2\n\nThe only difference is that register `c` starts at `1` instead of `0`. This changes the control flow — a `jnz c ...` branch near the start takes a different path — resulting in a much larger value in `a`. The interpreter itself is completely unchanged.",
+  "tags": ["simulation", "assembunny", "interpreter"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Air Duct Spelunking",
+  "description": "Find the shortest route for a robot to visit every numbered location in a maze, starting from 0 — a grid-based Travelling Salesman Problem.",
+  "writeup": "## Approach\n\nWith up to 8 numbered locations this is a small **Travelling Salesman Problem** on a grid. The two-phase solution keeps each part clean and efficient.\n\n**Phase 1 — pairwise distances via BFS.**\nRun BFS once from each numbered location, recording the shortest path to every other numbered location. With `n` locations this is `n` BFS calls, each O(rows × cols). The result is an `n × n` distance table.\n\n**Phase 2 — bitmask DP (Held-Karp algorithm).**\n`dp[mask][last]` = minimum steps to have visited exactly the locations encoded in `mask`, ending at `last`. Transitions extend any partial tour by one unvisited location. With `n ≤ 8`, the state space is `2^8 × 8 = 2048` entries — tiny.\n\nThe starting constraint (always begin at location 0) is handled by initialising only `dp[{0}][0] = 0` and leaving all other single-node states at infinity.\n\n## Part 1\n\nAfter filling the DP table, the answer is `min(dp[full_mask][i])` over all final locations `i`.\n\n## Part 2\n\nSame DP, but add the cost of returning to location 0 from each possible final location: `min(dp[full_mask][i] + dist[i→0])`.",
+  "tags": ["bfs", "tsp", "bitmask-dp", "held-karp", "shortest-path"],
+  "stars": 2
+}

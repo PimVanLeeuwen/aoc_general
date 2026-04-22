@@ -1,0 +1,7 @@
+{
+  "title": "Clock Signal",
+  "description": "Find the lowest value for register a that causes the assembunny program to emit an infinite alternating 0, 1, 0, 1, … clock signal.",
+  "writeup": "## Approach\n\nThis is the final 2016 assembunny puzzle, adding one new instruction: `out x` emits a value to the output stream. The goal is to find the smallest positive integer `a` such that the program outputs `0, 1, 0, 1, 0, 1, …` forever.\n\n**Validating \"forever\"** is done via cycle detection: track every `(ip, a, b, c, d)` state tuple. When the interpreter revisits a state it has already seen, it is guaranteed to loop forever — so if the output so far is a valid alternating sequence, the program will keep producing it.\n\nIn practice, the programs in AoC 2016 inputs loop quickly. The search terminates after collecting 20 alternating values and confirming a state cycle, which typically happens within a few hundred steps.\n\n**Search**: try `a = 1, 2, 3, …` until a working value is found. The answer for most inputs is in the low hundreds.\n\n## Part 2\n\nThere is no part 2 — completing all 25 days of Advent of Code awards the 50th star directly.",
+  "tags": ["assembunny", "interpreter", "cycle-detection", "clock-signal"],
+  "stars": 2
+}

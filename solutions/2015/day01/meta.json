@@ -1,0 +1,7 @@
+{
+  "title": "Not Quite Lisp",
+  "description": "Follow a string of parentheses to find which floor Santa ends up on, and when he first enters the basement.",
+  "writeup": "## The Puzzle\n\nSanta is given a string of `(` and `)` characters. Each `(` means go up one floor; each `)` means go down. Starting at floor 0, we need to find (1) the final floor and (2) the position of the first character that causes Santa to enter the basement (floor −1).\n\n## Part 1\n\nA single linear scan works perfectly. Treat `(` as +1 and `)` as −1 and accumulate a running total. The final sum is the answer.\n\n```python\nfor c in line:\n    floor += 1 if c == '(' else -1\n```\n\nBecause every character contributes exactly ±1 this is equivalent to `line.count('(') - line.count(')')`, but the loop form lets us solve both parts in one pass.\n\n## Part 2\n\nDuring the same scan, watch for the first time `floor` goes negative. The 1-based position of that character is the answer. By tracking a `part2 = 0` sentinel and only setting it once (`if floor < 0 and part2 == 0`), the two parts are solved together without a second pass.\n\n## Visualization\n\nThe animation draws a live bar chart of Santa's floor height over time. Positive floors stack upward from the zero line; negative floors stack downward. The basement-crossing step is annotated once it occurs.",
+  "tags": ["simulation", "scanning"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "I Was Told There Would Be No Math",
+  "description": "Calculate the total wrapping paper and ribbon needed for a list of box dimensions.",
+  "writeup": "## The Puzzle\n\nGiven a list of box dimensions (`l×w×h`), calculate how much wrapping paper and ribbon the elves need to order in total.\n\n## Part 1 — Wrapping Paper\n\nEach box needs its full surface area plus a little slack equal to the area of its smallest face:\n\n```\npaper = 2lw + 2wh + 2hl + min(lw, wh, hl)\n```\n\nStraightforward: compute the three face areas, sum them doubled, then add the smallest.\n\n## Part 2 — Ribbon\n\nRibbon has two components:\n- **Wrap**: the shortest perimeter of any face — twice the sum of the two smallest dimensions.\n- **Bow**: the volume of the box (`l × w × h`).\n\nThe key insight is that the smallest perimeter always uses the two shortest dimensions. Sorting and taking the first two avoids any awkward max-exclusion logic:\n\n```python\ndims = sorted([l, w, h])\nribbon = 2 * (dims[0] + dims[1]) + l * w * h\n```\n\n## Visualization\n\nThe animation steps through every box in the input, showing its dimensions, individual paper and ribbon requirements, and running totals with a progress bar.",
+  "tags": ["math", "geometry"],
+  "stars": 2
+}

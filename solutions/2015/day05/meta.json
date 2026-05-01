@@ -1,0 +1,7 @@
+{
+  "title": "Doesn't He Have Intern-Elves For This?",
+  "description": "Count how many strings are 'nice' under two different sets of naughty/nice rules.",
+  "writeup": "## The Puzzle\n\nGiven a list of strings, classify each as nice or naughty under two different rule sets.\n\n## Part 1\n\nThree rules must all pass:\n1. At least three vowels (`aeiou`)\n2. At least one letter appearing twice in a row (e.g. `dd`)\n3. None of the forbidden substrings: `ab`, `cd`, `pq`, `xy`\n\nAll three are simple string checks — vowel counting, a pairwise scan for the double, and a regex for the forbidden strings.\n\n## Part 2\n\nThe elves updated the rules. Two new rules:\n1. A pair of two letters that appears at least twice **without overlapping** — e.g. `xyxy` has `xy` twice.\n2. At least one letter that repeats with exactly one letter between it — e.g. `xyx` or `aba`.\n\nBoth are cleanly expressed as regex back-references:\n\n```python\nhas_pair     = bool(re.search(r\"(..).*\\1\", s))   # any two-char pair repeated\nhas_sandwich = bool(re.search(r\"(.).\\1\", s))      # letter, anything, same letter\n```\n\nThe `\\1` back-reference matches the same text captured by group 1, making these one-liners.\n\n## Visualization\n\nThe animation steps through each string, showing the pass/fail status of every individual rule for both part 1 and part 2, along with running nice-string totals.",
+  "tags": ["strings", "regex"],
+  "stars": 2
+}

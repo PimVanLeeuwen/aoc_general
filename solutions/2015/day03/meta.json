@@ -1,0 +1,7 @@
+{
+  "title": "Perfectly Spherical Houses in a Vacuum",
+  "description": "Count how many houses receive at least one present as Santa follows a stream of directions on an infinite grid.",
+  "writeup": "## The Puzzle\n\nSanta moves on an infinite 2D grid following a string of `^`, `v`, `<`, `>` characters. He delivers a present at every position he visits (including the start). We need to count distinct houses visited.\n\n## Part 1\n\nSimple coordinate tracking: maintain `(x, y)` and a set of visited positions. Each character maps to a `(dx, dy)` delta. The answer is the size of the visited set.\n\n## Part 2\n\nNow Santa and Robo-Santa alternate: Santa takes the even-indexed moves, Robo-Santa takes the odd-indexed ones, both starting at `(0, 0)`. The neat Python trick here is slice notation:\n\n```python\nsanta = visited(moves[0::2])  # every other move starting at 0\nrobo  = visited(moves[1::2])  # every other move starting at 1\n```\n\nThe answer is the size of the **union** of both visited sets.\n\n## Visualization\n\nThe animation replays all three journeys — Santa alone, then Santa's half, then Robo-Santa's half — showing a live viewport that follows the current position and marks every visited house.",
+  "tags": ["simulation", "sets", "grid"],
+  "stars": 2
+}

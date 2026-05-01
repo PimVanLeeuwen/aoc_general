@@ -1,0 +1,7 @@
+{
+  "title": "The Ideal Stocking Stuffer",
+  "description": "Mine AdventCoins by finding the lowest number that, combined with a secret key, produces an MD5 hash starting with five (then six) zeroes.",
+  "writeup": "## The Puzzle\n\nThis is a simplified proof-of-work puzzle — the same basic idea behind Bitcoin mining. Given a secret key, find the smallest positive integer `n` such that `MD5(key + n)` starts with a required number of leading zeroes.\n\n## Approach\n\nThere's no shortcut: MD5 is a one-way function, so the only option is brute-force iteration. For each candidate `n`, compute the hash and check the prefix:\n\n```python\nwhile True:\n    digest = hashlib.md5(f\"{key}{n}\".encode()).hexdigest()\n    if digest.startswith(prefix):\n        return n\n    n += 1\n```\n\nPart 1 requires five leading zeroes, part 2 requires six. The same function handles both — part 2 just takes roughly 16× longer on average since each additional zero digit makes the target 16× rarer.\n\n## Note on Performance\n\nPython's `hashlib.md5` calls into native C code, so it's reasonably fast even for the hundreds of thousands of iterations needed here. Running in Pyodide (WebAssembly) is slower than native, so expect a few seconds for part 2.\n\n## Visualization\n\nThe animation samples every 500th candidate, showing the key, the number being tested, and its hash — until the five-zero solution flashes up.",
+  "tags": ["hashing", "brute-force", "md5"],
+  "stars": 2
+}

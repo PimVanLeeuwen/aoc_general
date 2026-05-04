@@ -1,0 +1,7 @@
+{
+  "title": "Corporate Policy",
+  "description": "Find the next valid password by incrementing through corporate policy rules.",
+  "writeup": "## Approach\n\nWork with the password as a list of integers (0–25) and increment like a base-26 counter. The key optimization is skipping past forbidden letters (`i`, `o`, `l`): when one is found, increment it and zero out everything to the right, since no valid password can contain those letters.\n\n## Part 1\n\nIncrement the input password until all three rules are satisfied: contains an increasing straight of three consecutive letters, no forbidden letters, and at least two distinct non-overlapping pairs.\n\n## Part 2\n\nIncrement the Part 1 answer one more time and find the next valid password. Same logic, just applied twice.",
+  "tags": ["string-processing", "simulation"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Medicine for Rudolph",
+  "description": "Count single-replacement products and find minimum steps to synthesize a molecule.",
+  "writeup": "## Approach\n\nPart 1 is straightforward enumeration. Part 2 requires working backwards from the target molecule to `e` — the forward search space is far too large.\n\n## Part 1\n\nFor each rule and each position where it matches in the molecule, perform the substitution and collect results in a set. The set handles deduplication automatically.\n\n## Part 2\n\nWork in reverse: repeatedly apply rules backwards (replacing the *output* with the *input*) to shrink the molecule toward `e`. A greedy approach — always replacing the longest match — works for AoC inputs. Shuffling rule order and retrying handles edge cases where a particular ordering gets stuck. This is much faster than BFS/DFS which would be intractable on the full-size molecule.",
+  "tags": ["string-replacement", "greedy", "randomized"],
+  "stars": 2
+}

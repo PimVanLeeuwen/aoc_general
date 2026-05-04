@@ -1,0 +1,7 @@
+{
+  "title": "Infinite Elves and Infinite Houses",
+  "description": "Find the first house to receive enough presents from an infinite elf delivery sieve.",
+  "writeup": "## Approach\n\nThe number of presents at house `h` is `10 * sum_of_divisors(h)`. Rather than factoring each house individually, we use a sieve: for each elf number `e`, add `e * 10` presents to houses `e, 2e, 3e, ...`. This is essentially the same approach as the Sieve of Eratosthenes but for divisor sums.\n\n## Part 1\n\nRun the sieve with 10 presents per elf and no visit limit. The upper bound on the array size is `target / 10` since house `h` gets at least `10 * h` presents (from elf `h` itself).\n\n## Part 2\n\nEach elf now delivers 11 presents but stops after visiting 50 houses. The sieve loop for elf `e` only runs up to `e * 50` instead of the full array. This slightly increases the answer since high-divisor houses lose contributions from small elves.",
+  "tags": ["number-theory", "sieve", "divisors"],
+  "stars": 2
+}

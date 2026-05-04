@@ -1,0 +1,7 @@
+{
+  "title": "Knights of the Dinner Table",
+  "description": "Find the optimal circular seating arrangement to maximize happiness.",
+  "writeup": "## Approach\n\nAnother small-scale permutation problem — very similar to Day 9's TSP. With 8 guests and a circular table, fixing one person's position eliminates rotational duplicates, leaving 7! = 5,040 arrangements to evaluate.\n\n## Part 1\n\nParse the happiness rules into a lookup table, then brute-force all circular permutations. For each arrangement, sum the bidirectional happiness of every adjacent pair (including the wrap-around). Return the maximum.\n\n## Part 2\n\nAdd yourself to the table with 0 happiness toward and from everyone. This increases the search to 8! = 40,320 arrangements — still trivially fast. The optimal score drops because \"Me\" contributes nothing but breaks up a previously beneficial pairing.",
+  "tags": ["brute-force", "permutations", "graphs"],
+  "stars": 2
+}

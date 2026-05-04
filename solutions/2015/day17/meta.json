@@ -1,0 +1,7 @@
+{
+  "title": "No Such Thing as Too Much",
+  "description": "Count container combinations that exactly hold 150 liters of eggnog.",
+  "writeup": "## Approach\n\nWith ~20 containers, the total number of subsets is 2^20 ≈ 1 million — easily brute-forceable by iterating over all combinations of each size.\n\n## Part 1\n\nCount all subsets of containers whose capacities sum to exactly 150. Iterate through combination sizes 1 to N using `itertools.combinations`.\n\n## Part 2\n\nFind the minimum number of containers needed among valid combinations, then count how many combinations use exactly that many containers.",
+  "tags": ["combinatorics", "brute-force"],
+  "stars": 2
+}

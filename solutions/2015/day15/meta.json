@@ -1,0 +1,7 @@
+{
+  "title": "Science for Hungry People",
+  "description": "Optimize a cookie recipe by distributing 100 teaspoons across ingredients.",
+  "writeup": "## Approach\n\nWith 4 ingredients and 100 teaspoons, we need to enumerate all ways to partition 100 into 4 non-negative integers — that's C(103,3) = 176,851 combinations. Small enough to brute-force.\n\n## Part 1\n\nFor each distribution of teaspoons, compute each property total (capacity, durability, flavor, texture), clamp negatives to zero, and multiply them together (ignoring calories). Track the maximum score.\n\n## Part 2\n\nSame search, but only consider recipes where the calorie total is exactly 500. Since we're already iterating all distributions, this is just an extra filter.",
+  "tags": ["brute-force", "optimization", "combinatorics"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "All in a Single Night",
+  "description": "Find the shortest and longest route visiting every location exactly once.",
+  "writeup": "## Approach\n\nThis is the classic Travelling Salesman Problem (TSP). With only 8 locations in the puzzle input, brute-forcing all permutations (8! = 40,320 routes) is perfectly feasible.\n\n## Part 1\n\nParse each distance entry into a symmetric adjacency map, then evaluate every permutation of cities and return the minimum total distance.\n\n## Part 2\n\nSame approach, but return the maximum total distance instead. Since we already computed all route distances for Part 1, this is essentially free.",
+  "tags": ["brute-force", "permutations", "graphs"],
+  "stars": 2
+}

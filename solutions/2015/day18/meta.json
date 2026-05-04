@@ -1,0 +1,7 @@
+{
+  "title": "Like a GIF For Your Yard",
+  "description": "Simulate Conway's Game of Life on a 100x100 grid of lights.",
+  "writeup": "## Approach\n\nThis is a classic cellular automaton (Game of Life). Each step, a light stays on with 2–3 neighbors, turns on with exactly 3, and turns off otherwise. Using a set of active cells and only checking their neighborhoods makes each step efficient.\n\n## Part 1\n\nRun the simulation for 100 steps on the initial grid and count the lights that are on.\n\n## Part 2\n\nSame simulation, but the four corner lights are stuck on — they're forced on after every step regardless of the rules. This slightly increases the final count since corners can seed additional growth.",
+  "tags": ["cellular-automaton", "simulation", "game-of-life"],
+  "stars": 2
+}

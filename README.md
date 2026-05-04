@@ -30,6 +30,10 @@ I have been a long-time AOC enthusiast, and this project will be the one to comb
 
 ![](https://github.com/PimVanLeeuwen/aoc_general/blob/main/visualization_examples/2016_13.gif)
 
+### 2015 - Day 18
+
+![](https://github.com/PimVanLeeuwen/aoc_general/blob/main/visualization_examples/2015_18.gif)
+
 ## Structure
 
 ```

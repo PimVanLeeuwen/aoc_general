@@ -1,0 +1,7 @@
+{
+  "title": "Aunt Sue",
+  "description": "Identify the right Aunt Sue from 500 candidates using MFCSAM readings.",
+  "writeup": "## Approach\n\nA simple filtering problem. Each Aunt Sue has 3 known properties out of 10. We check which Sue's known properties are consistent with the MFCSAM readings.\n\n## Part 1\n\nFor each Sue, verify that every listed property matches the expected value exactly. Unknown properties are ignored (they could be anything). Exactly one Sue passes all checks.\n\n## Part 2\n\nThe MFCSAM has outdated calibration: `cats` and `trees` readings indicate \"greater than\", while `pomeranians` and `goldfish` indicate \"fewer than\". All other properties still require exact matches. Apply these adjusted comparisons to find the real Sue.",
+  "tags": ["filtering", "parsing"],
+  "stars": 2
+}

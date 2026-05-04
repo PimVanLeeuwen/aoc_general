@@ -1,0 +1,7 @@
+{
+  "title": "Reindeer Olympics",
+  "description": "Race reindeer with fly/rest cycles under two different scoring systems.",
+  "writeup": "## Approach\n\nEach reindeer follows a fixed cycle: fly for some seconds, rest for some seconds, repeat. The distance at any time `t` can be computed directly using integer division — no need to simulate second by second.\n\n## Part 1\n\nFor each reindeer, compute the distance at t=2503 using the formula: `full_cycles * fly_time * speed + min(remaining, fly_time) * speed`. Return the maximum.\n\n## Part 2\n\nNow the scoring changes: at each second, the reindeer in the lead (ties included) gets 1 point. This requires stepping through all 2503 seconds, but the distance calculation per second is O(1) so it's still fast. Return the highest point total.",
+  "tags": ["simulation", "math"],
+  "stars": 2
+}

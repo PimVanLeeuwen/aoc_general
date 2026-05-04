@@ -1,0 +1,7 @@
+{
+  "title": "JSAbacusFramework.io",
+  "description": "Sum all numbers in a nested JSON document, with optional red-object filtering.",
+  "writeup": "## Approach\n\nParse the input as JSON and recursively walk the tree, summing all integer values. Python's `json` module handles the parsing; the rest is a simple recursive traversal.\n\n## Part 1\n\nSum every number in the document regardless of context. The recursion handles nested arrays and objects transparently.\n\n## Part 2\n\nSame traversal, but skip any object (dict) that contains `\"red\"` as a value. Arrays containing `\"red\"` are *not* skipped — only objects. A single boolean flag tracks whether we're inside a red object to exclude its numbers from the total.",
+  "tags": ["json", "recursion"],
+  "stars": 2
+}

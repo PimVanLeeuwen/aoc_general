@@ -1,0 +1,7 @@
+{
+  "title": "The Tyranny of the Rocket Equation",
+  "description": "Calculate fuel for spacecraft modules, then recursively account for the fuel's own mass.",
+  "writeup": "## Approach\n\nThe classic rocket equation problem: fuel has mass, which needs more fuel.\n\n## Part 1\n\nDirect formula: `fuel = mass // 3 - 2` for each module. Sum them all up.\n\n## Part 2\n\nIteratively apply the fuel formula to the fuel itself until the result is zero or negative. Each module produces a chain of decreasing fuel amounts — for a mass of 100756, the chain is 33583, 11192, 3728, 1240, 411, 135, 43, 12, 2. The total is about 50% more than Part 1's naive calculation, illustrating why the Tsiolkovsky rocket equation makes space travel so expensive.",
+  "tags": ["math", "iteration"],
+  "stars": 2
+}

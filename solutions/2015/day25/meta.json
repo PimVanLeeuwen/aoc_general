@@ -1,0 +1,7 @@
+{
+  "title": "Let It Snow",
+  "description": "Find a code on an infinite diagonal grid using modular exponentiation.",
+  "writeup": "## Approach\n\nTwo steps: convert the (row, col) position to a 1-based sequence index, then compute the code at that index.\n\n## Part 1\n\nThe grid fills along diagonals: position (r, c) is on diagonal `r+c-1`. The sequence index is `diag*(diag-1)/2 + col`, using the triangular number formula.\n\nEach code is the previous one multiplied by 252533 mod 33554393. So code(n) = `20151125 * 252533^(n-1) mod 33554393`. Rather than iterating millions of times, we use Python's built-in modular exponentiation (`pow(base, exp, mod)`) which runs in O(log n) via repeated squaring.\n\n## Part 2\n\nDay 25 has no Part 2 — collecting all 49 other stars unlocks it automatically. Merry Christmas!",
+  "tags": ["math", "modular-arithmetic"],
+  "stars": 2
+}

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Copy, Check } from 'lucide-react'
+import type { FetchedSharedFile } from '../types'
 
 // Strip the optional visualizer section — it's not part of the solve logic
 function stripVisualizer(code: string): string {
@@ -12,22 +13,21 @@ function stripVisualizer(code: string): string {
   return code.slice(0, Math.min(...cutAt)).trimEnd()
 }
 
-export default function CodeViewer({ code }: { code: string }) {
+const BG = '#1a1a2e'
+
+function CodeBlock({ label, code }: { label: string; code: string }) {
   const [copied, setCopied] = useState(false)
-  const displayCode = stripVisualizer(code)
 
   const copy = () => {
-    navigator.clipboard.writeText(displayCode)
+    navigator.clipboard.writeText(code)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const BG = '#1a1a2e'
-
   return (
     <div className="rounded-lg overflow-hidden border border-aoc-border">
       <div className="flex items-center justify-between px-4 py-2 bg-aoc-elevated border-b border-aoc-border">
-        <span className="text-xs text-aoc-muted">solution.py</span>
+        <span className="text-xs text-aoc-muted">{label}</span>
         <button
           onClick={copy}
           className="flex items-center gap-1.5 text-xs text-aoc-muted hover:text-aoc-text transition-colors"
@@ -54,8 +54,27 @@ export default function CodeViewer({ code }: { code: string }) {
         showLineNumbers
         lineNumberStyle={{ color: '#555577', minWidth: '2.5em', background: BG }}
       >
-        {displayCode}
+        {code}
       </SyntaxHighlighter>
+    </div>
+  )
+}
+
+export default function CodeViewer({
+  code,
+  sharedFiles,
+}: {
+  code: string
+  sharedFiles?: FetchedSharedFile[]
+}) {
+  const displayCode = stripVisualizer(code)
+
+  return (
+    <div className="space-y-4">
+      <CodeBlock label="solution.py" code={displayCode} />
+      {sharedFiles?.map((sf) => (
+        <CodeBlock key={sf.filename} label={`${sf.filename} — ${sf.label}`} code={sf.code} />
+      ))}
     </div>
   )
 }

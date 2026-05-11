@@ -1,3 +1,8 @@
+export interface SharedFile {
+  path: string
+  label: string
+}
+
 export interface DaySummary {
   year: number
   day: number
@@ -8,11 +13,19 @@ export interface DaySummary {
   tags?: string[]
   hasSolution: boolean
   hasVisualization: boolean
+  shared_files?: SharedFile[]
+}
+
+export interface FetchedSharedFile {
+  label: string
+  filename: string
+  code: string
 }
 
 export interface SolutionDetail extends DaySummary {
   code: string
   writeup?: string
+  sharedCode?: FetchedSharedFile[]
 }
 
 export interface SolutionsManifest {

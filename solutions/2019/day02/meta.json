@@ -1,0 +1,10 @@
+{
+  "title": "1202 Program Alarm",
+  "description": "Build an Intcode computer and find the noun/verb pair that produces a target output.",
+  "writeup": "## Approach\n\nThis is the first Intcode puzzle — a recurring theme throughout 2019. The computer is a simple VM with position-addressed memory and three opcodes.\n\n## Part 1\n\nImplement the Intcode interpreter: opcode 1 adds, opcode 2 multiplies, opcode 99 halts. Each instruction reads two values by address, computes the result, and writes it to a third address. Set `mem[1]=12, mem[2]=2` (the \"1202\" alarm state) and return `mem[0]` after halting.\n\n## Part 2\n\nBrute-force search over all 10,000 noun/verb pairs (0-99 each). For each pair, reset the program, set `mem[1]=noun, mem[2]=verb`, run to completion, and check if `mem[0] == 19690720`. The answer is `100*noun + verb`. This runs quickly since each program execution is only a few dozen steps.",
+  "tags": ["intcode", "simulation", "brute-force"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

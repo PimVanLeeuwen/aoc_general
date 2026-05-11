@@ -1,0 +1,7 @@
+{
+  "title": "Opening the Turing Lock",
+  "description": "Simulate a simple two-register computer with halve, triple, increment, and conditional jump instructions.",
+  "writeup": "## Approach\n\nStraightforward instruction interpreter. Parse each line into an opcode and arguments, then step through with a program counter.\n\n## Part 1\n\nThe six instructions map directly to simple operations: `hlf`, `tpl`, and `inc` modify a register and advance PC by 1; `jmp` jumps unconditionally; `jie` and `jio` jump conditionally (if even, if one). The program halts when PC goes out of bounds. We run with `a=0, b=0` and return the final value of `b`.\n\n## Part 2\n\nSame program, but register `a` starts at 1. The program is essentially computing a Collatz-like sequence — starting with a higher value of `a` produces a much longer computation and a larger final `b`.",
+  "tags": ["simulation", "interpreter"],
+  "stars": 2
+}

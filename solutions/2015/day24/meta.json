@@ -1,0 +1,7 @@
+{
+  "title": "It Hangs in the Balance",
+  "description": "Split packages into equal-weight groups, minimizing the passenger compartment's size and quantum entanglement.",
+  "writeup": "## Approach\n\nThe key insight is that we only need to find the optimal *first* group — we don't need to verify that the remaining packages can be split into valid groups. For well-formed AoC inputs, if a subset sums to `total/n`, the rest can always be partitioned.\n\nWe search group sizes starting from 1 upward. For each size, we enumerate all combinations that sum to the target weight. The first size that yields any valid combination is our answer — we just pick the one with the smallest quantum entanglement (product of weights).\n\n## Part 1\n\nSplit into 3 groups of equal weight. Target = `total/3`. With ~28 packages, the minimum group size turns out to be small (around 6), so the combinatorial search stays fast.\n\n## Part 2\n\nSplit into 4 groups instead. Target = `total/4`. The minimum first-group size is even smaller, so it's actually faster to solve.",
+  "tags": ["combinatorics", "optimization", "greedy"],
+  "stars": 2
+}

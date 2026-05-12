@@ -1,0 +1,7 @@
+{
+  "title": "Passage Pathing",
+  "description": "Count all paths through a cave system with constraints on revisiting small caves.",
+  "writeup": "## Approach\n\nDFS path enumeration through a graph with visit constraints. Big caves (uppercase) can be revisited freely; small caves (lowercase) have visit limits.\n\n## Part 1\n\nCount all paths from `start` to `end` where each small cave is visited at most once. Track visited small caves in a `frozenset` as part of the DFS state.\n\n## Part 2\n\nAllow one small cave to be visited twice. Add a boolean flag `used_double` to the state. When encountering an already-visited small cave and the flag is unset, allow the visit and set the flag. This elegantly handles both parts in a single traversal — paths without a double visit count for both parts, paths with one count only for part 2.",
+  "tags": ["graph", "dfs", "path-counting"],
+  "stars": 2
+}

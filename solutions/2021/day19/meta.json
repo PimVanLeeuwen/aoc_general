@@ -1,0 +1,7 @@
+{
+  "title": "Beacon Scanner",
+  "description": "Align overlapping 3D scanners by matching beacon positions across rotations.",
+  "writeup": "## Approach\n\nEach scanner sees beacons in its own rotated coordinate frame. Two scanners overlap if they share at least 12 beacons. The key insight is using **squared distances** between beacon pairs as rotation-invariant fingerprints — if two scanners share ≥ C(12,2) = 66 pairwise distances, they likely overlap.\n\nOnce a candidate overlap is identified, try all 24 cube rotations. For each rotation, pick a known beacon and a candidate beacon as an anchor pair to compute a translation offset. If ≥ 12 beacons match under that rotation + offset, the alignment is confirmed.\n\n## Part 1\n\nStarting from scanner 0 as the reference frame, iteratively align unmatched scanners. Merge each scanner's beacons (translated to the reference frame) into a global set. The answer is the total number of unique beacon positions.\n\n## Part 2\n\nRecord each scanner's position (the translation offset found during alignment). The answer is the largest Manhattan distance between any pair of scanner positions.",
+  "tags": ["3D", "geometry", "rotation", "matching"],
+  "stars": 2
+}

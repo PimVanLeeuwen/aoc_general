@@ -1,0 +1,7 @@
+{
+  "title": "Binary Diagnostic",
+  "description": "Analyze binary numbers by bit frequency to find power consumption and life support ratings.",
+  "writeup": "## Approach\n\nBit-position analysis: count 1s vs 0s at each position to derive gamma/epsilon rates, then iteratively filter numbers by bit criteria.\n\n## Part 1\n\nFor each bit position, count whether 1 or 0 is more common across all numbers. The **gamma** rate uses the most common bit at each position; **epsilon** uses the least common (its bitwise complement). Multiply them for power consumption.\n\n## Part 2\n\nFilter numbers bit by bit:\n- **Oxygen generator**: at each position, keep numbers matching the most common bit (prefer 1 on ties). Repeat until one number remains.\n- **CO2 scrubber**: same but keep the least common bit (prefer 0 on ties).\n\nThe life support rating is their product. Each filtering pass halves the candidate set, so this converges quickly.",
+  "tags": ["binary", "bit-manipulation", "filtering"],
+  "stars": 2
+}

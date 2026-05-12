@@ -1,0 +1,7 @@
+{
+  "title": "Amphipod",
+  "description": "Move amphipods into their home rooms with minimum energy using Dijkstra.",
+  "writeup": "## Approach\n\nAmphipods of four types (A, B, C, D) must reach their designated side rooms, moving through a shared hallway. Each type has a different movement cost (1, 10, 100, 1000). This is a shortest-path problem over game states.\n\nThe state is the set of all amphipod positions. Dijkstra's algorithm explores states in order of increasing energy cost. Move rules: amphipods in rooms can move to valid hallway positions (never stopping in front of a room); amphipods in the hallway can only move directly into their home room, and only if it contains no foreign types. They always move as deep as possible.\n\n## Part 1\n\nRooms are 2 deep. The state space is manageable — positions are constrained to 7 hallway spots and 8 room slots. Dijkstra with a visited set finds the minimum energy.\n\n## Part 2\n\nInsert two extra rows (`#D#C#B#A#` and `#D#B#A#C#`) to make rooms 4 deep. The same algorithm handles the larger state space, though it takes longer due to more possible configurations.",
+  "tags": ["shortest-path", "dijkstra", "state-space"],
+  "stars": 2
+}

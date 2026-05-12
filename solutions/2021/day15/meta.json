@@ -1,0 +1,7 @@
+{
+  "title": "Chiton",
+  "description": "Find the lowest-risk path through a cave grid using Dijkstra's algorithm.",
+  "writeup": "## Approach\n\nThis is a shortest-path problem on a weighted grid. Each cell's value is the cost to enter it. Dijkstra's algorithm with a min-heap finds the optimal path from top-left to bottom-right.\n\n## Part 1\n\nRun Dijkstra on the original grid. The priority queue processes cells in order of cumulative risk. Early termination fires as soon as the bottom-right corner is popped.\n\n## Part 2\n\nThe grid tiles 5× in each direction. Each tile's risk values are the original values incremented by the tile's Manhattan distance from the origin, wrapping 9 → 1 (not 0). Build the expanded grid, then run the same Dijkstra. The 5× expansion makes the grid 25× larger, but Dijkstra with a binary heap handles it efficiently in O(n log n).",
+  "tags": ["shortest-path", "dijkstra", "grid"],
+  "stars": 2
+}

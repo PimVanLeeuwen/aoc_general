@@ -1,0 +1,7 @@
+{
+  "title": "Trick Shot",
+  "description": "Find the highest arc and count all velocities that land a probe in a target area.",
+  "writeup": "## Approach\n\nSimulate every plausible initial velocity `(vx, vy)` and check whether the probe passes through the target area. The x-velocity decreases by 1 each step (drag), and y-velocity decreases by 1 (gravity).\n\n## Part 1\n\nThe highest trajectory uses the largest vy that still hits the target. For each candidate, track the maximum y reached during the arc. The answer is the global maximum across all hitting trajectories.\n\n## Part 2\n\nCount every distinct `(vx, vy)` pair whose trajectory passes through the target at any step. The search bounds are `vx ∈ [0, x_max]` (larger vx overshoots on step 1) and `vy ∈ [y_min, -y_min]` (larger vy overshoots downward after the apex).",
+  "tags": ["simulation", "brute-force", "physics"],
+  "stars": 2
+}

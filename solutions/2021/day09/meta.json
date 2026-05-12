@@ -1,0 +1,7 @@
+{
+  "title": "Smoke Basin",
+  "description": "Find low points in a heightmap and flood-fill to identify the three largest basins.",
+  "writeup": "## Approach\n\nA heightmap analysis combining local minima detection with BFS flood-fill.\n\n## Part 1\n\nA low point is a cell whose height is strictly less than all of its 4-directional neighbors. The risk level is `height + 1`. Sum all risk levels.\n\n## Part 2\n\nEvery non-9 cell belongs to exactly one basin, and each basin flows down to a single low point. BFS from each low point, expanding to all adjacent cells that aren't 9 and haven't been visited. The basin size is the number of cells reached. Sort basin sizes descending and multiply the top three.",
+  "tags": ["grid", "bfs", "flood-fill"],
+  "stars": 2
+}

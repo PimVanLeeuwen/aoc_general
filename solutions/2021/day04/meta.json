@@ -1,0 +1,7 @@
+{
+  "title": "Giant Squid",
+  "description": "Simulate bingo to find the first and last boards to win.",
+  "writeup": "## Approach\n\nSimulate the bingo game by drawing numbers one at a time and tracking which boards have won. Record the first and last winners.\n\n## Part 1\n\nDraw numbers sequentially. For each number, mark it on all boards. After each mark, check if any row or column is complete. The first board to achieve bingo wins — its score is the sum of unmarked numbers multiplied by the winning number.\n\n## Part 2\n\nContinue the game past the first winner. Skip boards that have already won. The last board to complete a bingo is the answer, scored the same way. This lets the squid win by choosing the worst board.",
+  "tags": ["simulation", "grid", "bingo"],
+  "stars": 2
+}

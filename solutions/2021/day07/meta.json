@@ -1,0 +1,7 @@
+{
+  "title": "The Treachery of Whales",
+  "description": "Align crab submarines to minimize fuel cost under constant and triangular fuel models.",
+  "writeup": "## Approach\n\nA classic optimization problem where the cost function determines which statistic minimizes it.\n\n## Part 1\n\nFuel cost is proportional to distance: `|x - target|`. The point that minimizes the sum of absolute deviations is the **median**. Sort the positions and pick the middle value.\n\n## Part 2\n\nFuel cost is now triangular: moving distance `n` costs `n*(n+1)/2`. This is equivalent to minimizing the sum of squared distances (plus a linear term), so the optimal target is near the **mean**. Since the target must be an integer, check both `floor(mean)` and `ceil(mean)` and take the minimum.",
+  "tags": ["optimization", "statistics", "math"],
+  "stars": 2
+}

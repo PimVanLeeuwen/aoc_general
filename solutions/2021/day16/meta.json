@@ -1,0 +1,7 @@
+{
+  "title": "Packet Decoder",
+  "description": "Parse nested BITS protocol packets to sum versions and evaluate expressions.",
+  "writeup": "## Approach\n\nThe hex input encodes a binary stream of nested packets. Each packet has a 3-bit version, a 3-bit type ID, and either a literal value (type 4) or sub-packets (all other types). A recursive parser naturally mirrors this tree structure.\n\n## Part 1\n\nRecursively parse the entire packet tree, accumulating the version number from every packet encountered. The answer is the total version sum.\n\n## Part 2\n\nDuring the same recursive parse, evaluate each packet as an expression. Operator types map to `sum`, `product`, `min`, `max`, `>`, `<`, and `==`. Literal packets are leaf values. The outermost packet's evaluated result is the answer.",
+  "tags": ["parsing", "recursion", "binary"],
+  "stars": 2
+}

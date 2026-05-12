@@ -1,0 +1,7 @@
+{
+  "title": "Hydrothermal Venture",
+  "description": "Map hydrothermal vent lines and count points where multiple lines overlap.",
+  "writeup": "## Approach\n\nRasterize line segments onto a 2D grid using a `Counter` and count cells with overlap (value >= 2).\n\n## Part 1\n\nOnly consider horizontal and vertical lines. For each segment, generate all integer points along it and count occurrences per coordinate. Points where the count reaches 2 or more are dangerous.\n\n## Part 2\n\nInclude 45-degree diagonal lines as well. The `points_on_line` generator handles all three cases uniformly: compute the step direction as `sign(delta)` for both x and y, then iterate `max(|dx|, |dy|)` steps. This naturally covers horizontal (dy=0), vertical (dx=0), and diagonal (|dx|=|dy|) segments.",
+  "tags": ["grid", "geometry", "counter"],
+  "stars": 2
+}

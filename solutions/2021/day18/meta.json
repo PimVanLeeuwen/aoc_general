@@ -1,0 +1,7 @@
+{
+  "title": "Snailfish",
+  "description": "Add and reduce snailfish numbers using explode/split rules, then compute magnitudes.",
+  "writeup": "## Approach\n\nSnailfish numbers are deeply nested pairs. Rather than working with a tree, represent each number as a flat list of `(value, depth)` pairs. This makes explode and split operations simple index manipulations.\n\n- **Explode**: find the first pair at depth ≥ 5, add its left value to the previous element and right value to the next, then replace the pair with `0` at depth − 1.\n- **Split**: find the first value ≥ 10, replace it with `[floor(v/2), ceil(v/2)]` at depth + 1.\n- **Reduce**: repeatedly explode (priority) then split until stable.\n- **Magnitude**: collapse the deepest same-depth adjacent pair with `3×left + 2×right`, reducing depth by 1, until one value remains.\n\n## Part 1\n\nAdd all numbers left to right. Adding means concatenating two lists (each element's depth incremented by 1), then reducing. Compute the magnitude of the final sum.\n\n## Part 2\n\nTry every ordered pair of distinct numbers, add them, and find the maximum magnitude. Since addition is not commutative, both orderings must be tested.",
+  "tags": ["parsing", "simulation", "brute-force"],
+  "stars": 2
+}

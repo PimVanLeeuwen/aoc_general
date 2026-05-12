@@ -1,0 +1,7 @@
+{
+  "title": "Transparent Origami",
+  "description": "Fold a transparent paper with dots to reveal capital letters.",
+  "writeup": "## Approach\n\nSimulate paper folding by reflecting dot coordinates across fold lines. Use a set of (x, y) positions so overlapping dots merge automatically.\n\n## Part 1\n\nApply just the first fold instruction. For a fold along `x=V`, any dot with `x > V` maps to `x = 2V - x`. Similarly for `y` folds. Count the remaining unique dots.\n\n## Part 2\n\nApply all fold instructions sequentially. The final set of dots forms 8 capital letters. Render them on a grid by iterating over the bounding box and printing `#` for dots, spaces for blanks.",
+  "tags": ["geometry", "set", "folding"],
+  "stars": 2
+}

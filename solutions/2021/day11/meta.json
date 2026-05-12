@@ -1,0 +1,7 @@
+{
+  "title": "Dumbo Octopus",
+  "description": "Simulate flashing octopuses on a grid with cascade effects.",
+  "writeup": "## Approach\n\nA cellular automaton with cascade flashing. Each step: increment all energy levels, then any octopus above 9 flashes and boosts its 8 neighbors, potentially triggering more flashes.\n\n## Part 1\n\nSimulate 100 steps. Each step: increment all cells, BFS-cascade flashes (each octopus flashes at most once per step), then reset flashed cells to 0. Count total flashes across all steps.\n\n## Part 2\n\nContinue stepping until all 100 octopuses flash simultaneously in a single step. This happens when the flash count equals the grid size. The answer is the step number.",
+  "tags": ["grid", "simulation", "bfs", "cellular-automaton"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Arithmetic Logic Unit",
+  "description": "Reverse-engineer a MONAD ALU program to find valid model numbers.",
+  "writeup": "## Approach\n\nThe MONAD program consists of 14 nearly identical blocks of 18 instructions, one per input digit. Each block either **pushes** a value onto a base-26 stack (when `div z 1`) or **pops** from it (when `div z 26`). For the final `z` to be 0, every push must be matched by a pop.\n\nEach push adds `digit + offset` to the stack. Each pop requires `digit == popped_value + check_value`. This creates 7 constraints linking pairs of digits: `d[pop] = d[push] + delta`, where `delta = push_offset + pop_check`.\n\n## Part 1\n\nMaximize each digit (1–9) subject to the constraints. For each linked pair, if delta ≥ 0, set the pop digit to 9 and the push digit to 9 − delta.\n\n## Part 2\n\nMinimize each digit. If delta ≥ 0, set the push digit to 1 and the pop digit to 1 + delta. No brute-force search needed — the answer follows directly from the constraints.",
+  "tags": ["reverse-engineering", "math", "stack"],
+  "stars": 2
+}

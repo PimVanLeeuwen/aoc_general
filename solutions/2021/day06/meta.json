@@ -1,0 +1,7 @@
+{
+  "title": "Lanternfish",
+  "description": "Model exponential lanternfish population growth using timer buckets.",
+  "writeup": "## Approach\n\nThe key insight is that individual fish don't matter — only how many fish share each timer value. Tracking 9 buckets (timers 0-8) instead of billions of individual fish makes the simulation O(days) instead of O(population).\n\n## Part 1\n\nSimulate 80 days. Each day, shift all buckets left (decrement timers). Fish at timer 0 spawn new fish at timer 8 and reset to timer 6. Count total fish.\n\n## Part 2\n\nSame simulation for 256 days. Without the bucket optimization, the population would be too large to track individually (~1.7 trillion fish). With buckets, it's just 256 iterations of 9-element array shifts.",
+  "tags": ["simulation", "optimization", "counting"],
+  "stars": 2
+}

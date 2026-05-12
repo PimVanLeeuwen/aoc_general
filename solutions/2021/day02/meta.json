@@ -1,0 +1,7 @@
+{
+  "title": "Dive!",
+  "description": "Follow submarine navigation commands with simple and aim-based movement models.",
+  "writeup": "## Approach\n\nProcess a sequence of movement commands under two different interpretations of what \"up\" and \"down\" mean.\n\n## Part 1\n\n`forward` increases horizontal position, `down` increases depth, `up` decreases depth. All movements are direct. The answer is horizontal position times depth.\n\n## Part 2\n\n`down` and `up` now adjust an **aim** value instead of depth directly. `forward X` moves forward by X and also changes depth by `aim * X`. This models the submarine pitching up/down and then moving in that direction. Same final product of position times depth.",
+  "tags": ["simulation", "parsing"],
+  "stars": 2
+}

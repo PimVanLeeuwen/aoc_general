@@ -1,0 +1,7 @@
+{
+  "title": "Extended Polymerization",
+  "description": "Simulate polymer pair insertion using pair counting to handle exponential growth.",
+  "writeup": "## Approach\n\nThe polymer doubles in length each step, making direct simulation infeasible for 40 steps. Instead, track counts of adjacent pairs — each insertion rule `AB -> C` transforms pair `AB` into pairs `AC` and `CB`, preserving counts.\n\n## Part 1\n\nRun 10 pair-insertion steps. To count individual elements, sum each character's appearances across all pairs. Every character is double-counted (it appears as the end of one pair and start of the next), except the very first and last characters of the original template. Adjust for those, then divide by 2. The answer is `max_count - min_count`.\n\n## Part 2\n\nSame algorithm for 40 steps. The pair-counting approach runs in O(steps * unique_pairs), completely independent of the actual polymer length (which would be ~2^40 ≈ 10^12 characters).",
+  "tags": ["simulation", "counting", "optimization"],
+  "stars": 2
+}

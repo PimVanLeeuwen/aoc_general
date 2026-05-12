@@ -1,0 +1,7 @@
+{
+  "title": "Dirac Dice",
+  "description": "Simulate a board game with deterministic and quantum dice.",
+  "writeup": "## Approach\n\nTwo players take turns rolling a die and advancing on a circular 1–10 board, scoring points equal to their landing position.\n\n## Part 1\n\nA deterministic die cycles 1–100. Simulate turns until a player reaches 1000 points. The answer is the losing player's score times total die rolls.\n\n## Part 2\n\nA quantum (Dirac) die splits the universe into 3 outcomes per roll. With 3 rolls per turn, there are 27 universe splits, but only 7 distinct sums (3–9) with known frequencies. Memoized recursion on `(p1_pos, p2_pos, p1_score, p2_score, turn)` efficiently counts how many universes each player wins. The state space is bounded: positions 1–10 and scores 0–20, giving at most ~44,100 unique states.",
+  "tags": ["simulation", "memoization", "recursion"],
+  "stars": 2
+}

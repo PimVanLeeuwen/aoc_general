@@ -1,0 +1,7 @@
+{
+  "title": "Sonar Sweep",
+  "description": "Count depth measurement increases using sliding windows of size 1 and 3.",
+  "writeup": "## Approach\n\nA sliding window comparison problem. The key insight for part 2 is that comparing two overlapping windows of size 3 reduces to comparing just the element entering vs the element leaving.\n\n## Part 1\n\nCount how many times a depth measurement is greater than the previous one. A simple pairwise comparison.\n\n## Part 2\n\nCount how many times a sliding window sum of 3 increases. Since consecutive windows share 2 elements, the sum increases exactly when `depths[i] > depths[i-3]` — the new element exceeds the dropped one. No need to actually compute window sums.",
+  "tags": ["sliding-window", "counting"],
+  "stars": 2
+}

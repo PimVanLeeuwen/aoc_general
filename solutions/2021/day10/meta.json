@@ -1,0 +1,7 @@
+{
+  "title": "Syntax Scoring",
+  "description": "Score corrupted and incomplete bracket expressions using a stack-based parser.",
+  "writeup": "## Approach\n\nA stack-based bracket matcher. Push opening brackets, pop and verify on closing brackets. The line's fate — corrupt or incomplete — determines which scoring system applies.\n\n## Part 1\n\nA line is **corrupted** if a closing bracket doesn't match the most recent open bracket. Score each first illegal character: `)` = 3, `]` = 57, `}` = 1197, `>` = 25137. Sum all corruption scores.\n\n## Part 2\n\nNon-corrupted lines are **incomplete** — the stack still has unmatched openers. The completion string closes them in reverse order. Score it by repeatedly multiplying the running total by 5 and adding the bracket's value (`)` = 1, `]` = 2, `}` = 3, `>` = 4). Take the median of all completion scores.",
+  "tags": ["stack", "parsing", "brackets"],
+  "stars": 2
+}

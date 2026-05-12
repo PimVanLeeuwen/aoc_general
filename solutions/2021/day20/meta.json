@@ -1,0 +1,7 @@
+{
+  "title": "Trench Map",
+  "description": "Enhance an infinite image using a 9-pixel window lookup algorithm.",
+  "writeup": "## Approach\n\nThe image enhancement maps each pixel's 3×3 neighborhood (read as a 9-bit binary number) to the enhancement algorithm string. Store only the lit (`#`) pixels in a set for efficient sparse representation.\n\nThe tricky part is the **infinite background**. If `algorithm[0] == '#'`, then all-dark neighborhoods (index 0) become lit — meaning the entire infinite background lights up on odd steps. If `algorithm[511] == '.'`, it goes dark again on even steps. Track this background state and use it when sampling pixels outside the current bounds.\n\n## Part 1\n\nApply 2 enhancement steps, expanding the working area by 1 pixel in each direction per step. Count lit pixels after step 2.\n\n## Part 2\n\nSame algorithm for 50 steps. The set-based representation keeps things manageable since only the region near the original image has interesting structure.",
+  "tags": ["grid", "simulation", "cellular-automaton"],
+  "stars": 2
+}

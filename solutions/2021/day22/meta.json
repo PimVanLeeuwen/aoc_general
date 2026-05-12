@@ -1,0 +1,7 @@
+{
+  "title": "Reactor Reboot",
+  "description": "Toggle 3D cuboid regions on/off and count total active cubes.",
+  "writeup": "## Approach\n\nEach instruction turns a cuboid region on or off. Brute-force voxel counting is infeasible for part 2's enormous coordinates. Instead, maintain a list of disjoint \"on\" cuboids.\n\nFor each new instruction, subtract its cuboid from every existing on-cuboid using geometric splitting — slicing off up to 6 non-overlapping pieces around the intersection. If the instruction is \"on\", add the full new cuboid to the list. This ensures no double-counting.\n\n## Part 1\n\nProcess only instructions whose ranges fall within `[-50, 50]`. Sum the volumes of all resulting on-cuboids.\n\n## Part 2\n\nProcess all instructions without restriction. The same algorithm handles arbitrarily large coordinates since it works with cuboid geometry, not individual voxels. The cuboid list grows linearly with each instruction but remains manageable (~10K cuboids for typical inputs).",
+  "tags": ["3D", "geometry", "set-operations"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Seven Segment Searches",
+  "description": "Decode scrambled seven-segment displays by deducing wire-to-segment mappings.",
+  "writeup": "## Approach\n\nEach display has a random permutation of the 7 wire-to-segment connections. Find the correct permutation by testing all 7! = 5040 possibilities against the known digit patterns.\n\n## Part 1\n\nDigits 1, 4, 7, and 8 use a unique number of segments (2, 4, 3, and 7 respectively). Simply count output values with these lengths.\n\n## Part 2\n\nFor each display, try all 5040 permutations of wire assignments. A permutation is valid if every signal pattern, when translated through the mapping, produces a known digit. Once the valid mapping is found, translate the four output values and combine them into a 4-digit number. Sum all decoded outputs.\n\nWhile brute-force, 5040 permutations per display is fast enough. A deductive approach using set intersections is also possible but less clear.",
+  "tags": ["permutation", "brute-force", "decoding"],
+  "stars": 2
+}

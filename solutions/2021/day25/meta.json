@@ -1,0 +1,7 @@
+{
+  "title": "Sea Cucumber",
+  "description": "Simulate sea cucumber herds on a toroidal grid until they stop moving.",
+  "writeup": "## Approach\n\nTwo herds of sea cucumbers move on a toroidal grid: east-facing (`>`) move right, south-facing (`v`) move down. Each step, east-facing move first (simultaneously), then south-facing (simultaneously). A cucumber moves only if its target cell is empty.\n\n## Part 1\n\nSimulate step by step. In each phase, first collect all cucumbers that *can* move (checking the grid before any moves), then apply all moves at once. Count steps until no cucumber moves.\n\n## Part 2\n\nDay 25 Part 2 is always a free star — just complete all other 49 puzzles.",
+  "tags": ["simulation", "grid", "cellular-automaton"],
+  "stars": 2
+}

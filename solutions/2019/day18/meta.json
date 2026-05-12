@@ -1,0 +1,7 @@
+{
+  "title": "Many-Worlds Interpretation",
+  "description": "Navigate a vault maze collecting all keys in the fewest steps, then split the maze for four robots.",
+  "writeup": "## Approach\n\nThis is a shortest-path problem over a state space of (position, keys_collected). The key insight is to precompute BFS distances between all points of interest — the start and every key — recording which doors block each path. Then Dijkstra searches over key collection orderings without re-traversing the grid.\n\n## Part 1\n\nFrom each point of interest (start + every key), BFS to find the distance to every other key and which doors lie on the path (stored as a bitmask). Then run Dijkstra where each state is `(current_position_label, keys_bitmask)`. At each state, try moving to any uncollected key that is reachable given the doors we can currently open. The first state where all keys are collected gives the minimum steps.\n\n## Part 2\n\nThe entrance is replaced with walls and four robots in the corners of a 3x3 patch. The state becomes `(pos_robot0, pos_robot1, pos_robot2, pos_robot3, keys_bitmask)`, and at each step exactly one robot moves to collect a key. The same Dijkstra approach works — keys collected by any robot unlock doors for all robots. The quadrant structure naturally limits which keys each robot can reach, keeping the state space manageable.",
+  "tags": ["bfs", "dijkstra", "bitmask", "graph"],
+  "stars": 2
+}

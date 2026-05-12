@@ -1,0 +1,10 @@
+{
+  "title": "Set and Forget",
+  "description": "Map scaffolding from an Intcode ASCII camera, find intersections, then compress a traversal path into repeating functions.",
+  "writeup": "## Approach\n\nThe Intcode program outputs an ASCII map of scaffolding. Part 1 is spatial analysis on this grid. Part 2 requires tracing the scaffold path and compressing it into a program small enough for the robot.\n\n## Part 1\n\nRun the Intcode ASCII program and parse its output into a 2D grid. Find all intersections — positions where scaffold extends in all four cardinal directions. The alignment parameter for each intersection is `x * y`, and the answer is the sum of all alignment parameters.\n\n## Part 2\n\nSet `memory[0] = 2` to wake the vacuum robot. The robot needs a movement program: a main routine calling three functions (A, B, C), each a sequence of turns (L/R) and distances.\n\nFirst, trace the full path by following the scaffold: at each position, check if turning left or right leads to more scaffold, then walk forward as far as possible. This produces a sequence like `R,8,R,8,R,4,R,4,...`.\n\nThen compress this path: brute-force search over possible function lengths (in pairs of turn+distance). For each combination of lengths for A, B, and C, greedily match A from the front, then B from the next unmatched segment, then C. If the three functions cover the entire path and all strings fit in 20 characters, we have a valid program.\n\nSend the main routine and functions as ASCII text to the Intcode computer. The last output value is the amount of dust collected.",
+  "tags": ["intcode", "grid", "path-compression", "ascii"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Space Image Format",
+  "description": "Decode a layered space image by stacking transparent layers to reveal a hidden message.",
+  "writeup": "## Approach\n\nThe image is a flat digit string split into 25x6 layers. Two tasks: a corruption check, then compositing.\n\n## Part 1\n\nFind the layer with the fewest `0` digits. On that layer, multiply the count of `1` digits by the count of `2` digits. Simple `min()` with a key function.\n\n## Part 2\n\nFlatten the layers front-to-back: for each pixel position, the first non-transparent (`2`) value wins. The result is a 25x6 grid of `0` (black) and `1` (white) pixels that spell out a five-letter code. Render `1` as a visible character and `0` as space to read it.",
+  "tags": ["image-processing", "layers"],
+  "stars": 2
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Category Six",
+  "description": "Simulate a network of 50 Intcode computers exchanging packets, with a NAT device detecting idle states.",
+  "writeup": "## Approach\n\nBoot 50 Intcode computers, each initialized with its network address (0-49). Run them in round-robin, feeding packets from input queues or -1 when empty, and routing output triples (dest, X, Y) to the appropriate queue.\n\n## Part 1\n\nSimulate the network until any computer sends a packet to address 255. The answer is the Y value of that first packet.\n\n## Part 2\n\nA NAT device captures packets sent to address 255. When the entire network is idle (all queues empty and no computer produced output in a full round), the NAT sends its last received packet to computer 0. The answer is the first Y value the NAT delivers to address 0 twice in a row.",
+  "tags": ["intcode", "simulation", "networking"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

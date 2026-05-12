@@ -1,0 +1,7 @@
+{
+  "title": "The N-Body Problem",
+  "description": "Simulate gravity between Jupiter's moons in 3D, then find when the system returns to its initial state.",
+  "writeup": "## Approach\n\nDirect simulation for Part 1, axis independence + LCM for Part 2.\n\n## Part 1\n\nSimulate 1000 time steps: for each pair of moons, adjust velocities by the sign of their position difference on each axis, then update positions. Total energy is `sum(potential * kinetic)` where potential = sum of absolute positions, kinetic = sum of absolute velocities.\n\n## Part 2\n\nThe key insight is that the three axes (x, y, z) are completely independent — gravity on the x-axis only depends on x-positions. So we can find the cycle length for each axis separately, then take the LCM.\n\nFor each axis, simulate until the positions and velocities match the initial state. The individual axis cycles are in the hundreds of thousands, but the LCM produces a cycle in the hundreds of trillions — far too large to brute-force in 3D.",
+  "tags": ["simulation", "math", "lcm", "cycle-detection"],
+  "stars": 2
+}

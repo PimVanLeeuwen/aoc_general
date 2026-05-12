@@ -1,0 +1,10 @@
+{
+  "title": "Sensor Boost",
+  "description": "Complete the Intcode computer with relative mode and extensible memory, then run the BOOST program.",
+  "writeup": "## Approach\n\nThis day completes the Intcode computer — after this, it's fully featured for all remaining 2019 puzzles.\n\n### Final Intcode additions\n- **Relative mode (mode 2)**: parameters are offsets from a `relative_base` register, enabling position-independent code and stack-like patterns.\n- **Opcode 9 (ARB)**: adjusts the relative base by its parameter value.\n- **Extensible memory**: addresses beyond the program auto-extend with zeros. Implemented by growing the memory list on demand.\n- **Large numbers**: Python handles arbitrary precision natively, so this is free.\n\nWrite parameters also need mode support — mode 0 writes to the literal address, mode 2 writes to `relative_base + offset`.\n\n## Part 1\n\nRun the BOOST program with input `1` (test mode). If the Intcode computer is correct, it outputs a single BOOST keycode. Any other outputs indicate malfunctioning opcodes.\n\n## Part 2\n\nRun with input `2` (sensor boost mode). This exercises the full Intcode feature set more intensively and outputs the distress signal coordinates.",
+  "tags": ["intcode", "simulation"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

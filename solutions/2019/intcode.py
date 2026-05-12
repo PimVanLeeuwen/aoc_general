@@ -1,7 +1,7 @@
 """
 Intcode Computer — shared across 2019 puzzles.
 
-A virtual machine with position/immediate parameter modes, I/O, and jumps.
+A virtual machine with extensible memory, three parameter modes, and I/O.
 Opcodes:
   1  ADD   p[c] = p[a] + p[b]
   2  MUL   p[c] = p[a] * p[b]
@@ -11,11 +11,13 @@ Opcodes:
   6  JZ    if p[a] == 0: pc = p[b]
   7  LT    p[c] = 1 if p[a] < p[b] else 0
   8  EQ    p[c] = 1 if p[a] == p[b] else 0
+  9  ARB   relative_base += p[a]
   99 HALT  stop execution
 
 Parameter modes (encoded in opcode digits):
-  0  position — parameter is a memory address
+  0  position  — parameter is a memory address
   1  immediate — parameter is a literal value
+  2  relative  — parameter is an offset from the relative base
 """
 
 
@@ -25,6 +27,7 @@ class IntcodeComputer:
     def __init__(self, program, inputs=None):
         self.memory = list(program)
         self.pc = 0
+        self.relative_base = 0
         self.halted = False
         self.waiting_for_input = False
         self.inputs = list(inputs) if inputs else []
@@ -39,6 +42,7 @@ class IntcodeComputer:
         """Reset state with a fresh program."""
         self.memory = list(program)
         self.pc = 0
+        self.relative_base = 0
         self.halted = False
         self.waiting_for_input = False
         self.inputs = []
@@ -49,14 +53,40 @@ class IntcodeComputer:
         self.inputs.append(value)
         self.waiting_for_input = False
 
+    def _ensure(self, addr):
+        """Extend memory with zeros if address is beyond current size."""
+        if addr >= len(self.memory):
+            self.memory.extend([0] * (addr - len(self.memory) + 1))
+
+    def _get(self, addr):
+        """Read memory at address, auto-extending if needed."""
+        self._ensure(addr)
+        return self.memory[addr]
+
+    def _set(self, addr, value):
+        """Write memory at address, auto-extending if needed."""
+        self._ensure(addr)
+        self.memory[addr] = value
+
     def _read(self, param, mode):
         """Read a parameter value according to its mode."""
         if mode == 0:
-            return self.memory[param]
+            return self._get(param)
         elif mode == 1:
             return param
+        elif mode == 2:
+            return self._get(self.relative_base + param)
         else:
             raise ValueError(f"Unknown parameter mode {mode}")
+
+    def _write_addr(self, param, mode):
+        """Resolve the target address for a write parameter."""
+        if mode == 0:
+            return param
+        elif mode == 2:
+            return self.relative_base + param
+        else:
+            raise ValueError(f"Invalid write parameter mode {mode}")
 
     def run(self):
         """Execute until halt. Returns self for chaining."""
@@ -77,7 +107,7 @@ class IntcodeComputer:
             self.halted = True
             return False
 
-        instruction = self.memory[self.pc]
+        instruction = self._get(self.pc)
         op = instruction % 100
         modes = [(instruction // 10 ** (i + 2)) % 10 for i in range(3)]
 
@@ -86,49 +116,53 @@ class IntcodeComputer:
             return False
 
         elif op == 1:  # ADD
-            a = self._read(self.memory[self.pc + 1], modes[0])
-            b = self._read(self.memory[self.pc + 2], modes[1])
-            self.memory[self.memory[self.pc + 3]] = a + b
+            a = self._read(self._get(self.pc + 1), modes[0])
+            b = self._read(self._get(self.pc + 2), modes[1])
+            self._set(self._write_addr(self._get(self.pc + 3), modes[2]), a + b)
             self.pc += 4
 
         elif op == 2:  # MUL
-            a = self._read(self.memory[self.pc + 1], modes[0])
-            b = self._read(self.memory[self.pc + 2], modes[1])
-            self.memory[self.memory[self.pc + 3]] = a * b
+            a = self._read(self._get(self.pc + 1), modes[0])
+            b = self._read(self._get(self.pc + 2), modes[1])
+            self._set(self._write_addr(self._get(self.pc + 3), modes[2]), a * b)
             self.pc += 4
 
         elif op == 3:  # INP
             if not self.inputs:
                 self.waiting_for_input = True
                 return False
-            self.memory[self.memory[self.pc + 1]] = self.inputs.pop(0)
+            self._set(self._write_addr(self._get(self.pc + 1), modes[0]), self.inputs.pop(0))
             self.pc += 2
 
         elif op == 4:  # OUT
-            self.outputs.append(self._read(self.memory[self.pc + 1], modes[0]))
+            self.outputs.append(self._read(self._get(self.pc + 1), modes[0]))
             self.pc += 2
 
         elif op == 5:  # JNZ
-            a = self._read(self.memory[self.pc + 1], modes[0])
-            b = self._read(self.memory[self.pc + 2], modes[1])
+            a = self._read(self._get(self.pc + 1), modes[0])
+            b = self._read(self._get(self.pc + 2), modes[1])
             self.pc = b if a != 0 else self.pc + 3
 
         elif op == 6:  # JZ
-            a = self._read(self.memory[self.pc + 1], modes[0])
-            b = self._read(self.memory[self.pc + 2], modes[1])
+            a = self._read(self._get(self.pc + 1), modes[0])
+            b = self._read(self._get(self.pc + 2), modes[1])
             self.pc = b if a == 0 else self.pc + 3
 
         elif op == 7:  # LT
-            a = self._read(self.memory[self.pc + 1], modes[0])
-            b = self._read(self.memory[self.pc + 2], modes[1])
-            self.memory[self.memory[self.pc + 3]] = 1 if a < b else 0
+            a = self._read(self._get(self.pc + 1), modes[0])
+            b = self._read(self._get(self.pc + 2), modes[1])
+            self._set(self._write_addr(self._get(self.pc + 3), modes[2]), 1 if a < b else 0)
             self.pc += 4
 
         elif op == 8:  # EQ
-            a = self._read(self.memory[self.pc + 1], modes[0])
-            b = self._read(self.memory[self.pc + 2], modes[1])
-            self.memory[self.memory[self.pc + 3]] = 1 if a == b else 0
+            a = self._read(self._get(self.pc + 1), modes[0])
+            b = self._read(self._get(self.pc + 2), modes[1])
+            self._set(self._write_addr(self._get(self.pc + 3), modes[2]), 1 if a == b else 0)
             self.pc += 4
+
+        elif op == 9:  # ARB (adjust relative base)
+            self.relative_base += self._read(self._get(self.pc + 1), modes[0])
+            self.pc += 2
 
         else:
             raise ValueError(f"Unknown opcode {op} at position {self.pc}")

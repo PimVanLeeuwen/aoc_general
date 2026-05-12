@@ -1,0 +1,7 @@
+{
+  "title": "Crab Cups",
+  "description": "Simulate a cup circle game using an array-based linked list for efficient O(1) operations.",
+  "writeup": "## Approach\n\nThe key insight is using an array as a linked list: `next_cup[i]` stores the cup clockwise from cup `i`. This gives O(1) removal, insertion, and destination lookup — essential for the 10 million move simulation.\n\n## Part 1\n\nSimulate 100 moves with 9 cups. Each move: pick up 3 cups after the current cup, find the destination (current label minus 1, wrapping and skipping picked-up cups), insert the 3 cups after the destination, and advance current. Read the labels clockwise from cup 1.\n\n## Part 2\n\nExtend to 1 million cups (labels 10 through 1,000,000 appended after the initial 9) and simulate 10 million moves. The array-based linked list makes this feasible — a naive list approach would be far too slow. The answer is the product of the two cups immediately clockwise of cup 1.",
+  "tags": ["linked-list", "simulation", "optimization"],
+  "stars": 2
+}

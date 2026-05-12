@@ -1,0 +1,7 @@
+{
+  "title": "Monster Messages",
+  "description": "Match messages against grammar rules compiled into regular expressions, with recursive rule support.",
+  "writeup": "## Approach\n\nCompile the grammar rules into a regular expression and match each message against it.\n\n## Part 1\n\nRecursively build a regex from rule 0: terminal rules become literal characters, alternatives become `(?:...|...)` groups, and sequences are concatenated. Match each message against the compiled pattern.\n\n## Part 2\n\nRules 8 and 11 become self-referencing (recursive). Rule 8 becomes `42+` (one or more repetitions of rule 42). Rule 11 becomes `42{n} 31{n}` (balanced repetition). Since standard regex can't express true recursion, a depth limit on the recursive `build_regex` function naturally unrolls these rules to a sufficient depth. The depth limit of ~15 is more than enough for typical inputs.",
+  "tags": ["regex", "parsing", "recursion"],
+  "stars": 2
+}

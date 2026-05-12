@@ -1,0 +1,7 @@
+{
+  "title": "Binary Boarding",
+  "description": "Decode boarding passes as binary numbers to find seat IDs.",
+  "writeup": "## Approach\n\nThe boarding pass is binary space partitioning — but it's really just a 10-bit binary number in disguise.\n\n## Part 1\n\nReplace F/L with 0 and B/R with 1, then parse as binary. The result is the seat ID (row * 8 + column). Find the maximum.\n\n## Part 2\n\nFind the one missing seat ID in the contiguous range. Sort all IDs and look for the gap, or scan from min to max for the missing value.",
+  "tags": ["binary", "math"],
+  "stars": 2
+}

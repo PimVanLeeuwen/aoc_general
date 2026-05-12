@@ -1,0 +1,7 @@
+{
+  "title": "Rambunctious Recitation",
+  "description": "Play a Van Eck-like memory game, simulating spoken numbers to turn 30 million.",
+  "writeup": "## Approach\n\nA number-speaking game where each turn depends on when the previous number was last spoken. This is essentially a Van Eck sequence.\n\n## Part 1\n\nTrack the last turn each number was spoken in a dictionary. On each turn, if the previous number was spoken before, say the difference between the current turn and when it was last seen; otherwise say 0. Simulate to turn 2020.\n\n## Part 2\n\nSame logic but simulate to turn 30,000,000. The key optimization is using a dictionary (hash map) for O(1) lookups rather than scanning a list. Python handles 30M iterations in a few seconds with this approach.",
+  "tags": ["simulation", "hash-map"],
+  "stars": 2
+}

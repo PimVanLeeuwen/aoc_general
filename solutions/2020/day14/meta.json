@@ -1,0 +1,7 @@
+{
+  "title": "Docking Data",
+  "description": "Apply bitmasks to values or addresses, with floating bits expanding into multiple memory writes.",
+  "writeup": "## Approach\n\nA 36-bit bitmask is applied differently in each part. Parse with regex to extract addresses and values.\n\n## Part 1\n\nThe mask overwrites value bits: `1` forces a bit to 1, `0` forces it to 0, `X` leaves it unchanged. Implement with an OR-mask (all `1`s in the mask) and an AND-mask (all non-`0`s in the mask). Sum all final memory values.\n\n## Part 2\n\nThe mask is applied to the memory address instead: `1` forces a bit to 1, `0` leaves it unchanged, and `X` becomes a \"floating\" bit that takes both values simultaneously. Each write with `n` floating bits expands into `2^n` writes to distinct addresses. Use `itertools.product` to generate all combinations of floating bit values.",
+  "tags": ["bitmask", "simulation"],
+  "stars": 2
+}

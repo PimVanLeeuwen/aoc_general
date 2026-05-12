@@ -1,0 +1,7 @@
+{
+  "title": "Ticket Translation",
+  "description": "Parse ticket field rules, discard invalid tickets, then determine field positions by constraint elimination.",
+  "writeup": "## Approach\n\nParse three sections: field rules (name with two valid ranges), your ticket, and nearby tickets.\n\n## Part 1\n\nFor each value on each nearby ticket, check if it satisfies at least one field's ranges. Sum all values that don't match any rule — these are the scanning errors.\n\n## Part 2\n\nDiscard invalid tickets, then determine which field maps to which column. For each column, start with all fields as candidates. For every valid ticket, eliminate fields whose ranges don't cover that column's value. This produces a constraint satisfaction problem: iteratively assign columns with only one remaining candidate and remove that field from all other columns. Multiply together the values on your ticket for all fields starting with \"departure\".",
+  "tags": ["parsing", "constraint-satisfaction", "elimination"],
+  "stars": 2
+}

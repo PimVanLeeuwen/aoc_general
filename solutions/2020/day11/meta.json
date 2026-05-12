@@ -1,0 +1,7 @@
+{
+  "title": "Seating System",
+  "description": "Cellular automaton on a seating layout with adjacent and line-of-sight neighbor rules.",
+  "writeup": "## Approach\n\nA Game-of-Life-style simulation on a seating chart. Each round, seats change based on their neighbors. Simulate until the layout stabilizes.\n\n## Part 1\n\nUse the 8 immediately adjacent cells as neighbors. An empty seat (`L`) becomes occupied if no neighbors are occupied. An occupied seat (`#`) becomes empty if 4 or more neighbors are occupied. Floor tiles (`.`) never change. Repeat until no changes occur.\n\n## Part 2\n\nInstead of immediate neighbors, cast rays in all 8 directions and find the first seat (not floor) in each direction. The tolerance threshold also increases to 5 occupied visible seats before a seat empties. This models people looking further but being slightly more tolerant of crowding.",
+  "tags": ["cellular-automaton", "simulation", "grid"],
+  "stars": 2
+}

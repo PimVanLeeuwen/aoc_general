@@ -1,0 +1,7 @@
+{
+  "title": "Jurassic Jigsaw",
+  "description": "Assemble image tiles by matching edges, then search for sea monsters in the composed image.",
+  "writeup": "## Approach\n\nA jigsaw puzzle: match tile edges (including rotations and flips), assemble the image, and search for a pattern.\n\n## Part 1\n\nBuild an edge-to-tile lookup. Corner tiles are those with exactly 2 edges that match another tile (the other 2 edges are on the border). Multiply their IDs.\n\n## Part 2\n\nAssemble the full image:\n1. Pick a corner tile and orient it so shared edges face right and down.\n2. Fill the top row left-to-right by matching each tile's left edge to its neighbor's right edge.\n3. Fill remaining rows top-to-bottom by matching top edges.\n4. Crop tile borders and stitch into one large image.\n\nThen try all 8 orientations of the assembled image and count sea monster matches using coordinate offsets from the monster pattern. The water roughness is the total `#` count minus the cells covered by monsters.",
+  "tags": ["grid", "assembly", "pattern-matching", "rotation"],
+  "stars": 2
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Oxygen System",
+  "description": "Explore a maze with an Intcode repair droid, find the oxygen system, then simulate oxygen filling.",
+  "writeup": "## Approach\n\nThe maze is unknown and can only be discovered by moving the Intcode droid one step at a time. DFS with backtracking explores the full map, then BFS solves both parts on the discovered grid.\n\n## Part 1\n\nExplore the entire maze via recursive DFS: try each direction, and if the droid moves (status 1 or 2), recurse from the new position, then send the reverse command to backtrack. This builds a complete `{(x,y): status}` map. Then BFS from `(0,0)` to the oxygen system gives the shortest path.\n\n## Part 2\n\nBFS flood-fill from the oxygen system position. The maximum distance reached equals the number of minutes for oxygen to fill every open space in the maze.",
+  "tags": ["intcode", "bfs", "dfs", "maze"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

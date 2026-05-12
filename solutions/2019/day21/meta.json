@@ -1,0 +1,10 @@
+{
+  "title": "Springdroid Adventure",
+  "description": "Program a springdroid with boolean logic to jump over holes in the hull.",
+  "writeup": "## Approach\n\nThe springdroid always jumps exactly 4 tiles forward. We need to write boolean springscript using AND/OR/NOT with sensor registers to decide when to jump. The key is deriving the right logical formula.\n\n## Part 1\n\nWith sensors A-D (1-4 tiles ahead), the droid should jump whenever there's a hole in the next 3 tiles AND the landing spot (D) is safe:\n\n`J = (!A || !B || !C) && D`\n\nThis says: \"if any of the next three tiles is missing, and I can land safely at distance 4, then jump.\" This takes 6 springscript instructions.\n\n## Part 2\n\nRUN mode adds sensors E-I (5-9 tiles). The same Part 1 logic fails because after landing on D, the droid might immediately face another gap it can't handle. We add a look-ahead check: after landing, the droid must be able to either walk forward (E is ground) or jump again (H, 4 tiles from D, is ground):\n\n`J = (!A || !B || !C) && D && (E || H)`\n\nThis takes 10 springscript instructions, well within the 15-instruction limit.",
+  "tags": ["intcode", "boolean-logic", "ascii"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

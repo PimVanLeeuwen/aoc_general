@@ -1,0 +1,10 @@
+{
+  "title": "Cryostasis",
+  "description": "Explore Santa's ship as a text adventure, collect items, and find the right weight to pass security.",
+  "writeup": "## Approach\n\nThis is a text adventure driven by Intcode. The solution automates the entire exploration and puzzle-solving process.\n\n## Part 1\n\nThe droid explores the ship via BFS, parsing room descriptions to discover doors and items. Dangerous items (infinite loop, giant electromagnet, molten lava, photons, escape pod) are blacklisted — picking them up causes an instant game over.\n\nAfter mapping all rooms and collecting all safe items, the droid navigates to the Security Checkpoint. It then tries all 2^n combinations of items (n is typically ~8, so at most 256 attempts) by dropping everything, picking up a subset, and stepping onto the pressure-sensitive floor. When the floor accepts the weight, it outputs a password.\n\n## Part 2\n\nDay 25 Part 2 is awarded for completing all 49 other stars — no additional puzzle.",
+  "tags": ["intcode", "text-adventure", "bfs", "brute-force"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

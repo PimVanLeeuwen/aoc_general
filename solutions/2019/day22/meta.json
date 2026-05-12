@@ -1,0 +1,7 @@
+{
+  "title": "Slam Shuffle",
+  "description": "Shuffle a massive deck of cards using modular arithmetic and repeated function composition.",
+  "writeup": "## Approach\n\nThe key insight is that every shuffle operation is a linear function `f(x) = ax + b mod N` where x is a card's position. Reverse is `(-1)x + (-1)`, cut k is `x - k`, and deal with increment k is `kx`. All steps compose into a single linear function by multiplying/adding coefficients.\n\n## Part 1\n\nCompose all shuffle instructions into `f(x) = ax + b mod 10007`, then evaluate `f(2019)` to find where card 2019 ends up. Straightforward modular arithmetic.\n\n## Part 2\n\nThe deck has ~119 trillion cards and the shuffle repeats ~101 trillion times. Direct simulation is impossible, but since `f(x) = ax + b` is linear, repeated application `f^k` can be computed via repeated squaring on the linear function coefficients — the same idea as modular exponentiation but for affine transforms.\n\nThe question asks which card is at position 2020, which means we need the inverse: `c = a_k^(-1) * (2020 - b_k) mod N`. Since N is prime, `a_k^(-1)` is computed via Fermat's little theorem: `a^(N-2) mod N`.",
+  "tags": ["math", "modular-arithmetic", "linear-algebra"],
+  "stars": 2
+}

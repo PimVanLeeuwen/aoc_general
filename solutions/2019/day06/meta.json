@@ -1,0 +1,7 @@
+{
+  "title": "Universal Orbit Map",
+  "description": "Count total orbits in a tree, then find the shortest transfer path between two nodes.",
+  "writeup": "## Approach\n\nThe orbit map is a tree rooted at `COM`. Parse each `A)B` line into a parent lookup (`B -> A`) and an adjacency list.\n\n## Part 1\n\nThe total number of direct + indirect orbits equals the sum of each node's depth in the tree. Compute depth recursively with memoization: `depth(node) = 1 + depth(parent[node])`, base case `depth(COM) = 0`.\n\n## Part 2\n\nFind the minimum orbital transfers between the objects `YOU` and `SAN` orbit. This is the shortest path in the undirected orbit graph, easily found with BFS. Equivalently, walk both nodes up to their lowest common ancestor and sum the distances — the path goes up from one and back down to the other.",
+  "tags": ["trees", "bfs", "graphs"],
+  "stars": 2
+}

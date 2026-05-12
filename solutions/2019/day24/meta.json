@@ -1,0 +1,7 @@
+{
+  "title": "Planet of Discord",
+  "description": "Simulate a bug cellular automaton on a 5x5 grid, then extend it to recursive depth levels.",
+  "writeup": "## Approach\n\nA Game-of-Life-style automaton on a 5x5 grid. Part 1 is cycle detection; Part 2 adds a recursive fractal dimension through the center tile.\n\n## Part 1\n\nSimulate the automaton step by step, storing each state as a frozenset of bug positions. Stop when a state repeats, then compute the biodiversity rating by treating each cell as a bit (power of 2) in a 25-bit number.\n\n## Part 2\n\nThe grid gains recursive depth: the center tile (2,2) is a portal to an inner level, and edge tiles connect to an outer level. For example, a tile adjacent to the center on the left looks inward at the entire left column of level+1. A tile on the top edge looks outward at position (2,1) of level-1.\n\nThe neighbor function handles all 8 edge/center cases. The automaton then runs identically — count neighbors, apply birth/death rules — but over `(x, y, level)` triples. After 200 minutes, count all bugs across all levels.",
+  "tags": ["cellular-automaton", "simulation", "recursion"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Space Stoichiometry",
+  "description": "Calculate ore needed for fuel through a chain of chemical reactions, then maximize fuel from 1 trillion ore.",
+  "writeup": "## Approach\n\nWork backwards from FUEL to ORE, tracking surpluses from batch production. Then binary search for Part 2.\n\n## Part 1\n\nStart with a demand for 1 FUEL. For each non-ORE chemical still needed, look up its recipe, compute how many batches are required (`ceil(needed / batch_size)`), track any surplus, and add the input requirements. Repeat until only ORE demands remain. Surpluses matter because reactions produce in fixed batch sizes — e.g., needing 7 of something produced in batches of 10 leaves 3 surplus for later use.\n\n## Part 2\n\nThe `ore_for_fuel(n)` function is monotonically increasing, so binary search works. Start with a lower bound of `1T / ore_per_fuel` (assuming perfect efficiency) and double it for the upper bound. Binary search converges in ~30 steps to find the maximum fuel producible from exactly 1 trillion ore.",
+  "tags": ["topological-sort", "binary-search", "math"],
+  "stars": 2
+}

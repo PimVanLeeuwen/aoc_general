@@ -1,0 +1,7 @@
+{
+  "title": "Wizard Simulator 20XX",
+  "description": "Find the cheapest spell sequence to defeat the boss in a turn-based RPG with timed effects.",
+  "writeup": "## Approach\n\nThis is a shortest-path problem over game states. Each state captures the player's HP, mana, boss HP, and all active effect timers. We use Dijkstra's algorithm (priority queue ordered by mana spent) to find the minimum-cost winning sequence.\n\n## Part 1\n\nThe state space is pruned by:\n- Skipping already-visited states (same HP, mana, boss HP, and timers)\n- Not allowing effects to be cast while already active\n- Discarding states where the player dies\n\nSince Dijkstra explores states in order of total mana spent, the first time we reach a winning state is guaranteed to be optimal.\n\nThe tricky part is correctly implementing the effect system: effects tick at the start of *both* player and boss turns, and a spell can be recast on the same turn its effect expires.\n\n## Part 2\n\nHard mode: the player loses 1 HP at the start of each player turn (before effects apply). This means the player can die before even casting a spell. Same Dijkstra approach, just with the extra HP drain added at the start of each player turn.",
+  "tags": ["dijkstra", "simulation", "state-space-search"],
+  "stars": 2
+}

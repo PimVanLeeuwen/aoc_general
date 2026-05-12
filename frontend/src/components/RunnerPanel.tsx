@@ -3,14 +3,16 @@ import { Play, Loader, AlertCircle, CheckCircle } from 'lucide-react'
 import { usePyodide } from '../context/PyodideContext'
 import { runSolution, runVisualization } from '../utils/pyodide-runner'
 import Visualizer from './Visualizer'
-import type { RunResult, VisFrame } from '../types'
+import type { RunResult, VisFrame, FetchedSharedFile } from '../types'
 
 export default function RunnerPanel({
   code,
   hasVisualization,
+  sharedCode,
 }: {
   code: string
   hasVisualization: boolean
+  sharedCode?: FetchedSharedFile[]
 }) {
   const { isReady, isLoading: pyLoading, load } = usePyodide()
   const [input, setInput] = useState('')
@@ -37,10 +39,10 @@ export default function RunnerPanel({
     setFrames(null)
     setRunError(null)
     try {
-      const res = await runSolution(code, input)
+      const res = await runSolution(code, input, sharedCode)
       setResult(res)
       if (hasVisualization && !res.error) {
-        const vizFrames = await runVisualization(code, input)
+        const vizFrames = await runVisualization(code, input, sharedCode)
         if (vizFrames.length > 0) setFrames(vizFrames)
       }
     } catch (e) {

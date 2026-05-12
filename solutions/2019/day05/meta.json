@@ -1,0 +1,10 @@
+{
+  "title": "Sunny with a Chance of Asteroids",
+  "description": "Extend the Intcode computer with parameter modes, I/O, and conditional jumps, then run diagnostics.",
+  "writeup": "## Approach\n\nThis puzzle extends the Day 2 Intcode computer significantly. The shared `intcode.py` module now handles parameter modes, I/O, comparisons, and jumps.\n\n### New features added to Intcode\n- **Parameter modes**: each parameter can be position (mode 0, dereference) or immediate (mode 1, literal). Modes are encoded in the upper digits of the opcode value.\n- **I/O**: opcode 3 reads from an input queue, opcode 4 writes to an output list.\n- **Jumps**: opcodes 5 (jump-if-nonzero) and 6 (jump-if-zero) enable branching.\n- **Comparisons**: opcodes 7 (less-than) and 8 (equals) store 0 or 1.\n\n## Part 1\n\nRun the TEST program with input `1` (air conditioner system ID). It performs diagnostic checks (all should output 0) then outputs the final diagnostic code.\n\n## Part 2\n\nRun the same program with input `5` (thermal radiator system ID). This exercises the new comparison and jump instructions. Only one output is produced — the diagnostic code.",
+  "tags": ["intcode", "simulation"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

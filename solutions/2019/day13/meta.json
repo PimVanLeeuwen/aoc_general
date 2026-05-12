@@ -1,0 +1,10 @@
+{
+  "title": "Care Package",
+  "description": "Play an Intcode-powered breakout game: count blocks, then beat the game by tracking the ball.",
+  "writeup": "## Approach\n\nThe Intcode program drives an arcade cabinet that outputs screen updates as `(x, y, tile_id)` triplets. The special coordinate `(-1, 0)` updates the score display.\n\n## Part 1\n\nRun the program to completion and parse all output triplets into a screen dictionary. Count tiles with id 2 (blocks).\n\n## Part 2\n\nSet `memory[0] = 2` to insert quarters. The game now expects joystick input: -1 (left), 0 (neutral), or +1 (right). The winning strategy is trivially simple: always move the paddle toward the ball's x-position. Since the paddle moves one step per frame and the ball also moves one step per frame, this perfect tracking never misses. Use `run_until_block()` to process each game frame, read the ball and paddle positions from outputs, and provide the joystick direction as input.",
+  "tags": ["intcode", "simulation", "game"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

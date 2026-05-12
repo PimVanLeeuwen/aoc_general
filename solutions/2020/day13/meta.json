@@ -1,0 +1,7 @@
+{
+  "title": "Shuttle Search",
+  "description": "Find the earliest bus departure, then solve a system of modular congruences for consecutive offsets.",
+  "writeup": "## Approach\n\nPart 1 is a simple minimum-wait calculation. Part 2 is a classic application of the Chinese Remainder Theorem.\n\n## Part 1\n\nFor each active bus, compute the wait time as `bus_id - (earliest % bus_id)`. The bus with the shortest wait gives the answer (bus ID times wait).\n\n## Part 2\n\nFind timestamp `t` where bus `i` departs at time `t + offset_i` for all buses. This is a system of modular congruences: `t ≡ -offset (mod bus_id)`. Since all bus IDs are prime (and thus coprime), solve incrementally: start with `t = 0, step = 1`. For each bus, advance `t` by `step` until the congruence holds, then multiply `step` by the bus ID. This constructs the solution without needing extended GCD.",
+  "tags": ["math", "crt", "modular-arithmetic"],
+  "stars": 2
+}

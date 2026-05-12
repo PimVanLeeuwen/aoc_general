@@ -1,0 +1,7 @@
+{
+  "title": "Handheld Halting",
+  "description": "Simulate a simple VM to detect infinite loops, then fix the program by swapping one instruction.",
+  "writeup": "## Approach\n\nThe VM has three instructions: `acc` (adjust accumulator), `jmp` (jump), and `nop` (no-op). Detect loops by tracking visited program counter values.\n\n## Part 1\n\nRun the program and track which instructions have been executed. When the program counter revisits an instruction, report the current accumulator value.\n\n## Part 2\n\nThe program has exactly one corrupted `jmp` or `nop`. Try swapping each `jmp`<->`nop` one at a time and re-run. The first modification that lets the program terminate normally (pc reaches end) gives the answer.",
+  "tags": ["simulation", "vm", "brute-force"],
+  "stars": 2
+}

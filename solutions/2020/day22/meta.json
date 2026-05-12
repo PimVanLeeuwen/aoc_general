@@ -1,0 +1,7 @@
+{
+  "title": "Crab Combat",
+  "description": "Simulate a card game between two players, with recursive sub-games in part 2.",
+  "writeup": "## Approach\n\nA card game simulation. Part 1 is straightforward queue manipulation; part 2 adds recursive sub-games with cycle detection.\n\n## Part 1\n\nSimulate regular Combat: each round, both players draw their top card, the higher card wins, and the winner places both cards at the bottom of their deck (winner's card first). Play until one deck is empty, then score the winner's deck by multiplying each card by its position from the bottom.\n\n## Part 2\n\nRecursive Combat adds two rules:\n\n1. **Infinite game prevention**: if the same deck configuration has been seen before in this game, Player 1 wins immediately.\n2. **Recursive rounds**: if both players have at least as many remaining cards as the value they drew, the round winner is determined by a recursive sub-game using copies of the next N cards from each deck.\n\nThe recursion terminates because sub-games always use fewer cards. State hashing with `(tuple(deck1), tuple(deck2))` provides efficient cycle detection.",
+  "tags": ["simulation", "recursion", "deque"],
+  "stars": 2
+}

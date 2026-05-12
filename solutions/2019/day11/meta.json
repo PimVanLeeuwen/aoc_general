@@ -1,0 +1,10 @@
+{
+  "title": "Space Police",
+  "description": "Run an Intcode-powered hull-painting robot that reads panel colors and paints a registration identifier.",
+  "writeup": "## Approach\n\nThe robot is a simple state machine: position, direction, and a dictionary of painted panels. The Intcode brain reads the current panel color as input and outputs two values: the color to paint and which way to turn. After turning, the robot steps forward.\n\nUsing `run_until_block()` lets the Intcode program pause naturally when it needs input, making the robot loop straightforward.\n\n## Part 1\n\nStart on a black panel (color 0). Run the robot until the Intcode program halts. Count how many unique panel positions were painted at least once — the size of the panels dictionary.\n\n## Part 2\n\nStart on a white panel (color 1) instead. The robot now paints eight capital letters as a registration identifier. Render the white panels as a grid to read the message.",
+  "tags": ["intcode", "simulation", "grid"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

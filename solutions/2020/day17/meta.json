@@ -1,0 +1,7 @@
+{
+  "title": "Conway Cubes",
+  "description": "Simulate a 3D and 4D cellular automaton using sparse coordinate sets.",
+  "writeup": "## Approach\n\nA Conway's Game of Life variant in higher dimensions. Using sparse sets of active cube coordinates avoids allocating enormous arrays.\n\n## Part 1\n\nStart with the 2D input at z=0. Each cycle, count neighbors for every cell adjacent to an active cube using a `Counter`. Active cubes with 2 or 3 neighbors survive; inactive cubes with exactly 3 neighbors activate. After 6 cycles, count active cubes. Each cell has 26 neighbors in 3D.\n\n## Part 2\n\nSame logic but in 4D (add a w-coordinate initialized to 0). Each cell now has 80 neighbors. The sparse set approach scales well — only cells near the active frontier are examined, not the entire 4D volume.",
+  "tags": ["cellular-automaton", "simulation", "sparse-set"],
+  "stars": 2
+}

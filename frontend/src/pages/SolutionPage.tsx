@@ -6,7 +6,7 @@ import CodeViewer from '../components/CodeViewer'
 import WriteupView from '../components/WriteupView'
 import RunnerPanel from '../components/RunnerPanel'
 import { assetUrl } from '../utils/assetUrl'
-import type { SolutionDetail } from '../types'
+import type { SolutionDetail, FetchedSharedFile } from '../types'
 
 type Tab = 'writeup' | 'code' | 'run'
 
@@ -36,10 +36,27 @@ export default function SolutionPage() {
         r.ok ? r.json() : {},
       ),
     ])
-      .then(([code, meta]) => {
+      .then(async ([code, meta]) => {
+        // Fetch shared files if specified in meta
+        let sharedCode: FetchedSharedFile[] | undefined
+        const sharedFiles = (meta as Record<string, unknown>).shared_files as { path: string; label: string }[] | undefined
+        if (sharedFiles?.length) {
+          sharedCode = await Promise.all(
+            sharedFiles.map(async (sf: { path: string; label: string }) => {
+              const res = await fetch(assetUrl(`solutions/${year}/${sf.path}`))
+              return {
+                label: sf.label,
+                filename: sf.path,
+                code: res.ok ? await res.text() : '',
+              }
+            }),
+          )
+        }
+
         setSolution({
           ...meta,
           code,
+          sharedCode,
           year: parseInt(year),
           day: parseInt(day),
           hasSolution: code.length > 0,
@@ -134,9 +151,9 @@ export default function SolutionPage() {
       {!loading && solution && (
         <>
           {tab === 'writeup' && <WriteupView content={solution.writeup ?? ''} />}
-          {tab === 'code' && <CodeViewer code={solution.code} />}
+          {tab === 'code' && <CodeViewer code={solution.code} sharedFiles={solution.sharedCode} />}
           {tab === 'run' && (
-            <RunnerPanel code={solution.code} hasVisualization={solution.hasVisualization} />
+            <RunnerPanel code={solution.code} hasVisualization={solution.hasVisualization} sharedCode={solution.sharedCode} />
           )}
         </>
       )}

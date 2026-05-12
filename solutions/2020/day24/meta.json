@@ -1,0 +1,7 @@
+{
+  "title": "Lobby Layout",
+  "description": "Navigate a hex grid to flip tiles, then simulate a cellular automaton for 100 days.",
+  "writeup": "## Approach\n\nA hex grid problem using axial coordinates (q, r). Parse direction strings into coordinate offsets, flip tiles, then run a Game of Life variant on the hex grid.\n\n## Part 1\n\nParse each line into hex directions (e, w, se, sw, ne, nw) and follow them to a final tile position. Toggle each visited tile between black and white using a set with symmetric difference (`^=`). Count how many tiles are black.\n\n## Part 2\n\nRun 100 rounds of a cellular automaton on the hex grid:\n- A **black** tile with 0 or more than 2 black neighbors flips to white.\n- A **white** tile with exactly 2 black neighbors flips to black.\n\nUse a `Counter` to efficiently count neighbors of all active tiles. Only tiles adjacent to at least one black tile can become black, so we only need to check positions that appear in the neighbor count — keeping the simulation efficient even as the pattern grows.",
+  "tags": ["hex-grid", "cellular-automaton", "simulation", "sparse-set"],
+  "stars": 2
+}

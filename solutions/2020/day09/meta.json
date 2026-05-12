@@ -1,0 +1,7 @@
+{
+  "title": "Encoding Error",
+  "description": "Find the first invalid number in an XMAS cipher, then a contiguous range that sums to it.",
+  "writeup": "## Approach\n\nTwo classic algorithmic patterns: a sliding-window validity check and a two-pointer contiguous sum search.\n\n## Part 1\n\nMaintain a window of 25 preceding numbers. For each new number, check if it can be expressed as the sum of two distinct values from the window (using a set for O(1) lookups). The first number that fails this check is the answer.\n\n## Part 2\n\nFind a contiguous subarray that sums to the Part 1 answer using a sliding window: expand the right end to grow the sum, shrink the left end when it exceeds the target. The answer is the sum of the minimum and maximum values in that range.",
+  "tags": ["sliding-window", "two-pointer"],
+  "stars": 2
+}

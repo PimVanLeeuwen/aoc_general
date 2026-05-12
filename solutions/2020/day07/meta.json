@@ -1,0 +1,7 @@
+{
+  "title": "Handy Haversacks",
+  "description": "Parse bag containment rules to find which bags can hold shiny gold and how many bags it must contain.",
+  "writeup": "## Approach\n\nParse the rules with regex to build a graph: each bag maps to a list of `(count, color)` pairs it contains.\n\n## Part 1\n\nBuild a reverse lookup (which bags contain each color) and BFS outward from `shiny gold` to find all bags that can transitively contain it.\n\n## Part 2\n\nBFS from `shiny gold` outward through the containment graph, multiplying counts as we descend. Each bag in the queue carries a multiplier representing how many copies are needed. Sum all counts and subtract 1 for the shiny gold bag itself.",
+  "tags": ["graph", "bfs", "parsing"],
+  "stars": 2
+}

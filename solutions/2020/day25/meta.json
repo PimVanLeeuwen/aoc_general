@@ -1,0 +1,7 @@
+{
+  "title": "Combo Breaker",
+  "description": "Crack the hotel room's RFID handshake by finding discrete logarithms and deriving the encryption key.",
+  "writeup": "## Approach\n\nA Diffie-Hellman key exchange in disguise. Both the card and door generate public keys by repeatedly applying `value = value * 7 % 20201227`. The encryption key is derived by applying one device's public key as the subject number for the other device's loop count.\n\n## Part 1\n\nFind the card's loop size by brute-force: starting from 1, repeatedly multiply by 7 mod 20201227 until hitting the card's public key. Then compute `door_pk ^ card_loop mod 20201227` to get the encryption key. The modulus (20201227) is small enough that brute-force discrete log works in a few million steps.\n\n## Part 2\n\nDay 25 has no Part 2 — it unlocks automatically after collecting all 49 other stars.",
+  "tags": ["cryptography", "discrete-log", "modular-arithmetic"],
+  "stars": 2
+}

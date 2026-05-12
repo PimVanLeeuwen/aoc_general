@@ -1,0 +1,7 @@
+{
+  "title": "Allergen Assessment",
+  "description": "Identify which ingredients contain allergens by intersecting candidate sets across food labels.",
+  "writeup": "## Approach\n\nA constraint satisfaction problem: each allergen maps to exactly one ingredient. Use set intersection to narrow candidates, then iteratively resolve.\n\n## Part 1\n\nFor each allergen, intersect the ingredient lists of all foods that mention it. The intersection gives the possible ingredients for that allergen. Any ingredient that doesn't appear in any allergen's candidate set is safe. Count how many times safe ingredients appear across all food lists.\n\n## Part 2\n\nResolve the allergen-to-ingredient mapping: whenever a candidate set has exactly one ingredient, that's the match. Remove it from all other candidate sets and repeat until all allergens are resolved. The answer is the dangerous ingredients joined by commas, sorted alphabetically by allergen name.",
+  "tags": ["constraint-satisfaction", "set-intersection", "elimination"],
+  "stars": 2
+}

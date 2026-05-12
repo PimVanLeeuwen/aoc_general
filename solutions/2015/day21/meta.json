@@ -1,0 +1,7 @@
+{
+  "title": "RPG Simulator 20XX",
+  "description": "Find the cheapest equipment loadout to win a boss fight, and the most expensive one that still loses.",
+  "writeup": "## Approach\n\nThis is a combinatorial optimization problem disguised as an RPG. We enumerate all valid equipment loadouts and simulate each fight to find the extremes.\n\n## Part 1\n\nThe shop rules constrain our choices: exactly 1 weapon, 0-1 armor pieces, and 0-2 rings. This gives a manageable number of combinations (5 weapons x 6 armor options x 22 ring combos = 660 loadouts).\n\nFor each loadout we simulate the fight mathematically rather than turn-by-turn. Since damage per turn is constant, we just compute `ceil(boss_hp / player_dpt)` and `ceil(player_hp / boss_dpt)` to see who dies first. The player wins if they need fewer or equal turns. We track the minimum gold cost among all winning loadouts.\n\n## Part 2\n\nThe twist: find the *most* gold you can spend and still *lose*. Same enumeration, but now we track the maximum cost among losing loadouts. The answer is surprisingly high because expensive defensive gear (high armor, low damage) can cost a lot while still not dealing enough damage to win.",
+  "tags": ["combinatorics", "simulation", "optimization"],
+  "stars": 2
+}

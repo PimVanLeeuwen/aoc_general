@@ -1,0 +1,7 @@
+{
+  "title": "Monitoring Station",
+  "description": "Find the asteroid with the best line of sight, then simulate a rotating laser vaporizing asteroids.",
+  "writeup": "## Approach\n\nLine-of-sight is determined by angle: two asteroids at the same angle from a station block each other. Normalize directions using GCD to group collinear asteroids.\n\n## Part 1\n\nFor each asteroid, count unique directions to all others. The direction `(dx, dy)` is normalized by dividing by `gcd(|dx|, |dy|)`, so collinear asteroids share the same key. The asteroid with the most unique directions wins.\n\n## Part 2\n\nSimulate the rotating laser:\n1. Group all asteroids by their normalized direction from the station.\n2. Within each group, sort by Manhattan distance (closest first).\n3. Sort the direction groups by clockwise angle from straight up, using `atan2(dx, -dy)`.\n4. Sweep repeatedly: in each pass, vaporize the closest remaining asteroid in each direction. The 200th vaporized gives the answer.",
+  "tags": ["geometry", "angles", "simulation"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Passport Processing",
+  "description": "Validate passport fields by presence and then by value constraints.",
+  "writeup": "## Approach\n\nParse passport blocks (separated by blank lines) into dictionaries of key-value pairs, then apply two levels of validation.\n\n## Part 1\n\nCheck that all 7 required fields (`byr`, `iyr`, `eyr`, `hgt`, `hcl`, `ecl`, `pid`) are present. The `cid` field is optional.\n\n## Part 2\n\nAdditionally validate each field's value: year ranges for birth/issue/expiration, height in cm or inches within bounds, hair color as a hex code, eye color from a fixed set, and passport ID as exactly 9 digits.",
+  "tags": ["parsing", "validation"],
+  "stars": 2
+}

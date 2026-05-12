@@ -1,0 +1,7 @@
+{
+  "title": "Secure Container",
+  "description": "Count valid six-digit passwords with non-decreasing digits and adjacent duplicates.",
+  "writeup": "## Approach\n\nBrute-force over the range, checking two simple digit constraints. The range is ~460K numbers so this runs in well under a second.\n\n## Part 1\n\nA valid password has non-decreasing digits (left to right) and at least one pair of adjacent equal digits. Check both conditions by scanning the digit string once.\n\n## Part 2\n\nThe adjacent duplicate must be *exactly* two digits long — not part of a larger group. Instead of just checking for any adjacent pair, count the length of each run of identical digits and require at least one run of length exactly 2. For example, `111122` is valid (the `22` is a run of length 2), but `123444` is not (the `444` is a run of length 3 with no separate pair).",
+  "tags": ["brute-force", "digits"],
+  "stars": 2
+}

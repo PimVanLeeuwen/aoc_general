@@ -1,0 +1,10 @@
+{
+  "title": "Tractor Beam",
+  "description": "Map a tractor beam by querying an Intcode drone, then find where a 100x100 square fits inside it.",
+  "writeup": "## Approach\n\nEach query requires a fresh Intcode run, so efficiency matters. Part 1 is brute force. Part 2 exploits the beam's geometry — it expands monotonically, so we can scan rows top to bottom tracking the left edge.\n\n## Part 1\n\nProbe every point in the 50x50 grid and count how many return 1 (in the beam). Each probe is an independent Intcode execution with inputs `[x, y]`.\n\n## Part 2\n\nThe beam forms a cone expanding from the origin. For each row `y`, find the leftmost `x` in the beam (tracking it as we go down since it only moves right). Then check if `(x + 99, y - 99)` is also in the beam — if so, there's a 100-wide beam span at row `y` and the beam extends at least 99 rows above at that right edge, meaning a 100x100 square fits with its top-left at `(x, y - 99)`. The answer is `x * 10000 + (y - 99)`.",
+  "tags": ["intcode", "geometry", "search"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

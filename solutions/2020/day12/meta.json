@@ -1,0 +1,7 @@
+{
+  "title": "Rain Risk",
+  "description": "Navigate a ship using movement instructions with direct heading and waypoint-based steering.",
+  "writeup": "## Approach\n\nParse instructions as `(action, value)` pairs. Both parts process the same instructions but interpret `F`, `L`, and `R` differently.\n\n## Part 1\n\nThe ship has a position and a facing direction (initially east). `N/S/E/W` move the ship directly, `F` moves in the current facing direction, and `L/R` rotate the facing. Rotations are applied in 90-degree increments by swapping and negating the direction vector.\n\n## Part 2\n\nA waypoint orbits the ship (initially 10 east, 1 north, relative to the ship). `N/S/E/W` move the waypoint, `F` moves the ship toward the waypoint (multiplied by the value), and `L/R` rotate the waypoint around the ship. The answer is the Manhattan distance of the ship's final position.",
+  "tags": ["simulation", "geometry", "rotation"],
+  "stars": 2
+}

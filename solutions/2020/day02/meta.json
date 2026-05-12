@@ -1,0 +1,7 @@
+{
+  "title": "Password Philosophy",
+  "description": "Validate passwords against two different policy interpretations.",
+  "writeup": "## Approach\n\nParse each line with a regex to extract the two numbers, the character, and the password. Apply two different interpretations of the policy.\n\n## Part 1\n\nThe two numbers define a range for how many times the character must appear in the password. Count occurrences and check if they fall within `[lo, hi]`.\n\n## Part 2\n\nThe two numbers are 1-indexed positions. Exactly one of those positions must contain the specified character (XOR).",
+  "tags": ["parsing", "string"],
+  "stars": 2
+}

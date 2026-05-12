@@ -1,0 +1,7 @@
+{
+  "title": "Custom Customs",
+  "description": "Count yes-answers from groups of travellers — anyone vs everyone.",
+  "writeup": "## Approach\n\nEach group is a block of lines separated by blank lines. Each person's answers are a set of characters.\n\n## Part 1\n\nFor each group, take the **union** of all people's answer sets — any question where *anyone* answered yes. Sum the sizes across all groups.\n\n## Part 2\n\nFor each group, take the **intersection** of all people's answer sets — questions where *everyone* answered yes. Sum the sizes across all groups.\n\nPython's `functools.reduce` with `set.union` / `set.intersection` makes this very concise.",
+  "tags": ["sets", "parsing"],
+  "stars": 2
+}

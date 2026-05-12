@@ -1,0 +1,10 @@
+{
+  "title": "Amplification Circuit",
+  "description": "Find the phase permutation that maximizes thruster signal through chained Intcode amplifiers.",
+  "writeup": "## Approach\n\nTry all 120 permutations of phase settings and simulate the amplifier chain for each. The Intcode computer was extended with `run_until_block()` — it pauses when an input instruction is reached but the input queue is empty, enabling coroutine-style execution.\n\n## Part 1\n\nFive amplifiers run in series with phases 0-4. Each runs to completion: feed it the phase setting and the previous amplifier's output, collect its output. The first amplifier gets signal 0. Try all permutations, track the maximum final signal.\n\n## Part 2\n\nThe amplifiers are wired in a feedback loop with phases 5-9. Each amplifier persists its state between passes — it doesn't restart. On each loop iteration, feed the previous output into the next amplifier and run it until it either halts or blocks waiting for input. The loop ends when the last amplifier halts. The key Intcode feature here is `waiting_for_input`: when opcode 3 runs with an empty input queue, execution pauses instead of crashing, and resumes when new input is provided.",
+  "tags": ["intcode", "permutations", "simulation"],
+  "stars": 2,
+  "shared_files": [
+    { "path": "intcode.py", "label": "Intcode Computer" }
+  ]
+}

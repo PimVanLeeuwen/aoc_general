@@ -1,0 +1,7 @@
+{
+  "title": "Operation Order",
+  "description": "Evaluate arithmetic expressions with unusual operator precedence rules.",
+  "writeup": "## Approach\n\nBuild a recursive descent parser that respects the specified precedence rules. Tokenize each expression into numbers, operators, and parentheses.\n\n## Part 1\n\n`+` and `*` have equal precedence, evaluated left to right. The parser has two levels: `parse_atom` handles numbers and parenthesized sub-expressions, and `parse_expr` applies operators left to right.\n\n## Part 2\n\n`+` has higher precedence than `*`. The parser adds a third level: `parse_atom` (numbers/parens), `parse_add` (chains of `+`), and `parse_mul` (chains of `*`). This naturally makes `+` bind tighter, since it's resolved at a deeper level of the parse tree.",
+  "tags": ["parsing", "math", "recursive-descent"],
+  "stars": 2
+}

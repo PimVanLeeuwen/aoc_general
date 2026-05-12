@@ -1,0 +1,7 @@
+{
+  "title": "Flawed Frequency Transmission",
+  "description": "Apply a pattern-based FFT transform for 100 phases, then decode a message from a massively repeated signal.",
+  "writeup": "## Approach\n\nPart 1 is direct simulation. Part 2 exploits the mathematical structure of the pattern when the offset is past the halfway point.\n\n## Part 1\n\nFor each output position `i`, multiply the input by a repeating pattern `[0, 1, 0, -1]` where each value is repeated `i+1` times (shifted left by 1). Sum and keep only the ones digit. Optimize by skipping zeros in the pattern — position `i` only has non-zero pattern values starting at index `i`.\n\n## Part 2\n\nThe signal is repeated 10,000 times (~6.5M digits) and the message offset (first 7 digits) is typically past the halfway point. This is key: for positions in the second half, the FFT pattern is all zeros before the position and all ones after. So each output digit is simply `sum(input[i:]) mod 10` — a suffix sum.\n\nCompute suffix sums from right to left for 100 phases. Only the digits from the offset onward matter, keeping memory manageable.",
+  "tags": ["math", "optimization", "suffix-sums"],
+  "stars": 2
+}

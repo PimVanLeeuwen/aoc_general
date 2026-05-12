@@ -1,5 +1,5 @@
 import { getPyodide } from '../context/PyodideContext'
-import type { RunResult, VisFrame } from '../types'
+import type { RunResult, VisFrame, FetchedSharedFile } from '../types'
 
 /**
  * Python wrapper that executes the solution in a fresh namespace,
@@ -70,6 +70,29 @@ None
 `
 
 /**
+ * Register shared code files as importable Python modules.
+ * This allows solution.py to use `from intcode import IntcodeComputer` etc.
+ */
+function preloadSharedModules(py: any, sharedCode?: FetchedSharedFile[]): void {
+  if (!sharedCode?.length) return
+
+  for (const sf of sharedCode) {
+    const moduleName = sf.filename.replace(/\.py$/, '')
+    py.globals.set('_shared_module_name', moduleName)
+    py.globals.set('_shared_module_code', sf.code)
+    py.runPython(`
+import types, sys
+_mod = types.ModuleType(_shared_module_name)
+exec(_shared_module_code, _mod.__dict__)
+sys.modules[_shared_module_name] = _mod
+del _mod
+`)
+    py.globals.delete('_shared_module_name')
+    py.globals.delete('_shared_module_code')
+  }
+}
+
+/**
  * Clean up Pyodide globals to free memory after running solutions
  */
 function cleanupPyodide(py: any): void {
@@ -84,11 +107,12 @@ function cleanupPyodide(py: any): void {
   }
 }
 
-export async function runSolution(code: string, puzzleInput: string): Promise<RunResult> {
+export async function runSolution(code: string, puzzleInput: string, sharedCode?: FetchedSharedFile[]): Promise<RunResult> {
   const py = getPyodide() as any
   if (!py) throw new Error('Pyodide not initialized — click Run to load it first')
 
   const start = Date.now()
+  preloadSharedModules(py, sharedCode)
   py.globals.set('_solution_code', code)
   py.globals.set('_puzzle_input', puzzleInput)
 
@@ -101,10 +125,11 @@ export async function runSolution(code: string, puzzleInput: string): Promise<Ru
   }
 }
 
-export async function runVisualization(code: string, puzzleInput: string): Promise<VisFrame[]> {
+export async function runVisualization(code: string, puzzleInput: string, sharedCode?: FetchedSharedFile[]): Promise<VisFrame[]> {
   const py = getPyodide() as any
   if (!py) throw new Error('Pyodide not initialized')
 
+  preloadSharedModules(py, sharedCode)
   py.globals.set('_solution_code', code)
   py.globals.set('_puzzle_input', puzzleInput)
 

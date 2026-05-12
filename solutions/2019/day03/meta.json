@@ -1,0 +1,7 @@
+{
+  "title": "Crossed Wires",
+  "description": "Trace two wires on a grid and find intersections by Manhattan distance and by combined step count.",
+  "writeup": "## Approach\n\nTrace each wire into a dictionary mapping `(x, y)` to the step count when that point was first visited. Intersections are just the set intersection of both dictionaries' keys.\n\n## Part 1\n\nFor each intersection, compute Manhattan distance `|x| + |y|` from the origin. Return the minimum.\n\n## Part 2\n\nFor each intersection, sum the step counts from both wires. The dictionary naturally stores the *first* visit's step count (later revisits are ignored), which is exactly what the puzzle requires. Return the minimum combined steps.",
+  "tags": ["grid", "sets", "manhattan-distance"],
+  "stars": 2
+}

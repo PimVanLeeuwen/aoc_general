@@ -1,0 +1,7 @@
+{
+  "title": "Donut Maze",
+  "description": "Navigate a donut-shaped maze with labeled portals, then solve it recursively across nested levels.",
+  "writeup": "## Approach\n\nThe main challenge is parsing the donut-shaped maze to find two-letter portal labels adjacent to open tiles, then connecting portal pairs. The maze has an outer and inner edge — this distinction matters for Part 2.\n\n## Part 1\n\nParse the grid to find all open passages and two-letter labels. Each label (except AA and ZZ) appears twice — once on the outer edge and once on the inner edge. These form portal pairs: stepping onto one instantly teleports to the other. BFS from AA to ZZ, treating portal jumps as additional edges, gives the shortest path.\n\n## Part 2\n\nThe maze becomes recursive: inner portals take you one level deeper (level + 1), outer portals take you one level shallower (level - 1). Outer portals are walls at level 0, and AA/ZZ only exist at level 0. The state for BFS becomes `(x, y, level)`. A reasonable depth limit (around 30) keeps the search tractable, since the puzzle is designed to have a finite solution.",
+  "tags": ["bfs", "maze", "parsing", "recursion"],
+  "stars": 2
+}

@@ -26,6 +26,7 @@ class IntcodeComputer:
         self.memory = list(program)
         self.pc = 0
         self.halted = False
+        self.waiting_for_input = False
         self.inputs = list(inputs) if inputs else []
         self.outputs = []
 
@@ -39,12 +40,14 @@ class IntcodeComputer:
         self.memory = list(program)
         self.pc = 0
         self.halted = False
+        self.waiting_for_input = False
         self.inputs = []
         self.outputs = []
 
     def add_input(self, value):
-        """Queue an input value."""
+        """Queue an input value. Clears waiting state if blocked."""
         self.inputs.append(value)
+        self.waiting_for_input = False
 
     def _read(self, param, mode):
         """Read a parameter value according to its mode."""
@@ -61,8 +64,15 @@ class IntcodeComputer:
             self.step()
         return self
 
+    def run_until_block(self):
+        """Execute until halt or waiting for input. Returns self."""
+        self.waiting_for_input = False
+        while not self.halted and not self.waiting_for_input:
+            self.step()
+        return self
+
     def step(self):
-        """Execute a single instruction. Returns False when halted."""
+        """Execute a single instruction. Returns False when halted or blocked."""
         if self.halted or self.pc >= len(self.memory):
             self.halted = True
             return False
@@ -88,6 +98,9 @@ class IntcodeComputer:
             self.pc += 4
 
         elif op == 3:  # INP
+            if not self.inputs:
+                self.waiting_for_input = True
+                return False
             self.memory[self.memory[self.pc + 1]] = self.inputs.pop(0)
             self.pc += 2
 

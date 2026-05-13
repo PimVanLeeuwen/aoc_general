@@ -1,0 +1,7 @@
+{
+  "title": "Grove Positioning System",
+  "description": "Mix a circular list by moving each element by its value to find grove coordinates.",
+  "writeup": "## Approach\n\nTrack element positions using an index list. For each element (in original order), remove it from its current position, compute the new position using modular arithmetic (`(pos + value) % (n-1)`), and re-insert. The modulus is `n-1` because the list has one fewer element during the move.\n\n## Part 1\n\nMix once, then find the values at positions 1000, 2000, and 3000 after the element `0`.\n\n## Part 2\n\nMultiply all values by the decryption key `811589153`, then mix 10 times. The same grove coordinate lookup applies.",
+  "tags": ["linked-list", "modular-arithmetic", "simulation"],
+  "stars": 2
+}

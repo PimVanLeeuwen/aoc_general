@@ -1,0 +1,7 @@
+{
+  "title": "Not Enough Minerals",
+  "description": "Optimize robot-building order to maximize geode production within time limits.",
+  "writeup": "## Approach\n\nFor each blueprint, DFS over possible robot-building decisions. Instead of simulating minute-by-minute, skip forward to the earliest time each robot type can be built (based on current resource production rates). Prune with an upper bound: current geodes plus best-case future production (building a geode robot every remaining minute).\n\n## Part 1\n\nMaximize geodes in 24 minutes for each blueprint. Sum `id × max_geodes` for the quality level.\n\n## Part 2\n\nMaximize geodes in 32 minutes for only the first 3 blueprints. Return their product. Additional pruning (capping robot counts at max needed per resource) keeps the search tractable.",
+  "tags": ["dfs", "optimization", "pruning"],
+  "stars": 2
+}

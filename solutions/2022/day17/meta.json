@@ -1,0 +1,7 @@
+{
+  "title": "Pyroclastic Flow",
+  "description": "Simulate falling rocks in a chamber and predict tower height after a trillion rocks.",
+  "writeup": "## Approach\n\nSimulate rocks falling in a 7-wide chamber, pushed by jets and settling when they can't fall further. Five rock shapes cycle in order.\n\n## Part 1\n\nDirect simulation of 2022 rocks. Track filled positions in a set and compute tower height.\n\n## Part 2\n\nSimulating 1 trillion rocks directly is impossible. Instead, detect a cycle by hashing the state: current rock type, jet position, and the top profile of the tower (relative heights of each column). Once a cycle is found, skip ahead by full cycles and add the accumulated height, then simulate the remaining rocks.",
+  "tags": ["simulation", "cycle-detection"],
+  "stars": 2
+}

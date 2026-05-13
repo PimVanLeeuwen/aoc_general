@@ -1,0 +1,7 @@
+{
+  "title": "Calorie Counting",
+  "description": "Find the elf carrying the most calories and the top three combined.",
+  "writeup": "## Approach\n\nSplit the input on blank lines to get each elf's inventory. Sum each group and sort descending.\n\n## Part 1\n\nThe maximum sum is the answer.\n\n## Part 2\n\nSum the top three values.",
+  "tags": ["sorting", "parsing"],
+  "stars": 2
+}

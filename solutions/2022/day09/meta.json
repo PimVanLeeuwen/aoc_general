@@ -1,0 +1,7 @@
+{
+  "title": "Rope Bridge",
+  "description": "Simulate a rope with 2 and 10 knots, tracking tail positions.",
+  "writeup": "## Approach\n\nModel the rope as a list of knot positions. After moving the head, each subsequent knot follows its predecessor using a simple rule: if the gap exceeds 1 in any axis, move one step toward the predecessor (diagonally if needed). Track positions visited by the last knot in a set.\n\n## Part 1\n\nSimulate a 2-knot rope (head + tail). Count distinct tail positions.\n\n## Part 2\n\nSimulate a 10-knot rope. The same following logic applies to each consecutive knot pair. The tail (knot 9) visits fewer positions because movements dampen through the chain.",
+  "tags": ["simulation", "set"],
+  "stars": 2
+}

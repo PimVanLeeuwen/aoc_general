@@ -1,0 +1,7 @@
+{
+  "title": "Distress Signal",
+  "description": "Compare and sort nested list packets to decode a distress signal.",
+  "writeup": "## Approach\n\nPackets are nested lists of integers — conveniently valid JSON, so `json.loads` handles parsing. Comparison follows specific rules: integers compare directly, lists compare element-by-element (shorter list wins ties), and mixed types promote the integer to a single-element list.\n\n## Part 1\n\nFor each pair, check if the left packet is less than the right. Sum the 1-based indices of correctly ordered pairs.\n\n## Part 2\n\nCombine all packets, add divider packets `[[2]]` and `[[6]]`, sort using the comparison function, and multiply the 1-based positions of the two dividers to get the decoder key.",
+  "tags": ["recursion", "sorting", "parsing"],
+  "stars": 2
+}

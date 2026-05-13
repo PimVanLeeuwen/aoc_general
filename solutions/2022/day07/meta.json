@@ -1,0 +1,7 @@
+{
+  "title": "No Space Left On Device",
+  "description": "Reconstruct a filesystem from terminal output and find directory sizes.",
+  "writeup": "## Approach\n\nSimulate the terminal session: maintain a path stack of directory names. On `cd`, push or pop. On file listings, add the file size to every directory currently in the path stack. This propagates sizes upward without needing a tree structure.\n\n## Part 1\n\nSum the sizes of all directories with total size at most 100,000.\n\n## Part 2\n\nThe filesystem has 70,000,000 total space and needs 30,000,000 free. Find the smallest directory whose deletion would free enough space. Computed as the minimum size among directories that are at least as large as the deficit.",
+  "tags": ["simulation", "parsing", "tree"],
+  "stars": 2
+}

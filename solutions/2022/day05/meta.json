@@ -1,0 +1,7 @@
+{
+  "title": "Supply Stacks",
+  "description": "Simulate a crane rearranging crate stacks with two movement modes.",
+  "writeup": "## Approach\n\nParse the crate diagram into lists (bottom to top) and extract move instructions as `(count, source, destination)` triples.\n\n## Part 1\n\nThe CrateMover 9000 moves crates one at a time, effectively reversing their order. Pop from source and push to destination, repeated `count` times.\n\n## Part 2\n\nThe CrateMover 9001 moves all crates at once, preserving order. Slice the top `count` crates from source and extend the destination stack.",
+  "tags": ["simulation", "stack", "parsing"],
+  "stars": 2
+}

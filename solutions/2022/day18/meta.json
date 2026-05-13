@@ -1,0 +1,7 @@
+{
+  "title": "Boiling Boulders",
+  "description": "Count exposed and exterior-only surface area of a 3D lava droplet.",
+  "writeup": "## Approach\n\nParse 3D cube coordinates into a set for O(1) neighbor lookups.\n\n## Part 1\n\nFor each cube, count faces where the adjacent position is not another cube. Each such face is exposed. This gives the total surface area including interior pockets.\n\n## Part 2\n\nFlood-fill (BFS) from a point outside the bounding box to find all positions reachable by water. Then count cube faces adjacent to water-filled positions. This excludes faces bordering trapped air pockets inside the droplet.",
+  "tags": ["3d", "bfs", "flood-fill", "set"],
+  "stars": 2
+}

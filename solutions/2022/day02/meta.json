@@ -1,0 +1,7 @@
+{
+  "title": "Rock Paper Scissors",
+  "description": "Score a tournament under two interpretations of the strategy guide.",
+  "writeup": "## Approach\n\nEach round's score is the sum of a shape score (1/2/3 for rock/paper/scissors) and an outcome score (0/3/6 for loss/draw/win). Both parts use lookup tables for all 9 possible matchups.\n\n## Part 1\n\nX/Y/Z represent rock/paper/scissors. Look up shape score and match outcome directly.\n\n## Part 2\n\nX/Y/Z now mean lose/draw/win. The outcome score is known; look up which shape to play to achieve that outcome against the opponent.",
+  "tags": ["lookup-table", "parsing"],
+  "stars": 2
+}

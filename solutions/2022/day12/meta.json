@@ -1,0 +1,7 @@
+{
+  "title": "Hill Climbing Algorithm",
+  "description": "Find the shortest path up a heightmap with elevation constraints.",
+  "writeup": "## Approach\n\nModel the heightmap as a graph where you can move to an adjacent cell only if its elevation is at most one higher than the current cell. Use BFS for shortest path.\n\n## Part 1\n\nFind the shortest path from `S` (elevation `a`) to `E` (elevation `z`).\n\n## Part 2\n\nFind the shortest path from any cell at elevation `a` to `E`. Instead of running BFS from every `a` cell, run a single BFS *backwards* from `E` (reversing the edge direction: you can step to a neighbor if its height is at least current − 1). This gives distances from `E` to all reachable cells in one pass.",
+  "tags": ["bfs", "grid", "graph"],
+  "stars": 2
+}

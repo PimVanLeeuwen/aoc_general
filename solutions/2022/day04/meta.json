@@ -1,0 +1,7 @@
+{
+  "title": "Camp Cleanup",
+  "description": "Count range pairs with full containment or any overlap.",
+  "writeup": "## Approach\n\nParse each line into four integers representing two ranges `[a, b]` and `[c, d]`.\n\n## Part 1\n\nCount pairs where one range fully contains the other: `a ≤ c` and `b ≥ d`, or vice versa.\n\n## Part 2\n\nCount pairs with any overlap. Two ranges overlap when `a ≤ d` and `c ≤ b`.",
+  "tags": ["ranges", "parsing"],
+  "stars": 2
+}

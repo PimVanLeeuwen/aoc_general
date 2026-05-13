@@ -1,0 +1,7 @@
+{
+  "title": "Proboscidea Volcanium",
+  "description": "Maximize pressure released by opening valves in a tunnel network.",
+  "writeup": "## Approach\n\nPre-compute shortest distances between all valve pairs using Floyd-Warshall. Then only consider valves with nonzero flow rate — the rest are just waypoints. DFS explores all orderings of valve openings, skipping ahead by the travel + open time.\n\n## Part 1\n\nSearch all possible valve-opening sequences within 30 minutes. Track the best total pressure for each set of opened valves.\n\n## Part 2\n\nYou and an elephant each have 26 minutes and independently open valves. Run the same DFS, then find the best pair of disjoint valve sets (no valve opened by both). The combined pressure of the best non-overlapping pair is the answer.",
+  "tags": ["graph", "dfs", "floyd-warshall", "bitmask"],
+  "stars": 2
+}

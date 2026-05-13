@@ -1,0 +1,7 @@
+{
+  "title": "Full of Hot Air",
+  "description": "Sum fuel requirements in SNAFU (balanced base-5) notation.",
+  "writeup": "## Approach\n\nSNAFU is a balanced base-5 system where digits are `=` (−2), `-` (−1), `0`, `1`, `2`. Convert each SNAFU number to decimal by processing left to right: `result = result × 5 + digit_value`.\n\n## Part 1\n\nSum all SNAFU numbers (as decimals), then convert back. To convert decimal to SNAFU: repeatedly take `n % 5`. If the remainder is 3 or 4, use `=` or `-` and carry 1 to the next position.\n\n## Part 2\n\nDay 25 only has one part — collect the star!",
+  "tags": ["math", "base-conversion"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Treetop Tree House",
+  "description": "Count visible trees from edges and find the best scenic score.",
+  "writeup": "## Approach\n\nParse the input into a 2D grid of tree heights.\n\n## Part 1\n\nA tree is visible if no taller tree blocks it from any edge. Sweep from each of the four edges, tracking the running maximum height. Any tree that exceeds the running max is visible. This runs in O(rows × cols) time.\n\n## Part 2\n\nFor each tree, walk outward in all four directions counting how many trees are visible before one of equal or greater height blocks the view. Multiply the four distances for the scenic score and track the maximum. This is O(rows × cols × max_dimension) in the worst case.",
+  "tags": ["grid", "simulation"],
+  "stars": 2
+}

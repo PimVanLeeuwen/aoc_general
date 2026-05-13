@@ -1,0 +1,7 @@
+{
+  "title": "Blizzard Basin",
+  "description": "Navigate through a valley with cyclically moving blizzards.",
+  "writeup": "## Approach\n\nBlizzards move in fixed directions and wrap around the valley walls. Since their positions are periodic (with period = LCM of valley width and height), precompute all blizzard positions for each time step. Then BFS through `(x, y, time % period)` states.\n\n## Part 1\n\nBFS from the entrance to the exit, avoiding blizzard positions at each time step. You can move in 4 directions or wait.\n\n## Part 2\n\nMake three trips: entrance → exit → entrance → exit. Chain three BFS calls, each starting from the time the previous trip ended.",
+  "tags": ["bfs", "simulation", "lcm"],
+  "stars": 2
+}

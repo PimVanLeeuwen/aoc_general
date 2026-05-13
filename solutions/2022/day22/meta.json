@@ -1,0 +1,7 @@
+{
+  "title": "Monkey Map",
+  "description": "Navigate a map with flat wrapping and cube-surface wrapping.",
+  "writeup": "## Approach\n\nParse the map and path instructions (steps and turns). Simulate movement with direction tracking.\n\n## Part 1\n\nWhen stepping off the edge, wrap around to the opposite side of the row or column (skipping spaces). The password is `1000 * row + 4 * col + facing`.\n\n## Part 2\n\nThe map is a cube net. Assign each face a 3D orientation (normal, up, right vectors) via BFS over adjacent faces. When stepping off a face edge, use the 3D orientations to determine which face you land on and how the coordinate system rotates. Edge positions are mapped using the 3D edge-direction vectors to handle arbitrary net layouts.",
+  "tags": ["simulation", "geometry", "3d"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Unstable Diffusion",
+  "description": "Simulate elves spreading out with rotating directional priority rules.",
+  "writeup": "## Approach\n\nStore elf positions in a set. Each round: elves with no neighbors stay put. Others propose a move by checking N, S, W, E (in rotating priority order) for three adjacent empty cells. If only one elf proposes a destination, it moves.\n\n## Part 1\n\nAfter 10 rounds, count empty tiles in the bounding rectangle of all elf positions.\n\n## Part 2\n\nContinue until no elf moves. Return the round number. The direction priority rotates each round, ensuring elves eventually spread out enough to stop.",
+  "tags": ["simulation", "set", "cellular-automaton"],
+  "stars": 2
+}

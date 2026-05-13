@@ -1,0 +1,7 @@
+{
+  "title": "Regolith Reservoir",
+  "description": "Simulate sand falling through a cave with rock walls and an optional floor.",
+  "writeup": "## Approach\n\nParse rock paths into a set of filled `(x, y)` coordinates. Sand drops from `(500, 0)` and tries to move down, then down-left, then down-right. If all three are blocked, it settles.\n\n## Part 1\n\nSimulate sand grains until one falls past the lowest rock (into the void). Count how many grains settled.\n\n## Part 2\n\nAdd an infinite floor at `max_y + 2`. Simulate until sand blocks the source at `(500, 0)`. The floor prevents sand from falling into the void, so the cave fills up completely.",
+  "tags": ["simulation", "grid", "set"],
+  "stars": 2
+}

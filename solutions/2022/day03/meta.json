@@ -1,0 +1,7 @@
+{
+  "title": "Rucksack Reorganization",
+  "description": "Find misplaced items and group badges using set intersections.",
+  "writeup": "## Approach\n\nUse set intersection to find shared characters. Priority: `a`–`z` → 1–26, `A`–`Z` → 27–52.\n\n## Part 1\n\nSplit each rucksack in half. The intersection of the two halves gives the misplaced item. Sum priorities.\n\n## Part 2\n\nGroup rucksacks in threes. The intersection of all three sets in each group gives the badge. Sum priorities.",
+  "tags": ["set", "string"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Monkey in the Middle",
+  "description": "Simulate monkeys inspecting and throwing items based on worry-level rules.",
+  "writeup": "## Approach\n\nParse each monkey's starting items, operation (e.g. `old * 19`), divisibility test, and target monkeys. Simulate rounds of item-throwing.\n\n## Part 1\n\nAfter each inspection, divide worry by 3 (integer division). Run 20 rounds. The answer is the product of the two highest inspection counts (\"monkey business\").\n\n## Part 2\n\nNo more divide-by-3 relief, so worry levels explode. The key insight: since all tests are divisibility checks, we only need worry values modulo the product of all divisors. This keeps numbers manageable while preserving all test outcomes. Run 10,000 rounds.",
+  "tags": ["simulation", "modular-arithmetic"],
+  "stars": 2
+}

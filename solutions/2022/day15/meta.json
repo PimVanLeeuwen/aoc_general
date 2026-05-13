@@ -1,0 +1,7 @@
+{
+  "title": "Beacon Exclusion Zone",
+  "description": "Use Manhattan distance to find excluded beacon positions and locate the distress beacon.",
+  "writeup": "## Approach\n\nEach sensor knows the Manhattan distance to its closest beacon, defining a diamond-shaped exclusion zone.\n\n## Part 1\n\nFor a target row, compute the range of x-positions each sensor covers (based on how much Manhattan distance budget remains after reaching that row). Merge overlapping ranges and count total covered positions, subtracting known beacons in that row.\n\n## Part 2\n\nThe uncovered position must lie just outside some sensor's diamond. Walk the perimeter of each sensor at distance + 1 and check if any candidate point is outside all sensor ranges. This reduces the search space from O(n²) grid positions to O(n × d) perimeter points.",
+  "tags": ["geometry", "manhattan-distance", "search"],
+  "stars": 2
+}

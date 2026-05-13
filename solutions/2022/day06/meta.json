@@ -1,0 +1,7 @@
+{
+  "title": "Tuning Trouble",
+  "description": "Find the first position where N consecutive characters are all unique.",
+  "writeup": "## Approach\n\nSlide a window across the input string and check whether all characters in the window are unique using a set.\n\n## Part 1\n\nFind the first position where the last 4 characters are all distinct. This marks the start-of-packet.\n\n## Part 2\n\nSame approach but with a window of 14 characters for the start-of-message marker. The set-based uniqueness check keeps both parts simple and readable.",
+  "tags": ["sliding-window", "string"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Monkey Math",
+  "description": "Evaluate a tree of arithmetic expressions and solve for an unknown variable.",
+  "writeup": "## Approach\n\nParse monkey definitions into a tree of arithmetic operations.\n\n## Part 1\n\nRecursively evaluate `root` by resolving each monkey's dependencies.\n\n## Part 2\n\nFind the value of `humn` that makes root's two children equal. Determine which branch depends on `humn`, evaluate the other branch to get the target value, then walk down the dependent branch inverting each operation. For example, if `a + b = target` and `a` depends on `humn`, solve for `a = target - b` and recurse. This gives an O(depth) algebraic solution.",
+  "tags": ["recursion", "tree", "algebra"],
+  "stars": 2
+}

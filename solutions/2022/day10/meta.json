@@ -1,0 +1,7 @@
+{
+  "title": "Cathode-Ray Tube",
+  "description": "Simulate CPU cycles to compute signal strengths and render CRT pixels.",
+  "writeup": "## Approach\n\nSimulate a CPU with a single register `X` and two instructions: `noop` (1 cycle) and `addx V` (2 cycles, then adds V to X). Track the cycle count and register value together.\n\n## Part 1\n\nSum `cycle × X` at cycles 20, 60, 100, 140, 180, 220. The key is that the signal is sampled *during* the cycle, before `addx` takes effect.\n\n## Part 2\n\nDraw a 40×6 CRT. Each cycle, if the current pixel column is within ±1 of X (the sprite center), draw `#`, otherwise `.`. The register X acts as the horizontal sprite position.",
+  "tags": ["simulation", "cpu"],
+  "stars": 2
+}

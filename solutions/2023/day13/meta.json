@@ -1,0 +1,7 @@
+{
+  "title": "Point of Incidence",
+  "description": "Find reflection lines in patterns, then fix a smudge to find a new one.",
+  "writeup": "## Approach\n\nFor each pattern, check all possible horizontal and vertical reflection lines. A valid reflection means the rows (or columns) on each side mirror each other.\n\n## Part 1\n\nFind the line where all mirrored row/column pairs match exactly. Horizontal reflections contribute `100 * row_index`, vertical ones contribute `col_index`.\n\n## Part 2\n\nInstead of an exact mirror, find the line where exactly one character differs across all mirrored pairs — that single difference is the \"smudge\" to fix. This elegantly avoids brute-forcing every possible smudge position.",
+  "tags": ["grid", "symmetry"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Cube Conundrum",
+  "description": "Check game feasibility with limited cubes and find minimum required sets.",
+  "writeup": "## Approach\n\nEach game consists of several rounds where the elf reveals a handful of colored cubes. Parse the color counts per round.\n\n## Part 1\n\nA game is possible if no single reveal exceeds the bag's limits (12 red, 13 green, 14 blue). Sum the IDs of all possible games.\n\n## Part 2\n\nFor each game, the minimum viable bag needs at least as many cubes of each color as the maximum seen in any round. The \"power\" of a set is the product of these three minimums. Sum the powers across all games.",
+  "tags": ["parsing", "simulation"],
+  "stars": 2
+}

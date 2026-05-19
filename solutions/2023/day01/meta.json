@@ -1,0 +1,7 @@
+{
+  "title": "Trebuchet?!",
+  "description": "Extract calibration values from first and last digits in each line.",
+  "writeup": "## Approach\n\nEach line encodes a two-digit calibration value formed by the first and last digit found in the string. The trick is defining what counts as a \"digit\".\n\n## Part 1\n\nOnly numeric characters (`0`–`9`) count. Find the first and last, concatenate them into a two-digit number, and sum across all lines.\n\n## Part 2\n\nSpelled-out digits (`one` through `nine`) now also count. The key subtlety is that words can overlap — `twone` contains both `two` and `one` — so you must check for matches at every position independently rather than consuming characters as you go.",
+  "tags": ["string", "parsing"],
+  "stars": 2
+}

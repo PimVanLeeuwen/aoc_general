@@ -1,0 +1,7 @@
+{
+  "title": "If You Give A Seed A Fertilizer",
+  "description": "Map seed numbers through range transformations to find the lowest location.",
+  "writeup": "## Approach\n\nThe almanac defines a chain of mapping stages (seed → soil → fertilizer → ... → location). Each stage consists of ranges that shift values by a fixed offset; values not covered by any range pass through unchanged.\n\n## Part 1\n\nApply each mapping stage to individual seed values. For each value, check which range it falls in and apply the offset. Track the minimum final location.\n\n## Part 2\n\nSeed numbers are now huge ranges (start + length pairs), so mapping individual values is infeasible. The key insight is to map entire intervals at once: when an interval partially overlaps a mapping range, split it at the boundary — the overlapping portion gets the offset applied, the rest continues unmapped. Despite many splits, the number of intervals stays manageable through all stages.",
+  "tags": ["ranges", "interval-splitting"],
+  "stars": 2
+}

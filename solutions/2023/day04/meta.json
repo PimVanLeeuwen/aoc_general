@@ -1,0 +1,7 @@
+{
+  "title": "Scratchcards",
+  "description": "Score scratchcards by matching numbers with cascading card copies.",
+  "writeup": "## Approach\n\nParse each card's winning numbers and owned numbers into sets. Count matches via set intersection.\n\n## Part 1\n\nEach card scores `2^(matches-1)` points (0 points for no matches). Sum all scores.\n\n## Part 2\n\nInstead of points, each match on card `i` gives you one copy of each of the next `matches` cards. Process cards in order, tracking how many copies of each card exist. Each copy contributes its own cascade. The answer is the total number of cards.",
+  "tags": ["set", "dynamic-programming"],
+  "stars": 2
+}

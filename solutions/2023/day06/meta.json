@@ -1,0 +1,7 @@
+{
+  "title": "Wait For It",
+  "description": "Count ways to hold a button to beat boat race distance records.",
+  "writeup": "## Approach\n\nThe distance traveled for a hold time `h` in a race of duration `T` is `h * (T - h)`. We need to count how many integer values of `h` give a distance strictly greater than the record `D`.\n\n## Part 1\n\nSolve the quadratic inequality `h * (T - h) > D` for each race. The roots of `h^2 - Th + D = 0` give the boundary, and we count the integers strictly between them. Multiply the win counts across all races.\n\n## Part 2\n\nConcatenate all times and distances into single large numbers to form one big race. The same quadratic formula works instantly regardless of the magnitude.",
+  "tags": ["math", "quadratic"],
+  "stars": 2
+}

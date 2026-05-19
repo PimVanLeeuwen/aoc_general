@@ -1,0 +1,7 @@
+{
+  "title": "Aplenty",
+  "description": "Route parts through conditional workflows and count accepted rating combinations.",
+  "writeup": "## Approach\n\nParse workflows as named lists of conditional rules, each sending a part to another workflow or to Accept/Reject.\n\n## Part 1\n\nFor each part, follow the workflow chain: evaluate conditions against the part's x/m/a/s ratings until reaching `A` or `R`. Sum the total ratings of all accepted parts.\n\n## Part 2\n\nInstead of individual parts, track ranges of possible values for each rating (initially 1–4000). At each condition, split the range: the portion satisfying the condition follows one path, the remainder continues to the next rule. Recursively count how many combinations reach `A` by multiplying the range sizes.",
+  "tags": ["ranges", "recursion", "interval-splitting"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Mirage Maintenance",
+  "description": "Extrapolate sequences forward and backward using iterated differences.",
+  "writeup": "## Approach\n\nThis is Newton's forward difference method. For each sequence, repeatedly take pairwise differences to form a pyramid of layers. A polynomial of degree `d` produces all zeros by the `d`-th layer, which gives the base case for extrapolation.\n\n## Part 1\n\nExtrapolate forward by summing the last element of every layer. Each layer's last value contributes one term to the next value of the original sequence.\n\n## Part 2\n\nExtrapolate backward using the first elements instead. Work from the all-zeros layer upward: at each level, the new leftmost value is `first_element - value_below`. The alternating subtraction is what distinguishes backward from forward extrapolation.",
+  "tags": ["math", "sequences"],
+  "stars": 2
+}

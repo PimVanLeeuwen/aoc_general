@@ -1,0 +1,7 @@
+{
+  "title": "Clumsy Crucible",
+  "description": "Find minimum heat loss path with direction movement constraints.",
+  "writeup": "## Approach\n\nThis is a shortest-path problem with an unusual constraint: the crucible must not move more than a certain number of consecutive steps in the same direction, and (in part 2) must move a minimum number before turning.\n\n## Part 1\n\nDijkstra's algorithm with state `(row, col, direction, consecutive_steps)`. The crucible can move at most 3 steps in the same direction before it must turn. At each state, try continuing straight (if under the limit) or turning left/right.\n\n## Part 2\n\nThe \"ultra crucible\" must move at least 4 steps in a direction before turning, and at most 10. Same Dijkstra approach but with `min_straight=4` and `max_straight=10`. The destination only counts if the crucible has completed at least 4 steps in its current direction.",
+  "tags": ["dijkstra", "graph", "shortest-path"],
+  "stars": 2
+}

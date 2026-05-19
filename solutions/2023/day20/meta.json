@@ -1,0 +1,7 @@
+{
+  "title": "Pulse Propagation",
+  "description": "Simulate flip-flop and conjunction modules processing pulse signals.",
+  "writeup": "## Approach\n\nThe module network has three types: the broadcaster fans out to all targets, flip-flops toggle state on low pulses (ignoring high), and conjunction modules remember each input's last pulse and output low only when all inputs were last high.\n\n## Part 1\n\nSimulate 1000 button presses, processing pulses in FIFO order. Count total low and high pulses sent, then multiply the counts.\n\n## Part 2\n\nDetermining when `rx` first receives a low pulse by simulation alone would take billions of presses. Inspecting the module graph reveals that `rx`'s sole input is a conjunction fed by several independent subnetworks. Each subnetwork cycles with its own period, sending a high pulse to the final conjunction once per cycle. The answer is the LCM of these cycle lengths — the first moment all subnetworks fire high simultaneously.",
+  "tags": ["simulation", "graph", "lcm", "cycle-detection"],
+  "stars": 2
+}

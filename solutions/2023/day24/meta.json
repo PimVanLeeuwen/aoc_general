@@ -1,0 +1,7 @@
+{
+  "title": "Never Tell Me The Odds",
+  "description": "Find 2D hailstone intersections and a rock trajectory hitting all hailstones.",
+  "writeup": "## Approach\n\nParse each hailstone's 3D position and velocity.\n\n## Part 1\n\nFor each pair of hailstones, find where their 2D paths cross (ignoring z). This reduces to solving two linear equations for the time parameters. Check that both times are positive (the intersection is in the future for both) and the crossing point falls within the test area.\n\n## Part 2\n\nFind a rock position and velocity such that the rock collides with every hailstone. The collision equations `rock_pos + t_i * rock_vel = stone_i_pos + t_i * stone_i_vel` are nonlinear because of the `t_i * rock_vel` product. The key trick: subtract the equations for two different hailstones. The `t_i` terms disappear, and the result is linear in the four unknowns `(px, py, vx, vy)`. Four pairs of hailstones give four equations — solve with Gaussian elimination. Repeat in the xz plane to find `pz`. The answer is `px + py + pz`.",
+  "tags": ["math", "linear-algebra", "geometry"],
+  "stars": 2
+}

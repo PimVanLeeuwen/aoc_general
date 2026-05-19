@@ -1,0 +1,7 @@
+{
+  "title": "Haunted Wasteland",
+  "description": "Follow L/R instructions through a node network, using LCM for ghost paths.",
+  "writeup": "## Approach\n\nParse the L/R instruction string and build a network mapping each node to its left and right neighbors.\n\n## Part 1\n\nStart at `AAA` and follow the instruction sequence (cycling as needed) until reaching `ZZZ`. Count the steps.\n\n## Part 2\n\nMultiple ghosts start simultaneously at all nodes ending with `A` and must all land on `Z`-nodes at the same step. Brute-force simulation would take astronomical time. The key observation is that each ghost's path is periodic — it reaches its `Z`-node at a fixed cycle length. Find each ghost's cycle length independently, then take the LCM of all cycle lengths to find the first step where all ghosts align. This relies on a deliberate property of the puzzle input: each ghost has exactly one `Z`-node in its cycle and the cycle length equals the offset.",
+  "tags": ["graph", "lcm", "cycle-detection"],
+  "stars": 2
+}

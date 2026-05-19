@@ -1,0 +1,7 @@
+{
+  "title": "Gear Ratios",
+  "description": "Find part numbers adjacent to symbols and gear ratios for '*' symbols.",
+  "writeup": "## Approach\n\nUse regex to find all multi-digit numbers and their positions in each row. For each number, check all neighboring cells for symbols.\n\n## Part 1\n\nA number is a \"part number\" if any of its digits is adjacent (including diagonally) to a symbol (anything that isn't `.` or a digit). Sum all part numbers.\n\n## Part 2\n\nA gear is a `*` symbol adjacent to exactly two part numbers. Track which numbers are adjacent to each `*`, then sum the products of pairs.",
+  "tags": ["grid", "parsing", "regex"],
+  "stars": 2
+}

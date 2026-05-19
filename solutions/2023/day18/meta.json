@@ -1,0 +1,7 @@
+{
+  "title": "Lavaduct Lagoon",
+  "description": "Calculate area of a polygon from dig instructions using Shoelace + Pick's theorem.",
+  "writeup": "## Approach\n\nThe dig instructions trace a closed polygon. Rather than filling in a grid, compute the area analytically.\n\n## Part 1\n\nFollow the direction and step count from each instruction to build polygon vertices. Use the Shoelace formula for the signed area, then Pick's theorem (`total = interior_area + perimeter/2 + 1`) to include the boundary cells.\n\n## Part 2\n\nThe actual instructions are encoded in the hex color codes: the first 5 hex digits are the distance, the last digit encodes the direction (0=R, 1=D, 2=L, 3=U). The same Shoelace + Pick's formula works instantly even with millions-scale coordinates.",
+  "tags": ["geometry", "shoelace", "picks-theorem"],
+  "stars": 2
+}

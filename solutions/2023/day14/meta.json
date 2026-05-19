@@ -1,0 +1,7 @@
+{
+  "title": "Parabolic Reflector Dish",
+  "description": "Tilt rolling rocks on a grid and find the load after a billion spin cycles.",
+  "writeup": "## Approach\n\nParse the grid of round rocks (`O`), fixed rocks (`#`), and empty space (`.`). Tilting north moves each `O` up until it hits another rock or the edge.\n\n## Part 1\n\nTilt north once. Compute the total load as the sum of `(rows - row_index)` for each round rock.\n\n## Part 2\n\nA spin cycle tilts north, west, south, east in sequence. Rotating the grid 90° clockwise after each tilt-north makes all four directions use the same tilt logic. Run spin cycles until the grid state repeats (cycle detection via a dictionary). Then compute `(1,000,000,000 - current_step) % cycle_length` to skip ahead and find the final load.",
+  "tags": ["grid", "simulation", "cycle-detection"],
+  "stars": 2
+}

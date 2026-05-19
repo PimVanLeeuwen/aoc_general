@@ -1,0 +1,7 @@
+{
+  "title": "Lens Library",
+  "description": "Compute HASH values and simulate a lens box arrangement system.",
+  "writeup": "## Approach\n\nThe HASH algorithm is a simple rolling hash: start at 0, then for each character add its ASCII value, multiply by 17, and take mod 256. This maps any string to a box number 0–255.\n\n## Part 1\n\nApply HASH to each comma-separated initialization step and sum the results.\n\n## Part 2\n\nSimulate a HASHMAP with 256 boxes, each holding an ordered list of labeled lenses. The label's HASH determines the box. `label=N` inserts or updates a lens with focal length N (preserving slot order). `label-` removes the lens with that label. After processing all steps, compute focusing power: sum `(box + 1) * (slot + 1) * focal_length` across every lens in every box.",
+  "tags": ["hashing", "simulation"],
+  "stars": 2
+}

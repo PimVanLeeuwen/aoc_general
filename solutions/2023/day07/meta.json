@@ -1,0 +1,7 @@
+{
+  "title": "Camel Cards",
+  "description": "Rank poker-like hands by type and card strength to compute winnings.",
+  "writeup": "## Approach\n\nParse each hand as five cards plus a bid. Classify hands by type (five of a kind down to high card) using character frequency counts. Break ties by comparing cards left to right using a custom card rank.\n\n## Part 1\n\nStandard ranking: count character frequencies, classify the hand type, sort all hands, and sum `rank * bid`.\n\n## Part 2\n\nJ becomes a joker — the weakest individual card but wild for type classification. Remove all J's from the frequency count and add them to the highest existing count. This always produces the optimal type. J's card rank drops to the lowest position for tiebreaking.",
+  "tags": ["sorting", "counting"],
+  "stars": 2
+}

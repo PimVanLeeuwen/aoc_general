@@ -1,0 +1,7 @@
+{
+  "title": "The Floor Will Be Lava",
+  "description": "Trace light beams through mirrors and splitters to count energized tiles.",
+  "writeup": "## Approach\n\nSimulate beam paths through the grid. Each beam has a position and direction. Mirrors (`/`, `\\`) reflect the beam, splitters (`|`, `-`) either pass through or split into two beams depending on the beam's direction.\n\n## Part 1\n\nStart a beam at the top-left corner going right. Use BFS with `(row, col, direction)` as state to avoid infinite loops. Count unique `(row, col)` positions visited.\n\n## Part 2\n\nTry every possible edge entry point (all rows from left/right, all columns from top/bottom). Return the maximum number of energized tiles across all starting configurations.",
+  "tags": ["grid", "simulation", "bfs"],
+  "stars": 2
+}

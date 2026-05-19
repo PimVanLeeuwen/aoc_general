@@ -1,0 +1,7 @@
+{
+  "title": "Cosmic Expansion",
+  "description": "Sum shortest galaxy pair distances in an expanding universe.",
+  "writeup": "## Approach\n\nFind all galaxy positions and identify which rows and columns contain no galaxies. Rather than physically expanding the grid, add extra distance for each empty row/column crossed between a pair.\n\n## Part 1\n\nEach empty row or column doubles in size (expansion factor 2). For each galaxy pair, compute Manhattan distance and add 1 extra for each empty row/column in between.\n\n## Part 2\n\nSame logic but with expansion factor 1,000,000. Each empty row/column adds 999,999 extra to the distance. Since we never materialize the expanded grid, the computation is identical regardless of the expansion factor.",
+  "tags": ["grid", "manhattan-distance"],
+  "stars": 2
+}

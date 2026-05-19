@@ -1,0 +1,7 @@
+{
+  "title": "Pipe Maze",
+  "description": "Find the farthest point in a pipe loop and count enclosed tiles.",
+  "writeup": "## Approach\n\nParse the grid and find the `S` starting position. Determine which pipe segments connect to neighbors by checking that both endpoints agree on the connection.\n\n## Part 1\n\nBFS from `S` along connected pipe segments. The farthest point is simply the maximum BFS distance, since the loop has two paths of equal length meeting at the farthest tile.\n\n## Part 2\n\nCount tiles enclosed by the loop using ray casting. Scan each row left to right, tracking whether we're inside or outside the loop. A `|` crossing toggles the state. Corner pairs matter: `L...7` and `F...J` are true crossings (toggle), while `L...J` and `F...7` are U-turns (no toggle). First replace `S` with its actual pipe character so ray casting handles it correctly.",
+  "tags": ["grid", "bfs", "ray-casting"],
+  "stars": 2
+}

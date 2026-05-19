@@ -1,0 +1,7 @@
+{
+  "title": "Hot Springs",
+  "description": "Count valid spring arrangements matching damaged group patterns.",
+  "writeup": "## Approach\n\nFor each row, count how many ways the `?` characters can be replaced with `#` or `.` such that the resulting contiguous groups of `#` match the given group sizes.\n\n## Part 1\n\nUse dynamic programming with memoization. The state is `(position_in_pattern, current_group_index)`. At each position, try skipping (`.`) or starting a group (`#`). When starting a group, verify the next `g` characters can all be `#` and the character after is not `#`.\n\n## Part 2\n\nUnfold each row 5 times (pattern joined with `?`, groups repeated 5x). The same DP works efficiently because `lru_cache` avoids recomputing overlapping subproblems across the expanded pattern.",
+  "tags": ["dynamic-programming", "memoization"],
+  "stars": 2
+}

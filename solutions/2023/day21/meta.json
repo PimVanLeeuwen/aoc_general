@@ -1,0 +1,7 @@
+{
+  "title": "Step Counter",
+  "description": "Count reachable garden plots after a given number of steps on a finite and infinite grid.",
+  "writeup": "## Approach\n\nThe garden is a grid where `#` is a rock and `.` or `S` is walkable. Starting from `S`, count how many plots can be reached in exactly N steps (revisiting is allowed, so only parity matters — a plot is reachable if the shortest path to it has the same odd/even parity as N).\n\n## Part 1\n\nBFS from `S`, expanding one step at a time. After 64 steps, count all visited positions whose distance has the same parity as 64.\n\n## Part 2\n\nThe grid tiles infinitely in all directions and we need 26,501,365 steps. The puzzle input is carefully constructed: 131x131 grid, `S` exactly at the center, with clear diamond-shaped paths along the axes. The target step count satisfies `26501365 = 65 + 202300 * 131`, meaning it aligns perfectly with the grid period. This makes the reachable count a quadratic function of the number of grid widths traversed. BFS at steps 65, 196, and 327 (0, 1, and 2 full grid widths) gives three samples — enough to fit `f(n) = an² + bn + c` and evaluate at `n = 202300`.",
+  "tags": ["bfs", "quadratic-extrapolation", "grid"],
+  "stars": 2
+}

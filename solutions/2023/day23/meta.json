@@ -1,0 +1,7 @@
+{
+  "title": "A Long Walk",
+  "description": "Find the longest path through a maze with optional slope constraints.",
+  "writeup": "## Approach\n\nThe maze has long corridors connecting junction points. First condense the graph: identify junctions (cells with 3+ walkable neighbors plus start/end), then BFS from each junction to find the distance to neighboring junctions.\n\n## Part 1\n\nSlope tiles (`>`, `<`, `v`, `^`) force movement in one direction, making the condensed graph a DAG. DFS with backtracking finds the longest path efficiently since there are few junctions.\n\n## Part 2\n\nIgnore slopes, making the graph undirected. Longest path in a general graph is NP-hard, but the condensed graph has only ~36 junctions, making bitmask-based DFS with backtracking feasible. Bitwise visited tracking keeps the constant factor low.",
+  "tags": ["graph", "dfs", "longest-path", "bitmask"],
+  "stars": 2
+}

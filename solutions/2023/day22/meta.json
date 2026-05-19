@@ -1,0 +1,7 @@
+{
+  "title": "Sand Slabs",
+  "description": "Simulate 3D bricks settling and find safe removals and chain reactions.",
+  "writeup": "## Approach\n\nParse 3D brick coordinates, sort by lowest z, then simulate gravity: each brick drops until it rests on the ground or another brick. Build a support graph tracking which bricks rest on which.\n\n## Part 1\n\nA brick can be safely removed (disintegrated) if every brick it supports has at least one *other* support. Count these safe bricks.\n\n## Part 2\n\nFor each brick, simulate a chain reaction: remove it, then iteratively mark any brick as falling if all its supports have fallen. Sum the number of bricks that would fall across all starting removals. This is efficiently done with BFS using the support graph.",
+  "tags": ["simulation", "3d", "graph", "bfs"],
+  "stars": 2
+}

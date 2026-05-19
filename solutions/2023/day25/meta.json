@@ -1,0 +1,7 @@
+{
+  "title": "Snowverload",
+  "description": "Find a 3-edge cut in a graph and multiply the resulting component sizes.",
+  "writeup": "## Approach\n\nBuild an undirected graph from the wiring diagram. The puzzle guarantees exactly 3 edges form the minimum cut that splits the graph into two components. This is a classic min-cut problem.\n\n## Part 1\n\nUse Edmonds-Karp (max flow via BFS augmenting paths) to find the minimum cut. Fix any node as the source and try other nodes as the sink until finding one where the max flow equals 3 — meaning that node is on the other side of the cut. The residual graph's BFS-reachable set from the source gives one component; the rest is the other. Multiply the two component sizes.\n\n## Part 2\n\nDay 25 is the finale — there's no Part 2 puzzle. The last star is awarded for completing all previous days.",
+  "tags": ["graph", "max-flow", "min-cut"],
+  "stars": 2
+}

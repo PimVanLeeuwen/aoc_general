@@ -1,0 +1,7 @@
+{
+  "title": "Ceres Search",
+  "description": "Word search for XMAS in all directions and X-shaped MAS crosses.",
+  "writeup": "## Approach\n\nA classic grid search problem with two different pattern types.\n\n## Part 1\n\nFor every cell containing 'X', check all 8 directions (horizontal, vertical, diagonal) for the full word \"XMAS\". Bounds-check before reading 4 characters in each direction.\n\n## Part 2\n\nLook for X-shaped crosses where two diagonal \"MAS\" strings intersect at a shared 'A'. For each 'A' in the grid, check the two diagonals: top-left/bottom-right and top-right/bottom-left. Each must spell either \"MS\" or \"SM\" (i.e. one M and one S on each diagonal).",
+  "tags": ["grid", "search"],
+  "stars": 2
+}

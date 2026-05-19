@@ -1,0 +1,7 @@
+{
+  "title": "Plutonian Pebbles",
+  "description": "Simulate stone transformations that split and multiply over 75 blinks.",
+  "writeup": "## Approach\n\nStones transform each blink: 0 becomes 1, even-digit numbers split in half, others multiply by 2024. The number of stones grows exponentially, so tracking individual stones is infeasible for 75 blinks.\n\n## Key Insight\n\nStones with the same value transform identically. Use a `Counter` (value \u2192 count) to track how many stones have each value. Each blink updates the counter in O(unique values) time rather than O(total stones).\n\n## Part 1 & 2\n\nApply 25 blinks for part 1, then 50 more (75 total) for part 2. The counter approach keeps memory manageable even as the stone count reaches trillions.",
+  "tags": ["simulation", "counting", "memoization"],
+  "stars": 2
+}

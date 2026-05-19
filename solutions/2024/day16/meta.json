@@ -1,0 +1,7 @@
+{
+  "title": "Reindeer Maze",
+  "description": "Find shortest path through a maze where turning is expensive.",
+  "writeup": "## Approach\n\nA maze where moving forward costs 1 and turning 90\u00b0 costs 1000. The state space is (row, col, direction).\n\n## Part 1\n\nDijkstra's algorithm on the state graph. Each state can transition to: move forward (+1 cost) or turn left/right (+1000 cost). The priority queue naturally finds the minimum-cost path.\n\n## Part 2\n\nFind all tiles that appear on *any* optimal path. During Dijkstra, track predecessors for each state (allowing ties). After finding the best cost, backtrack from all end states with that cost through predecessors to collect all visited tiles.",
+  "tags": ["dijkstra", "shortest-path", "grid"],
+  "stars": 2
+}

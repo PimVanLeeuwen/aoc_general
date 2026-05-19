@@ -1,0 +1,7 @@
+{
+  "title": "Historian Hysteria",
+  "description": "Compare two lists of location IDs by distance and similarity score.",
+  "writeup": "## Approach\n\nParse two columns of numbers into separate lists.\n\n## Part 1\n\nSort both lists and pair them up element-by-element. The answer is the sum of absolute differences between each pair. Sorting ensures we match the smallest with the smallest, minimising total distance.\n\n## Part 2\n\nCompute a similarity score: for each number in the left list, multiply it by how many times it appears in the right list. A `Counter` on the right list gives O(1) lookups, making this efficient even for large inputs.",
+  "tags": ["sorting", "counting"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Linen Layout",
+  "description": "Count towel designs composable from available stripe patterns.",
+  "writeup": "## Approach\n\nGiven a set of short towel patterns and a list of target designs, determine which designs can be built by concatenating patterns (with reuse).\n\n## Key Insight\n\nThis is a classic dynamic programming problem, similar to the word-break problem. For each position `i` in the design, `dp[i]` counts the number of ways to build the prefix `design[:i]` using available patterns.\n\n## Part 1\n\nCount how many designs have at least one valid composition (`dp[n] > 0`).\n\n## Part 2\n\nSum `dp[n]` across all designs to get the total number of arrangements. The DP naturally counts all valid compositions.",
+  "tags": ["dynamic-programming", "string"],
+  "stars": 2
+}

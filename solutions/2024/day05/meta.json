@@ -1,0 +1,7 @@
+{
+  "title": "Print Queue",
+  "description": "Validate and fix page ordering using dependency rules.",
+  "writeup": "## Approach\n\nParse ordering rules (`X|Y` means page X must come before page Y) and a list of page updates.\n\n## Part 1\n\nFor each update, check whether all applicable rules are satisfied by comparing positions. Sum the middle page numbers of all valid updates.\n\n## Part 2\n\nFor each invalid update, fix the ordering by repeatedly swapping pages that violate a rule until no violations remain. This is essentially a bubble sort guided by the dependency rules. Sum the middle page numbers of the corrected updates.",
+  "tags": ["topological-sort", "validation"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Disk Fragmenter",
+  "description": "Compact a fragmented filesystem by moving blocks or whole files.",
+  "writeup": "## Approach\n\nThe disk map is a dense encoding: alternating digits represent file sizes and gap sizes. Expand it into a block-level representation where each position holds a file ID or is free (-1).\n\n## Part 1\n\nMove blocks one at a time from the rightmost occupied position to the leftmost free position. This is a simple two-pointer approach until all free space is consolidated at the end.\n\n## Part 2\n\nMove entire files (not individual blocks) in decreasing file-ID order. For each file, find the leftmost contiguous free span large enough to hold it. If found and it's to the left of the file, move the whole file there. This preserves file contiguity but may leave fragmented gaps.",
+  "tags": ["simulation", "two-pointer"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Guard Gallivant",
+  "description": "Simulate a guard patrol and find obstacle positions that create loops.",
+  "writeup": "## Approach\n\nSimulate a guard moving on a grid who turns right 90\u00b0 whenever the next cell is an obstacle.\n\n## Part 1\n\nTrack every cell the guard visits until they leave the grid. The answer is the number of distinct visited positions.\n\n## Part 2\n\nFind how many positions could hold a new obstacle that would trap the guard in a loop. Only positions on the original path need to be tested (an obstacle elsewhere wouldn't change the path). For each candidate, re-simulate and detect a loop by checking if the guard revisits the same (row, col, direction) state.",
+  "tags": ["simulation", "grid", "cycle-detection"],
+  "stars": 2
+}

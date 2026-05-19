@@ -1,0 +1,7 @@
+{
+  "title": "Crossed Wires",
+  "description": "Simulate logic gates and find swapped wires in a ripple-carry adder.",
+  "writeup": "## Approach\n\nA circuit of AND, OR, and XOR gates processes x/y input bits and produces z output bits.\n\n## Part 1\n\nSimulate all gates: repeatedly evaluate gates whose inputs are known until all wires (including z-wires) have values. Read the z-wires as a binary number.\n\n## Part 2\n\nThe circuit is supposed to be a ripple-carry adder with 4 pairs of swapped output wires. Instead of brute-forcing swaps, analyse the circuit structure against the expected adder pattern:\n- XOR gates on x/y inputs produce intermediate sums, which should feed into another XOR (not directly to z)\n- AND gates should feed into OR gates (for carry propagation)\n- Only XOR gates with non-x/y inputs should output to z-wires\n\nAny gate violating these rules has a swapped output.",
+  "tags": ["simulation", "circuit", "analysis"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "LAN Party",
+  "description": "Find triangles and the largest fully-connected group in a computer network.",
+  "writeup": "## Approach\n\nBuild an adjacency graph from the connection list.\n\n## Part 1\n\nFind all triangles (3-cliques) where at least one computer starts with 't'. For each 't'-computer, check all pairs of its neighbours to see if they're also connected to each other.\n\n## Part 2\n\nFind the largest clique in the graph. For each computer, greedily build a clique by adding nodes that connect to all current members. While this greedy approach doesn't guarantee finding the maximum clique in general, the structure of AoC inputs (sparse, well-structured graphs) makes it work reliably. The answer is the sorted, comma-joined list of computers in the largest clique.",
+  "tags": ["graph", "clique", "search"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Mull It Over",
+  "description": "Parse corrupted memory for mul() instructions with conditional toggles.",
+  "writeup": "## Approach\n\nThe input is a stream of corrupted text containing valid `mul(X,Y)` instructions mixed with garbage. A single regex finds all three instruction types: `mul(X,Y)`, `do()`, and `don't()`.\n\n## Part 1\n\nSum the products of all `mul(X,Y)` instructions, ignoring everything else.\n\n## Part 2\n\n`do()` and `don't()` act as toggles enabling/disabling subsequent `mul` instructions. Process tokens left-to-right, tracking the enabled state. Only add products when multiplications are enabled.",
+  "tags": ["regex", "parsing"],
+  "stars": 2
+}

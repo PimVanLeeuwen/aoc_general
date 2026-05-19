@@ -1,0 +1,7 @@
+{
+  "title": "Claw Contraption",
+  "description": "Find minimum tokens to reach prizes using two claw machine buttons.",
+  "writeup": "## Approach\n\nEach claw machine has two buttons (A and B) that move the claw by fixed amounts. Pressing A costs 3 tokens, B costs 1. Find the cheapest way to reach the prize.\n\n## Key Insight\n\nThis is a system of two linear equations with two unknowns:\n- `ax * a + bx * b = px`\n- `ay * a + by * b = py`\n\nUse Cramer's rule to solve directly. If the determinant is non-zero and both solutions are non-negative integers, the cost is `3a + b`. No brute force needed.\n\n## Part 2\n\nPrize coordinates increase by 10\u00b9\u00b3. The same Cramer's rule works perfectly since it's exact integer arithmetic \u2014 no iteration required regardless of the offset size.",
+  "tags": ["math", "linear-algebra"],
+  "stars": 2
+}

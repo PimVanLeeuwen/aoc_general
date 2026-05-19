@@ -1,0 +1,7 @@
+{
+  "title": "Race Condition",
+  "description": "Find wall-phasing shortcuts on a racetrack that save 100+ picoseconds.",
+  "writeup": "## Approach\n\nThe racetrack has a unique path from S to E (no branches). A cheat lets you phase through walls for a limited number of steps.\n\n## Key Insight\n\nFirst, find the path and assign each cell its distance along the path. A cheat from path position `i` to position `j` saves `(j - i) - manhattan_distance(i, j)` steps. We just need to count all pairs where the Manhattan distance is within the cheat limit and the saving is \u2265 100.\n\n## Part 1\n\nCheats last up to 2 steps. Check all pairs of path positions with Manhattan distance \u2264 2.\n\n## Part 2\n\nCheats last up to 20 steps. Same approach, but with a larger distance threshold. The O(n\u00b2) pair check is feasible since the path length is manageable.",
+  "tags": ["bfs", "manhattan-distance", "grid"],
+  "stars": 2
+}

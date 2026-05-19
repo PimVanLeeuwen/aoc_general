@@ -1,0 +1,7 @@
+{
+  "title": "Bridge Repair",
+  "description": "Find which equations can be satisfied with +, *, and concatenation operators.",
+  "writeup": "## Approach\n\nEach line gives a target value and a list of numbers. Operators are inserted left-to-right between numbers (no precedence rules \u2014 always evaluated left to right).\n\n## Part 1\n\nRecursively try placing `+` or `*` between each pair of numbers, reducing left to right. If any combination produces the target, the equation is valid.\n\n## Part 2\n\nA third operator `||` (concatenation) is added, e.g. `12 || 34 = 1234`. The same recursive approach works with three branches instead of two. Pruning isn't strictly needed since the number of operands per line is small.",
+  "tags": ["recursion", "brute-force"],
+  "stars": 2
+}

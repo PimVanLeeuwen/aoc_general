@@ -1,0 +1,7 @@
+{
+  "title": "Restroom Redoubt",
+  "description": "Simulate robots on a toroidal grid and find the Easter egg pattern.",
+  "writeup": "## Approach\n\nRobots move with constant velocity on a grid that wraps around (toroidal). Each position after `t` steps is `(x + vx*t) % width, (y + vy*t) % height`.\n\n## Part 1\n\nAfter 100 steps, count robots in each quadrant (excluding the middle lines) and multiply the four counts.\n\n## Part 2\n\nFind the time step where robots form a Christmas tree. The trick is that the tree frame has robots clustered together, which minimises the safety score (quadrant product). Since the grid is 101\u00d7103, positions repeat with period `101*103 = 10403`, so checking all steps in that range is sufficient. The minimum safety score corresponds to the Easter egg.",
+  "tags": ["simulation", "modular-arithmetic"],
+  "stars": 2
+}

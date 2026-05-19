@@ -1,0 +1,7 @@
+{
+  "title": "Monkey Market",
+  "description": "Generate pseudo-random secrets and optimise banana purchases via price change sequences.",
+  "writeup": "## Approach\n\nEach buyer generates a sequence of 2000 pseudo-random secret numbers using bitwise operations (XOR with shifts, masked to 24 bits). The price is the last digit of each secret.\n\n## Part 1\n\nSimulate 2000 iterations for each buyer and sum the final secrets.\n\n## Part 2\n\nFind the 4-element sequence of price changes that maximises total bananas across all buyers. For each buyer, compute price changes and record the first time each 4-change tuple appears (along with the price at that point). Aggregate across all buyers using a dictionary. The sequence with the highest total wins.\n\nThis avoids brute-forcing all possible 4-tuples by only considering sequences that actually appear in the data.",
+  "tags": ["simulation", "hashing", "optimization"],
+  "stars": 2
+}

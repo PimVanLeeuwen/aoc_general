@@ -1,0 +1,7 @@
+{
+  "title": "Chronospatial Computer",
+  "description": "Simulate a 3-bit VM and find the input that produces a quine.",
+  "writeup": "## Approach\n\nA simple virtual machine with 3 registers (A, B, C), 8 opcodes, and a 3-bit instruction set.\n\n## Part 1\n\nDirect simulation: execute instructions sequentially, collecting output from `out` instructions. The combo operand encoding maps 0\u20133 to literals and 4\u20136 to registers.\n\n## Part 2\n\nFind the initial value of A that makes the program output a copy of itself (a quine). The key insight is that the program processes A in 3-bit chunks \u2014 each loop iteration right-shifts A by 3 and outputs one value based on the low bits.\n\nThis means we can build A recursively from the *last* output digit backwards. For each position, try all 8 possible 3-bit values (0\u20137), run the program to check if the first output matches the expected digit, and recurse. Taking the first valid result gives the smallest A.",
+  "tags": ["simulation", "vm", "recursion"],
+  "stars": 2
+}

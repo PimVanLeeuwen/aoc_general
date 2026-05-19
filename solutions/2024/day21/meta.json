@@ -1,0 +1,7 @@
+{
+  "title": "Keypad Conundrum",
+  "description": "Minimize button presses through a chain of directional keypad robots.",
+  "writeup": "## Approach\n\nA chain of robots: the last one types on a numeric keypad, each intermediate one controls the next via a directional keypad. We need the minimum total presses on the first (human-operated) directional pad.\n\n## Key Insight\n\nThe problem is recursive: to press a button on robot N's pad, robot N-1 must navigate its directional pad and press A. The cost of each move depends only on the current key, target key, and chain depth \u2014 making it perfectly suited for memoised recursion.\n\nFor each transition on a keypad, we enumerate all shortest paths (avoiding the gap), and recursively compute the cost of each path at the next level. Memoisation on `(from_key, to_key, depth)` makes this efficient.\n\n## Part 1 & 2\n\n2 intermediate directional robots for part 1, 25 for part 2. The memoised approach handles both instantly.",
+  "tags": ["recursion", "memoization", "shortest-path"],
+  "stars": 2
+}

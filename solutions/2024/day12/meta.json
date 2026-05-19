@@ -1,0 +1,7 @@
+{
+  "title": "Garden Groups",
+  "description": "Calculate fencing costs for garden regions using perimeter and side counts.",
+  "writeup": "## Approach\n\nFlood-fill (BFS) to identify connected regions of the same plant type.\n\n## Part 1\n\nFor each region, the fencing cost is area \u00d7 perimeter. Perimeter is counted by checking each cell's 4 neighbours \u2014 every edge facing a different region or the grid boundary adds 1.\n\n## Part 2\n\nNow cost is area \u00d7 number of sides. The key insight is that the number of sides equals the number of corners. For each cell, check for two types of corners:\n- **Outer corners**: two adjacent orthogonal neighbours are outside the region\n- **Inner corners**: two adjacent orthogonal neighbours are inside, but the diagonal between them is outside\n\nThis avoids the complexity of tracing the full boundary.",
+  "tags": ["flood-fill", "geometry", "grid"],
+  "stars": 2
+}

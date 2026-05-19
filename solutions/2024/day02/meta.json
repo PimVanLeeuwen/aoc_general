@@ -1,0 +1,7 @@
+{
+  "title": "Red-Nosed Reports",
+  "description": "Check reactor reports for safe monotonic level sequences.",
+  "writeup": "## Approach\n\nEach report is a sequence of integer levels. A report is \"safe\" if the levels are strictly increasing or strictly decreasing, and every consecutive pair differs by 1 to 3.\n\n## Part 1\n\nCheck each report directly against the safety criteria. Compute consecutive differences and verify they are all positive (or all negative) and within bounds.\n\n## Part 2\n\nThe Problem Dampener allows removing a single level. For each unsafe report, try removing each element one at a time and re-check. If any removal makes it safe, count it. This is O(n\u00b2) per report but reports are short so it's fast enough.",
+  "tags": ["brute-force", "validation"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Hoof It",
+  "description": "Count hiking trails from trailheads to peaks on a topographic map.",
+  "writeup": "## Approach\n\nA topographic map where each cell is a height 0\u20139. A valid trail starts at 0, ends at 9, and increases by exactly 1 each step (4-directional movement).\n\n## Part 1\n\nFor each trailhead (height 0), BFS to find all reachable height-9 cells. The score is the number of *distinct* peaks reachable. Sum scores across all trailheads.\n\n## Part 2\n\nNow count the number of *distinct paths* to any peak, not just distinct peaks. The same BFS works \u2014 we simply don't deduplicate during traversal. Each time we reach a 9, that's one more trail. The BFS naturally explores all possible paths since we don't mark cells as visited.",
+  "tags": ["bfs", "grid", "pathfinding"],
+  "stars": 2
+}

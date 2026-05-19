@@ -1,0 +1,7 @@
+{
+  "title": "Resonant Collinearity",
+  "description": "Find antinode positions from antenna pair resonance on a grid.",
+  "writeup": "## Approach\n\nGroup antennas by their frequency character. For each pair of same-frequency antennas, compute antinode positions along the line connecting them.\n\n## Part 1\n\nFor each pair (A, B), the two antinodes are at positions that extend the line segment by exactly one step beyond each endpoint: `A - (B-A)` and `B + (B-A)`. Count distinct in-bounds positions.\n\n## Part 2\n\nAntinodes now appear at *every* grid-aligned point along the line through each antenna pair, including the antennas themselves. Walk in both directions from one antenna using the step vector until leaving the grid.",
+  "tags": ["geometry", "grid", "combinations"],
+  "stars": 2
+}

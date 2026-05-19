@@ -1,0 +1,7 @@
+{
+  "title": "Warehouse Woes",
+  "description": "Push boxes around a warehouse, including double-width boxes in part 2.",
+  "writeup": "## Approach\n\nA Sokoban-style puzzle where a robot pushes boxes around a grid.\n\n## Part 1\n\nSimulate the robot following a sequence of moves. When the robot pushes into a box, slide the entire chain of boxes in that direction. If the chain hits a wall, nothing moves. After all moves, compute the GPS sum: `100*row + col` for each box.\n\n## Part 2\n\nThe warehouse is double-width: each box becomes `[]` spanning two columns. Horizontal pushing works the same way (slide the chain). Vertical pushing is trickier \u2014 pushing one half of a wide box affects the other half, which may cascade to more boxes. We collect all affected cells layer by layer, check for walls, then move everything from the farthest layer inward.",
+  "tags": ["simulation", "grid", "sokoban"],
+  "stars": 2
+}

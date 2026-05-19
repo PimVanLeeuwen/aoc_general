@@ -1,0 +1,7 @@
+{
+  "title": "RAM Run",
+  "description": "Navigate a grid with falling bytes and find when the path gets blocked.",
+  "writeup": "## Approach\n\nBytes fall onto a 71\u00d771 grid one at a time, corrupting cells. Navigate from (0,0) to (70,70).\n\n## Part 1\n\nAfter the first 1024 bytes have fallen, BFS from start to end gives the shortest path length.\n\n## Part 2\n\nFind the first byte that makes the path impossible. Instead of checking each byte sequentially (slow), use binary search on the byte index. For each candidate, add all bytes up to that index and run BFS. If the path is blocked, try fewer bytes; if it's still open, try more. This reduces O(n) BFS calls to O(log n).",
+  "tags": ["bfs", "binary-search", "grid"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Code Chronicle",
+  "description": "Match locks and keys by checking pin height compatibility.",
+  "writeup": "## Approach\n\nParse lock and key schematics into column heights. Locks have '#' on the top row, keys have '#' on the bottom row.\n\n## Part 1\n\nFor each lock/key pair, check if the sum of heights in every column doesn't exceed the schematic height (7 rows). Count all fitting pairs.\n\n## Part 2\n\nChristmas day \u2014 no part 2 puzzle. Merry Christmas!",
+  "tags": ["brute-force", "parsing"],
+  "stars": 2
+}

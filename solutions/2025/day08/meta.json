@@ -1,0 +1,7 @@
+{
+  "title": "Box Clusters",
+  "description": "Cluster 3D boxes by proximity using minimum spanning tree.",
+  "writeup": "## Approach\n\nBoxes in 3D space need to be grouped by proximity. Compute all pairwise Euclidean distances and sort them (Kruskal\u2019s algorithm approach).\n\n## Part 1\n\nProcess the 1000 shortest edges using Union-Find. After 1000 edges, find the three largest connected components and multiply their sizes.\n\n## Part 2\n\nContinue adding edges until all boxes form a single connected component. The answer involves the last edge that completes the spanning tree \u2014 specifically the product of the x-coordinates of the two boxes it connects.\n\nUnion-Find with path compression and union by rank makes this efficient even for many boxes.",
+  "tags": ["graph", "union-find", "mst"],
+  "stars": 2
+}

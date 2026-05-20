@@ -1,0 +1,7 @@
+{
+  "title": "Light Machines",
+  "description": "Toggle lights and reach joltage targets with minimum button presses.",
+  "writeup": "## Approach\n\nEach machine has buttons that toggle subsets of lights and increment joltage counters.\n\n## Part 1\n\nBFS over light states: each button press toggles a subset of lights. Find the minimum presses to turn all lights on from all-off. The state space is small (2^n for n lights).\n\n## Part 2\n\nMinimise total button presses such that each joltage counter reaches its target. This is an integer linear programming problem. For small instances, enumerate all combinations of press counts. For larger ones, a greedy approach works: repeatedly press the button that makes the most progress toward unfulfilled targets.",
+  "tags": ["bfs", "optimization", "simulation"],
+  "stars": 2
+}

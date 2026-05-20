@@ -1,0 +1,7 @@
+{
+  "title": "Downhill Splits",
+  "description": "Traverse a grid downward with path splits, counting routes.",
+  "writeup": "## Approach\n\nA grid where you start at the top and move downward. `.` cells move straight down; `^` cells split the path diagonally left and right.\n\n## Part 1\n\nBFS from the start, following the movement rules. Count how many `^` (split) cells are encountered on any reachable path.\n\n## Part 2\n\nCount the total number of distinct routes from top to bottom. Use memoised recursion: at each cell, the number of routes is the sum of routes from the cells it leads to. `.` leads to one cell below; `^` leads to two diagonal cells. The `lru_cache` avoids recomputing overlapping subproblems.",
+  "tags": ["bfs", "dynamic-programming", "grid"],
+  "stars": 2
+}

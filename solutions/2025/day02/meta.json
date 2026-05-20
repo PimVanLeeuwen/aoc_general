@@ -1,0 +1,7 @@
+{
+  "title": "Repeating IDs",
+  "description": "Sum IDs from ranges that have repeating digit patterns.",
+  "writeup": "## Approach\n\nGiven ranges of numeric IDs, find numbers whose digit string has a repeating pattern.\n\n## Part 1\n\nCheck if the string can be split into two identical halves (e.g. `1234` \u2192 `12|34` where `12 == 34`). Only even-length numbers can match.\n\n## Part 2\n\nCheck if the entire string is a repetition of some shorter substring. Try all divisor lengths `j` of the string length: if `s == s[:j] * (n/j)`, it's a repeating pattern. Break on the first match to avoid double-counting.",
+  "tags": ["string", "brute-force"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Signal Router",
+  "description": "Count signal paths through a device network with required waypoints.",
+  "writeup": "## Approach\n\nDevices form a directed acyclic graph (DAG). Each device routes signals to one or more downstream devices.\n\n## Part 1\n\nBFS from the source device, counting every time a signal reaches the `out` node. Each path through the DAG is counted separately.\n\n## Part 2\n\nCount only paths that pass through specific required intermediate devices. DFS with memoisation tracks which required nodes have been visited as a frozen set in the state. Only paths that visit all required nodes before reaching `out` are counted.",
+  "tags": ["graph", "dfs", "memoization"],
+  "stars": 2
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Rolling Boulders",
+  "description": "Cellular automaton removing boulders with too few neighbours.",
+  "writeup": "## Approach\n\nA grid of boulders (`@`) and empty spaces (`.`). Boulders with fewer than 4 of their 8 neighbours also being boulders are \"unstable\" and roll away.\n\n## Part 1\n\nSingle pass: count all boulders with fewer than 4 boulder neighbours.\n\n## Part 2\n\nIteratively remove unstable boulders. After each removal pass, some previously stable boulders may become unstable. Repeat until no more boulders are removed. Count the total removed across all iterations.",
+  "tags": ["cellular-automaton", "grid", "simulation"],
+  "stars": 2
+}

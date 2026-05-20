@@ -1,0 +1,7 @@
+{
+  "title": "Digit Picker",
+  "description": "Pick digits from a sequence to form the largest possible numbers.",
+  "writeup": "## Approach\n\nGiven strings of digits, select subsequences that form the largest number.\n\n## Part 1\n\nFind the largest 2-digit number by picking any two positions `i < j`. Simple brute force over all pairs.\n\n## Part 2\n\nPick 12 digits to form the largest 12-digit number. A greedy approach works: for each position in the result (left to right), pick the largest available digit that still leaves enough remaining digits for the rest. This works because maximising the leftmost digit always produces the largest number.",
+  "tags": ["greedy", "string"],
+  "stars": 2
+}

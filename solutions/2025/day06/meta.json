@@ -1,0 +1,7 @@
+{
+  "title": "Column Calculator",
+  "description": "Parse and evaluate columnar arithmetic with stacked digits.",
+  "writeup": "## Approach\n\nNumbers are presented in a columnar format: 4 rows of digits stacked vertically, with a 5th row indicating the operator (`+` or `*`).\n\n## Part 1\n\nEach column is a separate single-digit problem. Parse rows as space-separated values, evaluate each column with its operator.\n\n## Part 2\n\nNumbers can span multiple columns (multi-digit). Problems are separated by blank columns. Read digits from each column right-to-left to reconstruct multi-digit numbers, then apply the operator.",
+  "tags": ["parsing", "math"],
+  "stars": 2
+}

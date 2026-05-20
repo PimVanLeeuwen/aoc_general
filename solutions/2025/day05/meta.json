@@ -1,0 +1,7 @@
+{
+  "title": "Range Checker",
+  "description": "Check numbers against ranges and compute merged range coverage.",
+  "writeup": "## Approach\n\nThe input contains a mix of ranges (`start-end`) and individual numbers.\n\n## Part 1\n\nFor each number, check if it falls within any of the given ranges. Simple brute-force check against all ranges.\n\n## Part 2\n\nMerge all overlapping or adjacent ranges into non-overlapping intervals. Sort ranges by start, then greedily extend: if the next range overlaps or is adjacent to the current merged range, extend it. Otherwise start a new merged range. The total coverage is the sum of all merged interval lengths.",
+  "tags": ["intervals", "sorting", "greedy"],
+  "stars": 2
+}

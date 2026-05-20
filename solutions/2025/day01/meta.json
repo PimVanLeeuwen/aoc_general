@@ -1,0 +1,7 @@
+{
+  "title": "Dial-a-Code",
+  "description": "Simulate a circular dial and count zero crossings.",
+  "writeup": "## Approach\n\nA dial numbered 0\u201399 wraps around circularly. Instructions move it left or right by a given amount.\n\n## Part 1\n\nApply each instruction as modular arithmetic on the dial position. After each instruction, check if the dial lands exactly on 0.\n\n## Part 2\n\nNow count every time the dial *passes through* zero, not just lands on it. Simulate step-by-step: move one position at a time and check for the 0\u219299 or 99\u21920 wraparound on each step.",
+  "tags": ["simulation", "modular-arithmetic"],
+  "stars": 2
+}

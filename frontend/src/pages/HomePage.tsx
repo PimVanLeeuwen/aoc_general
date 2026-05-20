@@ -57,7 +57,7 @@ export default function HomePage() {
               </div>
 
               <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-5 gap-2.5">
-                {Array.from({ length: 25 }, (_, i) => i + 1).map((day) => {
+                {Array.from({ length: Math.max(...Object.keys(days).map(Number)) }, (_, i) => i + 1).map((day) => {
                   const meta = days[String(day)] as DaySummary | undefined
                   const stars = meta?.stars ?? 0
 

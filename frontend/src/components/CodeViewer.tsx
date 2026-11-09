@@ -15,7 +15,7 @@ function stripVisualizer(code: string): string {
 
 const BG = '#1a1a2e'
 
-function CodeBlock({ label, code }: { label: string; code: string }) {
+export function CodeBlock({ label, code }: { label: string; code: string }) {
   const [copied, setCopied] = useState(false)
 
   const copy = () => {

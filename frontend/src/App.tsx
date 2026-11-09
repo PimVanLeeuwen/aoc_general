@@ -4,6 +4,7 @@ import { SolutionsProvider } from './context/SolutionsContext'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import SolutionPage from './pages/SolutionPage'
+import TechniquesPage from './pages/TechniquesPage'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/techniques" element={<TechniquesPage />} />
               <Route path="/:year/:day" element={<SolutionPage />} />
             </Routes>
           </Layout>

@@ -5,7 +5,7 @@
   "tags": [
     "hashing",
     "grid",
-    "binary",
+    "bit-manipulation",
     "dfs",
     "flood-fill"
   ],

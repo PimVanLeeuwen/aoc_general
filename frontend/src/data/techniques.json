@@ -1,0 +1,399 @@
+{
+  "categories": [
+    { "id": "graphs", "name": "Graphs & search" },
+    { "id": "grids", "name": "Grids & geometry" },
+    { "id": "math", "name": "Math" },
+    { "id": "optimization", "name": "Recursion & optimization" },
+    { "id": "ranges", "name": "Ranges & sequences" },
+    { "id": "machines", "name": "Machines, parsing & data structures" }
+  ],
+  "techniques": [
+    {
+      "id": "bfs",
+      "category": "graphs",
+      "name": "Breadth-first search",
+      "tags": ["bfs", "shortest-path", "maze"],
+      "recognise": [
+        "\"Fewest steps\", \"shortest path\" or \"minimum number of moves\" where every move costs the same.",
+        "A maze or grid with walls and a start and end point.",
+        "Also for \"all cells reachable within N steps\": BFS visits nodes in order of distance."
+      ],
+      "example": { "year": 2024, "day": 18 }
+    },
+    {
+      "id": "dijkstra",
+      "category": "graphs",
+      "name": "Dijkstra / weighted shortest path",
+      "tags": ["dijkstra", "priority-queue"],
+      "recognise": [
+        "\"Lowest total risk / cost / heat loss\" where moves cost different amounts.",
+        "Turning costs extra or movement rules depend on direction: make the direction part of the node.",
+        "If every move costs the same, plain BFS is simpler and faster."
+      ],
+      "example": { "year": 2023, "day": 17 }
+    },
+    {
+      "id": "dfs",
+      "category": "graphs",
+      "name": "Depth-first search & backtracking",
+      "tags": ["dfs", "backtracking"],
+      "recognise": [
+        "\"How many distinct paths\" or \"the longest route that never revisits a tile\".",
+        "Longest path is hard in general: compress the graph to junctions first, then backtrack.",
+        "Building something piece by piece and undoing choices (bridges, schedules)."
+      ],
+      "example": { "year": 2021, "day": 12 }
+    },
+    {
+      "id": "state-search",
+      "category": "graphs",
+      "name": "Search over puzzle states",
+      "tags": ["state-space-search", "sliding-puzzle"],
+      "recognise": [
+        "The thing that moves is the whole configuration: elevators with items, amphipods in rooms, fights with mana.",
+        "Make the state a tuple or frozenset so it can go in a set, and BFS or Dijkstra over states.",
+        "Speed up by canonicalising equivalent states and pruning moves that are never useful."
+      ],
+      "example": { "year": 2016, "day": 11 }
+    },
+    {
+      "id": "flood-fill",
+      "category": "graphs",
+      "name": "Flood fill & connected groups",
+      "tags": ["flood-fill", "connected-components", "union-find"],
+      "recognise": [
+        "\"Regions\", \"basins\", \"groups\" or \"clusters\" of connected cells.",
+        "Area, perimeter or sides of each region (count edges facing a different region).",
+        "Connections arrive one by one (\"connect the closest pairs\"): union-find."
+      ],
+      "example": { "year": 2024, "day": 12 }
+    },
+    {
+      "id": "topological-sort",
+      "category": "graphs",
+      "name": "Topological sort",
+      "tags": ["topological-sort"],
+      "recognise": [
+        "\"Step C must be finished before step A can begin\" or ordering rules between pages.",
+        "Reactions that need other reactions' outputs first.",
+        "Watch for the tie-break rule, often alphabetical."
+      ],
+      "example": { "year": 2018, "day": 7 }
+    },
+    {
+      "id": "graph-classics",
+      "category": "graphs",
+      "name": "Classic graph algorithms",
+      "tags": ["floyd-warshall", "mst", "max-flow", "min-cut", "clique", "tsp", "longest-path", "path-counting", "matching"],
+      "recognise": [
+        "Visit every point of interest in the best order: all-pairs distances first, then permutations (TSP).",
+        "\"Largest set of computers all connected to each other\": maximum clique.",
+        "\"Cut three wires to split the graph in two\": minimum cut (networkx has it if you install it)."
+      ],
+      "example": { "year": 2024, "day": 23 }
+    },
+    {
+      "id": "grids",
+      "category": "grids",
+      "name": "Grid basics",
+      "tags": ["grid", "infinite-grid"],
+      "recognise": [
+        "Any 2D map of characters: parse it to a dict of (row, col) to char so bounds checks become \"in grid\".",
+        "Directions as a list of offsets and an index, so turning is index + 1.",
+        "Tilting or rotating the whole map: rotate the list of rows with zip."
+      ],
+      "example": { "year": 2024, "day": 6 }
+    },
+    {
+      "id": "cellular-automaton",
+      "category": "grids",
+      "name": "Cellular automata",
+      "tags": ["cellular-automaton"],
+      "recognise": [
+        "Every cell changes at the same time based on its neighbours (seats, octopuses, cubes, tiles).",
+        "Store only live cells in a set: works on infinite grids and in 3D or 4D unchanged.",
+        "\"After a billion generations\": combine with cycle detection."
+      ],
+      "example": { "year": 2020, "day": 17 }
+    },
+    {
+      "id": "manhattan",
+      "category": "grids",
+      "name": "Manhattan distance & directions",
+      "tags": ["manhattan-distance", "path-tracking", "rotation"],
+      "recognise": [
+        "\"Taxicab\" or \"Manhattan\" distance, sensors with a range, wires crossing.",
+        "Turtle-style instructions (turn left, move forward): complex numbers make turning one multiplication.",
+        "A huge area with sensor diamonds: work per row with intervals, never cell by cell."
+      ],
+      "example": { "year": 2022, "day": 15 }
+    },
+    {
+      "id": "hex-grid",
+      "category": "grids",
+      "name": "Hexagonal grids",
+      "tags": ["hex-grid"],
+      "recognise": [
+        "Six directions like n, ne, se or e, se, sw.",
+        "Use cube coordinates: distance is the largest absolute coordinate difference."
+      ],
+      "example": { "year": 2017, "day": 11 }
+    },
+    {
+      "id": "polygon",
+      "category": "grids",
+      "name": "Polygon area (shoelace & Pick)",
+      "tags": ["shoelace", "picks-theorem", "polygon", "ray-casting"],
+      "recognise": [
+        "\"How many tiles are enclosed by the loop\" or \"how much lava does the lagoon hold\".",
+        "Huge dig instructions where flood fill is too slow: shoelace area plus Pick's theorem.",
+        "Point-in-polygon for individual cells: count wall crossings along a ray."
+      ],
+      "example": { "year": 2023, "day": 18 }
+    },
+    {
+      "id": "geometry-3d",
+      "category": "grids",
+      "name": "3D & geometry",
+      "tags": ["3d", "geometry", "voronoi", "spatial-subdivision"],
+      "recognise": [
+        "Cubes, bricks or points in 3D: the grid tricks still work with 3-tuples.",
+        "\"Exterior surface\": flood fill the air around the shape instead of the shape itself.",
+        "Falling bricks or overlapping claims: sort by height or position first."
+      ],
+      "example": { "year": 2022, "day": 18 }
+    },
+    {
+      "id": "modular",
+      "category": "math",
+      "name": "Modular arithmetic, LCM & CRT",
+      "tags": ["modular-arithmetic", "chinese-remainder-theorem", "discrete-log", "lcm"],
+      "recognise": [
+        "Several independent loops must line up at the same moment: lcm of the loop lengths.",
+        "\"Earliest timestamp where bus i departs i minutes after t\": Chinese remainder theorem.",
+        "Numbers grow without bound but only divisibility matters: keep them modulo the product of the divisors."
+      ],
+      "example": { "year": 2023, "day": 8 }
+    },
+    {
+      "id": "cycle-detection",
+      "category": "math",
+      "name": "Cycle detection",
+      "tags": ["cycle-detection"],
+      "recognise": [
+        "Part 2 asks for the state after 1,000,000,000 steps of a deterministic process.",
+        "Store each state with the step it appeared at; when one repeats, skip ahead by whole cycles.",
+        "Also \"loops forever?\" questions: a repeated (position, direction) state means a loop."
+      ],
+      "example": { "year": 2023, "day": 14 }
+    },
+    {
+      "id": "linear-algebra",
+      "category": "math",
+      "name": "Linear equations",
+      "tags": ["linear-algebra"],
+      "recognise": [
+        "\"Press button A and button B how many times\": two equations, two unknowns.",
+        "Use Fractions for exact answers and check for whole numbers.",
+        "Hailstones or trajectories that must meet: set up the equations rather than simulating."
+      ],
+      "example": { "year": 2024, "day": 13 }
+    },
+    {
+      "id": "number-theory",
+      "category": "math",
+      "name": "Divisors, primes & digits",
+      "tags": ["number-theory", "digits", "base-conversion"],
+      "recognise": [
+        "\"Elves deliver to every house that is a multiple of their number\": sum of divisors.",
+        "A reverse-engineered program that counts non-primes or sums divisors.",
+        "Digit rules (never decreasing, splitting numbers in half) or unusual bases like SNAFU."
+      ],
+      "example": { "year": 2015, "day": 20 }
+    },
+    {
+      "id": "extrapolation",
+      "category": "math",
+      "name": "Differences & extrapolation",
+      "tags": ["quadratic-extrapolation", "sequences"],
+      "recognise": [
+        "\"Predict the next value\" of a sequence: repeated differences until all zeros.",
+        "Growth that becomes quadratic over a repeating period: measure three points and extrapolate to the huge step count."
+      ],
+      "example": { "year": 2023, "day": 9 }
+    },
+    {
+      "id": "combinatorics",
+      "category": "math",
+      "name": "Permutations & combinations",
+      "tags": ["combinatorics", "permutations"],
+      "recognise": [
+        "Small number of items (about 10 or fewer) and \"best order\" or \"best group\": try them all with itertools.",
+        "\"Every pair of points\": combinations(points, 2).",
+        "Every choice of operator per gap: product(operators, repeat=n)."
+      ],
+      "example": { "year": 2019, "day": 7 }
+    },
+    {
+      "id": "memoization",
+      "category": "optimization",
+      "name": "Memoization & dynamic programming",
+      "tags": ["memoization", "dynamic-programming"],
+      "recognise": [
+        "\"How many ways\" or \"how many arrangements\" with an answer far too big to enumerate.",
+        "A recursive function called with the same arguments over and over: add @cache.",
+        "Exponential growth where order does not matter (lanternfish, pebbles): count with a Counter."
+      ],
+      "example": { "year": 2024, "day": 19 }
+    },
+    {
+      "id": "recursion",
+      "category": "optimization",
+      "name": "Recursion & trees",
+      "tags": ["recursion", "tree", "weight-balancing", "recursive-descent"],
+      "recognise": [
+        "Nested structure: lists within lists, packets within packets, monkeys yelling other monkeys' results.",
+        "Expression trees and custom operator precedence.",
+        "Very deep input: raise the recursion limit or switch to an explicit stack."
+      ],
+      "example": { "year": 2022, "day": 13 }
+    },
+    {
+      "id": "binary-search",
+      "category": "optimization",
+      "name": "Binary search on the answer",
+      "tags": ["binary-search", "ternary-search"],
+      "recognise": [
+        "\"What is the first byte that blocks the path\" or \"the maximum fuel for 1 trillion ore\".",
+        "Checking one candidate is easy and the answer flips from no to yes once."
+      ],
+      "example": { "year": 2019, "day": 14 }
+    },
+    {
+      "id": "greedy",
+      "category": "optimization",
+      "name": "Greedy choices",
+      "tags": ["greedy"],
+      "recognise": [
+        "Pick the best option at each step and it provably never hurts later choices (largest digit first).",
+        "If a greedy answer is rejected, the puzzle probably needs DP or search instead."
+      ],
+      "example": { "year": 2025, "day": 3 }
+    },
+    {
+      "id": "constraint-satisfaction",
+      "category": "optimization",
+      "name": "Constraint elimination",
+      "tags": ["constraint-satisfaction"],
+      "recognise": [
+        "Work out which field, opcode or allergen is which from a list of possibilities.",
+        "Some item always has exactly one option left: fix it and remove it everywhere else, repeat."
+      ],
+      "example": { "year": 2020, "day": 16 }
+    },
+    {
+      "id": "intervals",
+      "category": "ranges",
+      "name": "Intervals & range splitting",
+      "tags": ["intervals", "sweep-line"],
+      "recognise": [
+        "Ranges of IDs, seeds or coordinates in the billions: never expand them into numbers.",
+        "\"Fully contains\" or \"overlaps\": compare start and end points.",
+        "Mapping whole ranges through rules: split each range into the moved part and the leftovers."
+      ],
+      "example": { "year": 2023, "day": 5 }
+    },
+    {
+      "id": "prefix-sums",
+      "category": "ranges",
+      "name": "Prefix sums & sliding windows",
+      "tags": ["prefix-sum", "sliding-window", "two-pointer"],
+      "recognise": [
+        "Sums over many windows or rectangles: precompute prefix sums once.",
+        "\"First position where the last N characters are all different\".",
+        "Compare each window to the previous one instead of recomputing it."
+      ],
+      "example": { "year": 2022, "day": 6 }
+    },
+    {
+      "id": "interpreter",
+      "category": "machines",
+      "name": "Interpreters & virtual machines",
+      "tags": ["interpreter", "assembly", "intcode", "turing-machine", "state-machine"],
+      "recognise": [
+        "A list of instructions with registers and jumps.",
+        "\"What is the accumulator right before an instruction runs a second time\": track visited pc values.",
+        "Keep the interpreter small and testable: one function per instruction or a match statement."
+      ],
+      "example": { "year": 2016, "day": 12 }
+    },
+    {
+      "id": "reverse-engineering",
+      "category": "machines",
+      "name": "Reverse engineering programs",
+      "tags": ["reverse-engineering"],
+      "recognise": [
+        "The interpreter works but would run for hours or years.",
+        "Find the hot loop, translate it to what it really computes and replace it.",
+        "Input programs that repeat the same block with different constants (ALU, Chronospatial)."
+      ],
+      "example": { "year": 2017, "day": 23 }
+    },
+    {
+      "id": "circular-buffer",
+      "category": "machines",
+      "name": "Circular lists & linked lists",
+      "tags": ["circular-buffer", "deque", "linked-list", "josephus"],
+      "recognise": [
+        "Marbles, cups or elves in a circle with a current position.",
+        "Millions of insertions or removals in the middle: deque.rotate or a dict of next pointers, never list.insert."
+      ],
+      "example": { "year": 2020, "day": 23 }
+    },
+    {
+      "id": "stack",
+      "category": "machines",
+      "name": "Stacks",
+      "tags": ["stack"],
+      "recognise": [
+        "Matching brackets or cancelling neighbouring pairs.",
+        "Crates moved between piles: a list per pile with append and pop."
+      ],
+      "example": { "year": 2021, "day": 10 }
+    },
+    {
+      "id": "bit-manipulation",
+      "category": "machines",
+      "name": "Bit manipulation",
+      "tags": ["bit-manipulation"],
+      "recognise": [
+        "Masks with X, 0 and 1, binary strings, or seat codes that are really binary numbers.",
+        "A set of keys or valves as part of a search state: store it as one int bitmask."
+      ],
+      "example": { "year": 2020, "day": 14 }
+    },
+    {
+      "id": "hashing",
+      "category": "machines",
+      "name": "Hashing",
+      "tags": ["md5", "hashing"],
+      "recognise": [
+        "MD5 of a secret plus a number: brute force with hashlib, cache hashes that are reused.",
+        "The puzzle defines its own hash: implement the steps exactly as written."
+      ],
+      "example": { "year": 2023, "day": 15 }
+    },
+    {
+      "id": "parsing",
+      "category": "machines",
+      "name": "Parsing input",
+      "tags": ["parsing", "regex", "json"],
+      "recognise": [
+        "Numbers scattered in text: grab them all with one regex and unpack.",
+        "Blank-line separated sections: split on two newlines first.",
+        "Corrupted memory with valid instructions hidden inside: one regex with alternatives."
+      ],
+      "example": { "year": 2024, "day": 3 }
+    }
+  ]
+}

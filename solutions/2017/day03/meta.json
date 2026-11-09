@@ -6,8 +6,7 @@
     "math",
     "manhattan-distance",
     "grid",
-    "simulation",
-    "coordinates"
+    "simulation"
   ],
   "stars": 2
 }

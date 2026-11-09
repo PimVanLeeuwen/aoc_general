@@ -5,8 +5,7 @@
   "tags": [
     "simulation",
     "parsing",
-    "register-machine",
-    "conditional-logic"
+    "interpreter"
   ],
   "stars": 2
 }

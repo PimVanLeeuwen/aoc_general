@@ -162,6 +162,10 @@ make submit PART=2 FORCE=1   # submit even when an example fails
 
 An empty answer is not checked. While an example fails, the real input is skipped and `make submit` refuses to send anything unless you add `FORCE=1`. Run the tests of this tooling with `make test`.
 
+## Technique index
+
+The **Techniques** page (`#/techniques`) groups all solutions by algorithm, with tips on how to recognise each technique in a puzzle, the best past solution to reread, and a short Python snippet. The techniques live in `frontend/src/data/techniques.json`; each one lists the `meta.json` tags that place a day under it, so tag new solutions with existing tags where possible. The snippets are plain Python files in `frontend/src/data/snippets/`, tested against puzzle examples by `make test`.
+
 ## Deploying to GitHub Pages
 
 1. Enable Pages in your repo: **Settings → Pages → Source: GitHub Actions**

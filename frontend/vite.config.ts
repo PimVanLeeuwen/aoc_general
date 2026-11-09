@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { readdirSync, readFileSync, existsSync, statSync, cpSync } from 'node:fs'
 import { resolve, join } from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'node:http'
+import { hasVisualize } from './src/utils/hasVisualize'
 
 const SOLUTIONS_ROOT = resolve(__dirname, '../solutions')
 
@@ -30,7 +31,7 @@ function buildManifest() {
         day: dayNum,
         hasSolution: existsSync(solPath),
         hasVisualization:
-          existsSync(solPath) && readFileSync(solPath, 'utf-8').includes('def visualize('),
+          existsSync(solPath) && hasVisualize(readFileSync(solPath, 'utf-8')),
       }
     }
   }

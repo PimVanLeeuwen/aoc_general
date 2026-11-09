@@ -6,6 +6,7 @@ import CodeViewer from '../components/CodeViewer'
 import WriteupView from '../components/WriteupView'
 import RunnerPanel from '../components/RunnerPanel'
 import { assetUrl } from '../utils/assetUrl'
+import { hasVisualize } from '../utils/hasVisualize'
 import type { SolutionDetail, FetchedSharedFile } from '../types'
 
 type Tab = 'writeup' | 'code' | 'run'
@@ -60,7 +61,7 @@ export default function SolutionPage() {
           year: parseInt(year),
           day: parseInt(day),
           hasSolution: code.length > 0,
-          hasVisualization: code.includes('def visualize('),
+          hasVisualization: hasVisualize(code),
         } as SolutionDetail)
       })
       .catch((e) => setError(String(e)))

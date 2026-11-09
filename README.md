@@ -137,6 +137,31 @@ inputs/
 
 The `inputs/` folder is gitignored — AoC asks you not to share puzzle inputs publicly.
 
+## Daily workflow during the event
+
+`aoc.py` covers the routine around solving a puzzle. `YEAR` and `DAY` default to today's puzzle (puzzles unlock at midnight US Eastern time), or pass them explicitly, for example `make check YEAR=2025 DAY=03`.
+
+```bash
+make today                   # scaffold the solution, download the input, create example files
+make watch                   # re-run the check every time you save
+make check                   # run solve() on the examples, then on the real input
+make submit PART=1           # run on the real input and submit after a y/N prompt
+make submit PART=2 FORCE=1   # submit even when an example fails
+```
+
+`make today` waits for the unlock if you start it early. Downloading and submitting use [advent-of-code-data](https://github.com/wimglenn/advent-of-code-data) (`pip install advent-of-code-data`), which reads your adventofcode.com session cookie from the `AOC_SESSION` environment variable or `~/.config/aocd/token`.
+
+**Examples** are filled in by hand next to the real input. Paste the example from the puzzle text into `inputs/YEAR/dayDD.example.txt` (add `dayDD.example2.txt` and so on when part 2 uses a different one) and put the expected answers in `inputs/YEAR/dayDD.answers.json`:
+
+```json
+{
+  "example": {"part1": "142", "part2": ""},
+  "example2": {"part1": "", "part2": "281"}
+}
+```
+
+An empty answer is not checked. While an example fails, the real input is skipped and `make submit` refuses to send anything unless you add `FORCE=1`. Run the tests of this tooling with `make test`.
+
 ## Deploying to GitHub Pages
 
 1. Enable Pages in your repo: **Settings → Pages → Source: GitHub Actions**

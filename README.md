@@ -162,6 +162,12 @@ make submit PART=2 FORCE=1   # submit even when an example fails
 
 An empty answer is not checked. While an example fails, the real input is skipped and `make submit` refuses to send anything unless you add `FORCE=1`. Run the tests of this tooling with `make test`.
 
+## Shared helper library
+
+`solutions/aoc_utils.py` holds reusable helpers for any year: parsing (`ints`, `lines`, `sections`), grids (`parse_grid`, `neighbors`, `DIRS_4`, `print_grid`, ...), search (`bfs`, `dijkstra` with optional A* heuristic, `shortest_path`, `regions`, `UnionFind`, `topological_sort`), math (`crt`, `state_after` for cycle skipping, `extrapolate`, `shoelace_area`, `solve_linear`) and ranges (`merge_intervals`, `subtract`, `total_length`). New solutions from the template already import the common ones.
+
+Just write `from aoc_utils import ...`: the site detects the import, loads the file into Pyodide and shows it in the Code tab, and `run.py`, `aoc.py` and `run_all.py` put `solutions/` on the Python path. It is standard library only and tested by `make test`.
+
 ## Technique index
 
 The **Techniques** page (`#/techniques`) groups all solutions by algorithm, with tips on how to recognise each technique in a puzzle, the best past solution to reread, and a short Python snippet. The techniques live in `frontend/src/data/techniques.json`; each one lists the `meta.json` tags that place a day under it, so tag new solutions with existing tags where possible. The snippets are plain Python files in `frontend/src/data/snippets/`, tested against puzzle examples by `make test`.

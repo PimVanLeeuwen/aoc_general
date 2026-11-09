@@ -137,6 +137,16 @@ class CheckTest(WorkflowTestCase):
         self.write_solution("def solve(puzzle_input):\n    raise ValueError('boom')\n")
         self.assertEqual(quietly(aoc.check, self.puzzle), (False, None))
 
+    def test_scaffolded_template_runs_with_aoc_utils(self):
+        shutil.copy(REPO / "solutions" / "aoc_utils.py", self.root / "solutions" / "aoc_utils.py")
+        sys.modules.pop("aoc_utils", None)  # import it from this test's root, not a cached copy
+        self.addCleanup(sys.modules.pop, "aoc_utils", None)
+        self.puzzle.solution.unlink()
+        quietly(aoc.today, self.puzzle, fetch=lambda puzzle: "unused")
+        self.write_expected({"example": {"part1": "", "part2": ""}})
+        self.assertEqual(quietly(aoc.check, self.puzzle), (True, ("", "")))
+        self.assertEqual(Path(sys.modules["aoc_utils"].__file__).parent, self.root / "solutions")
+
     def test_unfinished_part2_is_shown_as_empty(self):
         self.write_solution("def solve(puzzle_input):\n    return 1, ''\n")
         self.assertEqual(quietly(aoc.check, self.puzzle), (True, ("1", "")))

@@ -93,9 +93,9 @@ def load_module(year: int, day: int):
     path = Path(f"solutions/{year}/day{day:02d}/solution.py")
     if not path.exists():
         return None, path
-    year_dir = str(Path(f"solutions/{year}").resolve())
-    if year_dir not in sys.path:
-        sys.path.insert(0, year_dir)
+    for shared_dir in (Path("solutions"), Path(f"solutions/{year}")):  # aoc_utils.py, intcode.py
+        if str(shared_dir.resolve()) not in sys.path:
+            sys.path.insert(0, str(shared_dir.resolve()))
     spec = importlib.util.spec_from_file_location("solution", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

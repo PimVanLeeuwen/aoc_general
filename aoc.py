@@ -98,9 +98,10 @@ def today_puzzle(now: datetime | None = None) -> tuple[int, int] | None:
 
 def load_solution(puzzle: Puzzle):
     """Import solution.py fresh, so module-level state never leaks between runs."""
-    year_dir = str(puzzle.solution_dir.parent)
-    if year_dir not in sys.path:
-        sys.path.insert(0, year_dir)  # shared modules such as intcode.py
+    # shared modules: aoc_utils.py in solutions/, and per year e.g. intcode.py
+    for shared_dir in (puzzle.solution_dir.parent.parent, puzzle.solution_dir.parent):
+        if str(shared_dir) not in sys.path:
+            sys.path.insert(0, str(shared_dir))
     spec = importlib.util.spec_from_file_location("solution", puzzle.solution)
     module = importlib.util.module_from_spec(spec)  # type: ignore[arg-type]
     spec.loader.exec_module(module)  # type: ignore[union-attr]
@@ -209,6 +210,7 @@ def watched_files(puzzle: Puzzle) -> dict[Path, int]:
     files = [
         *puzzle.solution_dir.glob("*.py"),
         *puzzle.solution_dir.parent.glob("*.py"),  # shared modules of the year
+        *puzzle.solution_dir.parent.parent.glob("*.py"),  # aoc_utils.py
         *puzzle.examples(),
         puzzle.answers,
         puzzle.input,

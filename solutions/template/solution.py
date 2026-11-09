@@ -13,20 +13,15 @@ from collections import Counter, defaultdict, deque
 from functools import cache
 from itertools import combinations, pairwise, product
 
-DIRS_4 = [(-1, 0), (0, 1), (1, 0), (0, -1)]  # up, right, down, left
-DIRS_8 = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-
-
-def ints(text: str) -> list[int]:
-    """All integers in a string, including negative ones."""
-    return [int(number) for number in re.findall(r"-?\d+", text)]
+# Shared helpers (solutions/aoc_utils.py), loaded automatically on the site.
+from aoc_utils import DIRS_4, DIRS_8, bfs, dijkstra, grid_find, ints, lines, neighbors, parse_grid, sections
 
 
 def solve(puzzle_input: str) -> tuple[str, str]:
     """Return (part1_answer, part2_answer)."""
-    lines = puzzle_input.strip().split("\n")
-    # sections = puzzle_input.strip().split("\n\n")  # blocks separated by a blank line
-    # grid = {(r, c): ch for r, line in enumerate(lines) for c, ch in enumerate(line)}
+    rows = lines(puzzle_input)
+    # blocks = sections(puzzle_input)  # parts separated by a blank line
+    # grid = parse_grid(puzzle_input)  # {(row, col): char}
 
     # Part 1
     part1 = ""
@@ -42,12 +37,12 @@ def solve(puzzle_input: str) -> tuple[str, str]:
 #
 # def visualize(puzzle_input: str):
 #     """Yield visualization frames (up to ~500 recommended)."""
-#     lines = puzzle_input.strip().split("\n")
+#     rows = lines(puzzle_input)
 #
 #     # Grid frame – renders as a pixel canvas:
 #     yield {
 #         "type": "grid",
-#         "cells": [list(row) for row in lines],
+#         "cells": [list(row) for row in rows],
 #         "colors": {"#": "#00ff41", ".": "#0f0f23"},   # cell → hex color
 #         "delay": 100,   # ms before advancing to next frame
 #     }

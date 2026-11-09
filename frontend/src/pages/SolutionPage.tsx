@@ -7,6 +7,7 @@ import WriteupView from '../components/WriteupView'
 import RunnerPanel from '../components/RunnerPanel'
 import { assetUrl } from '../utils/assetUrl'
 import { hasVisualize } from '../utils/hasVisualize'
+import { AOC_UTILS_PATH, aocUtilsFile, importsAocUtils } from '../utils/aocUtils'
 import type { SolutionDetail, FetchedSharedFile } from '../types'
 
 type Tab = 'writeup' | 'code' | 'run'
@@ -52,6 +53,12 @@ export default function SolutionPage() {
               }
             }),
           )
+        }
+
+        // The shared helper library is loaded automatically when the solution imports it.
+        if (importsAocUtils(code)) {
+          const res = await fetch(assetUrl(AOC_UTILS_PATH))
+          if (res.ok) sharedCode = [...(sharedCode ?? []), aocUtilsFile(await res.text())]
         }
 
         setSolution({
